@@ -1,0 +1,79 @@
+group 'acheng1314.cn'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        maven { url "http://maven.aliyun.com/nexus/content/repositories/central" }
+
+        maven { url "https://jitpack.io" }
+
+        jcenter()
+
+        mavenCentral()
+    }
+    dependencies {
+        //使用1.5.4.RELEASE版本的Spring框架
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.4.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+
+allprojects {
+    repositories {
+        // maven库
+        // 先从阿里云maven下载jar若没有找到，则在后面的仓库中寻找
+        //仓库优先级从上到下顺序排列
+        maven { url "http://maven.aliyun.com/nexus/content/repositories/central" }
+
+        maven { url "https://jitpack.io" }
+
+        jcenter()
+
+        mavenCentral()
+    }
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name == "lint") {
+        task.enabled = false
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    // https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
+    compile 'org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.0'
+
+    compile 'com.squareup.okhttp3:okhttp:3.8.1'
+
+    //druid-spring-boot-starter
+    compile('com.github.drtrang:druid-spring-boot-starter:1.0.3') {
+        exclude group: 'com.alibaba'
+    }
+
+    compile 'com.alibaba:druid:1.1.2'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent
+    compile 'org.springframework.boot:spring-boot-starter-parent:1.5.4.RELEASE'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+    compile 'org.springframework.boot:spring-boot-starter-web:1.5.4.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-aop:1.5.4.RELEASE'
+
+    runtime 'mysql:mysql-connector-java:5.1.39'
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test:1.5.4.RELEASE'
+
+    compile "io.springfox:springfox-swagger2:2.7.0"
+    compile "io.springfox:springfox-staticdocs:2.6.1"
+    compile "io.springfox.ui:springfox-swagger-ui-rfc6570:1.0.0"
+
+    compile 'com.github.sd4324530:fastweixin:1.3.15'
+
+    // https://mvnrepository.com/artifact/eu.bitwalker/UserAgentUtils
+    compile group: 'eu.bitwalker', name: 'UserAgentUtils', version: '1.20'
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
+}

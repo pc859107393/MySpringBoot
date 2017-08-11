@@ -1,0 +1,146 @@
+debug: false
+
+logging:
+  level:
+    root: info
+    org.springframework: info
+    org.springframework.jdbc: debug
+    org.mybatis: debug
+    com.github.trang: debug
+
+spring:
+  profiles:
+    # 默认环境为 default，多数据源演示请改为 dynamic
+    active: default
+  output:
+    ansi:
+      enabled: always
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ccdb?useUnicode=true&characterEncoding=utf8&autoReconnect=true
+    username: root
+    password: laopo5201314
+    druid:
+      # spring.datasource.druid 前缀的配置将注入到 DruidParentDataSource，作为公共参数
+      initial-size: 1
+      min-idle: 1
+      max-active: 10
+      max-wait: 30000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 1800000
+      max-evictable-idle-time-millis: 25200000
+      validation-query: SELECT 1
+      test-while-idle: true
+      test-on-borrow: true
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      use-global-data-source-stat: true
+      stat:
+        db-type: mysql
+        log-slow-sql: true
+        slow-sql-millis: 1000
+        merge-sql: true
+      slf4j:
+        enabled: true
+        connection-log-enabled: false
+        connection-log-error-enabled: true
+        statement-log-enabled: false
+        statement-log-error-enabled: true
+        statement-sql-pretty-format: true
+        statement-executable-sql-log-enable: true
+        result-set-log-enabled: false
+        result-set-log-error-enabled: true
+      wall:
+        enabled: true
+        db-type: mysql
+        log-violation: true
+        throw-exception: false
+        config:
+          select-all-column-allow: false
+      config:
+        enabled: false
+      aop-stat:
+        enabled: true
+        patterns:
+          - acheng1314.cn.*
+      web-stat:
+        enabled: true
+      stat-view-servlet:
+        enabled: true
+  transaction:
+    rollback-on-commit-failure: true
+  aop:
+    auto: true
+    proxy-target-class: true
+
+  http:
+    encoding:
+      force: true
+    converters:
+      preferred-json-mapper: gson
+
+mybatis:
+  type-aliases-package: acheng1314.cn.domain
+  mapper-locations: "classpath:acheng1314/cn/dao/*.xml"
+  configuration:
+    map-underscore-to-camel-case: true
+    use-generated-keys: true
+    use-column-label: true
+
+---
+
+debug: false
+
+spring:
+  profiles: default
+
+#---
+#
+#debug: false
+#
+#spring:
+#  profiles: dynamic
+#  autoconfigure:
+#    exclude:
+#      # 多数据源场景会导致 `javax.sql.DataSource` 和 `org.springframework.boot.autoconfigure.jdbc.DataSourceInitializer`
+#      # 循环依赖，所以需要手动排除 `org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration`
+#      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+#  datasource:
+#    druid:
+#      # 继承 spring.datasource.druid 前缀的配置，同时可以自定义配置，若名称相同则覆盖父配置
+#      one:
+#        name: one
+#        max-active: 50
+#        max-open-prepared-statements: 50
+#      two:
+#        name: two
+#        max-active: 25
+#        max-open-prepared-statements: 25
+#
+#---
+#
+#spring:
+#  profiles: dev-yaml
+#  datasource:
+#    druid:
+#      min-evictable-idle-time-millis: 100000
+#      max-evictable-idle-time-millis: 200000
+#
+#---
+#
+#spring:
+#  profiles: dynamic-dev-yaml
+#  autoconfigure:
+#    exclude:
+#      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+#  datasource:
+#    druid:
+#      one:
+#        name: one
+#        min-evictable-idle-time-millis: 100001
+#        max-evictable-idle-time-millis: 200001
+#      two:
+#        name: two
+#        min-evictable-idle-time-millis: 100002
+#        max-evictable-idle-time-millis: 200002
