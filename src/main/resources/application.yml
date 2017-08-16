@@ -66,8 +66,11 @@ spring:
           - acheng1314.cn.*
       web-stat:
         enabled: true
+        exclusions: "/public/*,*.js,*.css,/druid*,*.jsp,*.swf"
+        url-patterns: "/*"
       stat-view-servlet:
         enabled: true
+
   transaction:
     rollback-on-commit-failure: true
   aop:
@@ -77,8 +80,24 @@ spring:
   http:
     encoding:
       force: true
+      charset: UTF-8
+      force-request: true
     converters:
       preferred-json-mapper: gson
+
+  freemarker:
+    template-loader-path: "classpath:/templates/"
+    cache: true
+    charset: utf-8
+    check-template-location: true
+    content-type: text/html
+    expose-request-attributes: true
+    expose-session-attributes: true
+    request-context-attribute: request
+    suffix: ".ftl"
+    enabled: true
+  resources:
+    static-locations: "/WEB-INF/static"
 
 mybatis:
   type-aliases-package: acheng1314.cn.domain
@@ -88,12 +107,32 @@ mybatis:
     use-generated-keys: true
     use-column-label: true
 
----
+mybatis-plus:
+  global-config:
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 0
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    field-strategy: 0
+    #驼峰下划线转换
+    db-column-underline: true
+    #刷新mapper 调试神器
+    refresh-mapper: true
+    capital-mode: true
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+server:
+  port: 8080
+#server:
+#  servlet-path: "/"
+#  context-path: "/"
 
-debug: false
-
-spring:
-  profiles: default
+#---
+#
+#debug: false
+#
+#spring:
+#  profiles: default
 
 #---
 #

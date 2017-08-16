@@ -11,16 +11,34 @@ buildscript {
 
         mavenCentral()
     }
+
     dependencies {
         //使用1.5.4.RELEASE版本的Spring框架
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.4.RELEASE")
     }
+
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Werror"
+        }
+    }
+
 }
 
 apply plugin: 'java'
 apply plugin: 'war'
+apply plugin: 'org.springframework.boot'
 
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+tasks.withType(JavaCompile){
+    options.encoding = "UTF-8"
+}
+
+task createJavadoc(type: Javadoc)  {
+    source = sourceSets.main.allJava
+}
 
 allprojects {
     repositories {
@@ -66,6 +84,7 @@ dependencies {
     runtime 'mysql:mysql-connector-java:5.1.39'
 
     testCompile 'org.springframework.boot:spring-boot-starter-test:1.5.4.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-freemarker:1.5.4.RELEASE'
 
     compile "io.springfox:springfox-swagger2:2.7.0"
     compile "io.springfox:springfox-staticdocs:2.6.1"
@@ -76,4 +95,8 @@ dependencies {
     // https://mvnrepository.com/artifact/eu.bitwalker/UserAgentUtils
     compile group: 'eu.bitwalker', name: 'UserAgentUtils', version: '1.20'
     compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
+    compile ('com.baomidou:mybatisplus-spring-boot-starter:1.0.4') {
+        exclude group: 'org.springframework.*'
+    }
+    compile 'com.baomidou:mybatis-plus:2.1-gamma'
 }

@@ -1,7 +1,5 @@
 package acheng1314.cn.util.okHi;
 
-import acheng1314.cn.util.okHi.GetRequest;
-import acheng1314.cn.util.okHi.PostRequest;
 import okhttp3.*;
 
 import java.io.File;

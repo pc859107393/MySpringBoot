@@ -8,8 +8,6 @@ import com.google.gson.internal.bind.CollectionTypeAdapterFactory;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
-import com.sun.istack.internal.NotNull;
-import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,7 +19,7 @@ import java.util.Map;
 /**
  * Created by linjizong on 15/7/20.
  */
-
+@SuppressWarnings("unchecked")
 public class GsonUtils {
 
     private static Gson gson;
@@ -92,9 +90,8 @@ public class GsonUtils {
             Class builder = (Class) gsonBulder.getClass();
             Field f = builder.getDeclaredField("instanceCreators");
             f.setAccessible(true);
-            Map<Type, InstanceCreator<?>> val = (Map<Type, InstanceCreator<?>>) f.get(gsonBulder);//得到此属性的值
             //注册数组的处理器
-            gsonBulder.registerTypeAdapterFactory(new CollectionTypeAdapterFactory(new ConstructorConstructor(val)));
+            gsonBulder.registerTypeAdapterFactory(new CollectionTypeAdapterFactory(new ConstructorConstructor((Map<Type, InstanceCreator<?>>) f.get(gsonBulder))));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -110,7 +107,7 @@ public class GsonUtils {
      * @return
      * @throws JsonSyntaxException
      */
-    public static <T> T toBean(@NotNull String json, Class<T> type) throws JsonSyntaxException {
+    public static <T> T toBean(String json, Class<T> type) throws JsonSyntaxException {
         return gson.fromJson(json, type);
     }
 
@@ -168,11 +165,6 @@ public class GsonUtils {
         return gson.fromJson(reader, type);
     }
 
-
-    public static <V> V jsonRequest2Bean(final InputStream input, Class<V> clazz) throws IOException {
-        String json = IOUtils.toString(input, "UTF-8");
-        return toBean(json, clazz);
-    }
 
     /**
      * 封装的转换json，外部一条语句调用

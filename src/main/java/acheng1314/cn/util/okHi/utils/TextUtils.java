@@ -1,6 +1,5 @@
 package acheng1314.cn.util.okHi.utils;
 
-import com.sun.istack.internal.Nullable;
 
 /**
  * Created by pc on 2017/8/8.
@@ -12,14 +11,14 @@ public class TextUtils {
      * @param str the string to be examined
      * @return true if str is null or zero length
      */
-    public static boolean isEmpty(@Nullable CharSequence str) {
+    public static boolean isEmpty(CharSequence str) {
         if (str == null || str.length() == 0)
             return true;
         else
             return false;
     }
 
-    public static String nullIfEmpty(@Nullable String str) {
+    public static String nullIfEmpty(String str) {
         return isEmpty(str) ? null : str;
     }
 

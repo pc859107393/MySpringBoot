@@ -1,6 +1,5 @@
 package acheng1314.cn.util.okHi.model;
 
-import com.sun.istack.internal.Nullable;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import okhttp3.internal.Util;
@@ -29,13 +28,12 @@ public class MyPostBody extends RequestBody {
     }
 
 
-    public static RequestBody create(final @Nullable MediaType contentType, final byte[] content) {
+    public static RequestBody create(final MediaType contentType, final byte[] content) {
         if (content == null) throw new NullPointerException("content == null");
 
         return new RequestBody() {
             @Override
-            public @Nullable
-            MediaType contentType() {
+            public MediaType contentType() {
                 return contentType;
             }
 

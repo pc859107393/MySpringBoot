@@ -21,7 +21,7 @@ public final class CipherUtils {
     /**
      * 16位小写MD5加密
      *
-     * @log 若要返回32位的直接去掉后面的 substring(8, 24)
+     * @param string  若要返回32位的直接去掉后面的 substring(8, 24)
      */
     public static String small16md5(String string) {
         return small32md5(string).substring(8, 24);

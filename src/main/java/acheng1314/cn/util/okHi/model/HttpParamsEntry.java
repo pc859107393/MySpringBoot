@@ -1,6 +1,5 @@
 package acheng1314.cn.util.okHi.model;
 
-import com.sun.istack.internal.NotNull;
 
 /**
  * Http请求中的参数(包括请求头参数)封装
@@ -31,7 +30,7 @@ public class HttpParamsEntry implements Comparable<HttpParamsEntry> {
     }
 
     @Override
-    public int compareTo(@NotNull HttpParamsEntry another) {
+    public int compareTo(HttpParamsEntry another) {
         if (k == null) {
             return -1;
         } else {
