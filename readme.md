@@ -20,6 +20,18 @@
 
 ----
 
+> 17-08-16
+
+acheng 整合基本框架，springboot+mybatis+mvc+mybatis plus+springbootFreemarker,暂时无有加入缓存控制，同时值得注意的是一些细节骚操作.
+
+1.@SuppressWarnings("unchecked")
+
+2.gradle构建命令中的check添加参数：-s -i -x test --debug，完整输出检查日志的同时规避test
+
+3.同时其他的相关的检测工具中都可以使用 -x test屏蔽Test相关的检测
+
+![gradle构建细节骚操作](http://acheng1314.cn/static/uploadFiles/20170816/59f2402d73fe4e37a7d763ab6b9c51ef.png)
+
 有兴趣交流springboot进行快速开发的同学可以加一下下面的企鹅群。
 
 ![行走的java全栈](https://acheng1314.cn/wp-content/uploads/2016/10/行走的java全栈群二维码.png)
