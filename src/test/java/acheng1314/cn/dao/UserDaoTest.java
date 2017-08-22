@@ -49,4 +49,10 @@ public class UserDaoTest extends BaseTest {
 
     }
 
+    @Test
+    public void selectNotUsed() throws Exception {
+        for (User user : userDao.selectNotUsed()) {
+            loge(user.toString());
+        }
+    }
 }

@@ -1,0 +1,27 @@
+package acheng1314.cn.controller.endWeb;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+@Controller()
+@RequestMapping("/endSys")
+@Api(value = "后端页面控制器")
+public class SysMainController {
+
+    @GetMapping(value = "/index", produces = MediaType.TEXT_HTML_VALUE)
+    @ApiOperation(value = "后端主页", notes = "后端主页")
+    public String endMain(@ApiParam(hidden = true) ModelMap map
+            , @ApiParam(hidden = true) ShiroHttpServletRequest request) {
+        Object user = request.getSession().getAttribute("userInfo");
+        map.put("user", user);
+        return "end/index";
+    }
+}

@@ -5,7 +5,6 @@ import org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.interceptor.TransactionInterceptor;
@@ -21,7 +20,7 @@ import java.util.Properties;
  * @author acheng
  */
 @SpringBootApplication
-@MapperScan("acheng1314.cn.dao")
+@MapperScan("acheng1314")
 @EnableWebMvc
 @Import(SwaggerConfiguration.class)
 public class Application extends WebMvcConfigurerAdapter {
@@ -39,6 +38,9 @@ public class Application extends WebMvcConfigurerAdapter {
 
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
+
+        registry.addResourceHandler("/static/**")
+                .addResourceLocations("classpath:/static/");
     }
 
     @Bean(name = "transactionInterceptor")

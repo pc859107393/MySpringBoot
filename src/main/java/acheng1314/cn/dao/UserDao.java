@@ -37,4 +37,6 @@ public interface UserDao extends BaseMapper<User> {
 
     @Override
     List<User> selectPage(RowBounds rowBounds, Wrapper<User> wrapper);
+
+    List<User> selectNotUsed();
 }

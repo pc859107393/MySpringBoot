@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 对日志进行格式化 -->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger -%msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="debugAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/debug.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <!-- 设置滚动策略 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--设置日志命名模式-->
+            <fileNamePattern>debug%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!--最多保留30天log-->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <!-- 超过150MB时，触发滚动策略 -->
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>50MB</maxFileSize>
+        </triggeringPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %thread %X{invokeNo} %logger{40} %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="errorAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/error.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <!-- 设置滚动策略 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--设置日志命名模式-->
+            <fileNamePattern>error%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!--最多保留30天log-->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <!-- 超过150MB时，触发滚动策略 -->
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>50MB</maxFileSize>
+        </triggeringPolicy>
+
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %thread %X{invokeNo} %logger{40} %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!--<logger name="debugAppender" level="DEBUG" addtivity="false">-->
+        <!--<appender-ref ref="debugAppender"/>-->
+    <!--</logger>-->
+    <!--<logger name="errorAppender" level="ERROR" addtivity="false">-->
+        <!--<appender-ref ref="errorAppender"/>-->
+    <!--</logger>-->
+    <root level="DEBUG">
+        <appender-ref ref="debugAppender"/>
+        <appender-ref ref="errorAppender"/>
+    </root>
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="debugAppender"/>
+        <appender-ref ref="errorAppender"/>
+    </root>
+</configuration>
