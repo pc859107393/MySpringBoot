@@ -4,42 +4,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>登录</title>
-    <meta name="keywords" content="Bootstrap"/>
-    <meta name="description" content="ace-admin"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <!-- basic styles -->
-
-    <link href="./static/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="./static/css/font-awesome.min.css"/>
-
-    <!--[if IE 7]>
-    <link rel="stylesheet" href="./static/css/font-awesome-ie7.min.css"/>
-    <![endif]-->
-
-    <!-- page specific plugin styles -->
-
-    <!-- fonts -->
-
-<#--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300"/>-->
-
-    <!-- ace styles -->
-
-    <link rel="stylesheet" href="./static/css/ace.min.css"/>
-    <link rel="stylesheet" href="./static/css/ace-rtl.min.css"/>
-
-    <!--[if lte IE 8]>
-    <link rel="stylesheet" href="./static/css/ace-ie.min.css"/>
-    <![endif]-->
-
-    <!-- inline styles related to this page -->
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-
-    <!--[if lt IE 9]>
-    <script src="./static/js/html5shiv.js"></script>
-    <script src="./static/js/respond.min.js"></script>
-    <![endif]-->
+<#include "_inc/_header.ftl"/>
 </head>
 
 <body class="login-layout">
@@ -297,86 +262,10 @@
 </div>
 <!-- /.main-container -->
 
-<!-- basic scripts -->
+<#include "_inc/_footer.ftl"/>
 
-<!--[if !IE]> -->
+<#include "_inc/_login.ftl"/>
 
-<script src="./static/js/jquery_2_0_3.min.js"></script>
-
-<!-- <![endif]-->
-
-<!--[if IE]>
-<script src="./static/js/jquery_1_10_2.min.js"></script>
-<![endif]-->
-
-<!--[if !IE]> -->
-
-<script src="./static/js/md5.js"></script>
-<script src="./static/js/jquery.tips.js"></script>
-
-<script type="text/javascript">
-    window.jQuery || document.write("<script src='./static/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
-</script>
-
-<!-- <![endif]-->
-
-<!--[if IE]>
-<script type="text/javascript">
-    window.jQuery || document.write("<script src='./static/js/jquery-1.10.2.min.js'>" + "<" + "/script>");
-</script>
-<![endif]-->
-
-<script type="text/javascript">
-    if ("ontouchend" in document) document.write("<script src='./static/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
-</script>
-
-<!-- inline scripts related to this page -->
-
-<script type="text/javascript">
-    function show_box(id) {
-        jQuery('.widget-box.visible').removeClass('visible');
-        jQuery('#' + id).addClass('visible');
-    }
-
-    function checkLoginInfo() {
-        if ("" == $("#user-name").val()) {
-            $("#user-name").tips({
-                side: 2,
-                msg: '用户名不得为空',
-                bg: '#AE81FF',
-                time: 3
-            });
-            $("#user-name").focus();
-            return false;
-        }
-
-        if ($("#user-pwd").val() == "") {
-            $("#user-pwd").tips({
-                side: 2,
-                msg: '密码不得为空',
-                bg: '#AE81FF',
-                time: 3
-            });
-            $("#user-pwd").focus();
-            return false;
-        }
-        return true;
-    }
-
-    function beforeLogin() {
-        if (!checkLoginInfo()) {
-            return false;
-        }
-
-        document.getElementById("user-re-pwd").value = $("#user-pwd").val();
-
-        var username = $("#user-name").val();
-        var userpass = hex_md5($("#user-pwd").val());
-        document.getElementById("user-pwd").value = userpass;
-        console.info($("#user-pwd").val());
-        return true;
-    }
-</script>
 </body>
 
 </html>

@@ -24,4 +24,10 @@ public class SysMainController {
         map.put("user", user);
         return "end/index";
     }
+
+    @GetMapping(value = "/tab", produces = MediaType.TEXT_HTML_VALUE)
+    @ApiOperation(value = "web页面标签", notes = "web页面内部导航标签")
+    public String tab() {
+        return "tab";
+    }
 }

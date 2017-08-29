@@ -5,42 +5,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>可能发生了错误</title>
-    <meta name="keywords" content="Bootstrap"/>
-    <meta name="description" content="ace-admin"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <!-- basic styles -->
-
-    <link href="./static/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="./static/css/font-awesome.min.css"/>
-
-    <!--[if IE 7]>
-    <link rel="stylesheet" href="./static/css/font-awesome-ie7.min.css"/>
-    <![endif]-->
-
-    <!-- page specific plugin styles -->
-
-    <!-- fonts -->
-
-<#--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300"/>-->
-
-    <!-- ace styles -->
-
-    <link rel="stylesheet" href="./static/css/ace.min.css"/>
-    <link rel="stylesheet" href="./static/css/ace-rtl.min.css"/>
-
-    <!--[if lte IE 8]>
-    <link rel="stylesheet" href="./static/css/ace-ie.min.css"/>
-    <![endif]-->
-
-    <!-- inline styles related to this page -->
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-
-    <!--[if lt IE 9]>
-    <script src="./static/js/html5shiv.js"></script>
-    <script src="./static/js/respond.min.js"></script>
-    <![endif]-->
+<#include "_inc/_header.ftl"/>
 </head>
 <body>
 <div class="row">
@@ -106,34 +71,5 @@
     </div><!-- /.col -->
 </div>
 </body>
-
-<!-- basic scripts -->
-
-<!--[if !IE]> -->
-
-<script src="./static/js/jquery_2_0_3.min.js"></script>
-
-<!-- <![endif]-->
-
-<!--[if IE]>
-<script src="./static/js/jquery_1_10_2.min.js"></script>
-<![endif]-->
-
-<!--[if !IE]> -->
-
-<script type="text/javascript">
-    window.jQuery || document.write("<script src='./static/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
-</script>
-
-<!-- <![endif]-->
-
-<!--[if IE]>
-<script type="text/javascript">
-    window.jQuery || document.write("<script src='./static/js/jquery-1.10.2.min.js'>" + "<" + "/script>");
-</script>
-<![endif]-->
-
-<script type="text/javascript">
-    if ("ontouchend" in document) document.write("<script src='./static/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
-</script>
+<#include "_inc/_footer.ftl"/>
 </html>
