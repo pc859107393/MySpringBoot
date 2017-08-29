@@ -4,9 +4,11 @@
 <head>
 
     <script type="text/javascript" src="../static/js/jquery-1.10.2.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
     <script type="text/javascript" src="../static/plugins/tab/js/framework.js"></script>
     <link href="../static/plugins/tab/css/import_basic.css" rel="stylesheet" type="text/css"/>
-    <link  rel="stylesheet" type="text/css" id="skin" prePath="../static/plugins/tab/" /><!--默认相对于根目录路径为../，可添加prePath属性自定义相对路径，如prePath="<%=request.getContextPath()%>"-->
+    <link rel="stylesheet" type="text/css" id="skin" prePath="../static/plugins/tab/"/>
+    <!--默认相对于根目录路径为../，可添加prePath属性自定义相对路径，如prePath="<%=request.getContextPath()%>"-->
     <script type="text/javascript" charset="utf-8" src="../static/plugins/tab/js/tab.js"></script>
 </head>
 
@@ -19,35 +21,36 @@
 </body>
 <script type="text/javascript">
 
-    function tabAddHandler(mid,mtitle,murl){
+    function tabAddHandler(mid, mtitle, murl) {
         tab.update({
-            id :mid,
-            title :mtitle,
-            url :murl,
-            isClosed :true
+            id: mid,
+            title: mtitle,
+            url: murl,
+            isClosed: true
         });
         tab.add({
-            id :mid,
-            title :mtitle,
-            url :murl,
-            isClosed :true
+            id: mid,
+            title: mtitle,
+            url: murl,
+            isClosed: true
         });
 
         tab.activate(mid);
     }
+
     var tab;
-    $( function() {
-        tab = new TabView( {
-            containerId :'tab_menu',
-            pageid :'page',
-            cid :'tab1',
-            position :"top"
+    $(function () {
+        tab = new TabView({
+            containerId: 'tab_menu',
+            pageid: 'page',
+            cid: 'tab1',
+            position: "top"
         });
-        tab.add( {
-            id :'tab1_index1',
-            title :"主页",
-            url :"./index",
-            isClosed :false
+        tab.add({
+            id: 'tab1_index1',
+            title: "主页",
+            url: "../endSys/default",
+            isClosed: false
         });
         /**tab.add( {
 		id :'tab1_index1',
@@ -58,14 +61,15 @@
          **/
     });
 
-    function cmainFrameT(){
+    function cmainFrameT() {
         var hmainT = document.getElementById("page");
         var bheightT = document.documentElement.clientHeight;
-        hmainT .style.width = '100%';
-        hmainT .style.height = (bheightT  - 51) + 'px';
+        hmainT.style.width = '100%';
+        hmainT.style.height = (bheightT - 51) + 'px';
     }
+
     cmainFrameT();
-    window.onresize=function(){
+    window.onresize = function () {
         cmainFrameT();
     };
 

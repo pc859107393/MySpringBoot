@@ -350,7 +350,7 @@
                 </li>
 
                 <li>
-                    <a href="error-500.html">
+                    <a onclick="menuOnclick('zError500','错误500页面','../error')">
                         <i class="icon-double-angle-right"></i>
                         500错误页面
                     </a>

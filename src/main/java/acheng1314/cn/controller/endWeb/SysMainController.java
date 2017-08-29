@@ -17,12 +17,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SysMainController {
 
     @GetMapping(value = "/index", produces = MediaType.TEXT_HTML_VALUE)
-    @ApiOperation(value = "后端主页", notes = "后端主页")
+    @ApiOperation(value = "后端主页框架", notes = "后端主页框架")
     public String endMain(@ApiParam(hidden = true) ModelMap map
             , @ApiParam(hidden = true) ShiroHttpServletRequest request) {
         Object user = request.getSession().getAttribute("userInfo");
         map.put("user", user);
         return "end/index";
+    }
+
+    @GetMapping(value = "/default", produces = MediaType.TEXT_HTML_VALUE)
+    @ApiOperation(value = "后端主页", notes = "后端主页")
+    public String endDefault(@ApiParam(hidden = true) ModelMap map
+            , @ApiParam(hidden = true) ShiroHttpServletRequest request) {
+        Object user = request.getSession().getAttribute("userInfo");
+        map.put("user", user);
+        return "end/myDefault";
+    }
+
+    @GetMapping(value = "/uploadFile", produces = MediaType.TEXT_HTML_VALUE)
+    @ApiOperation(value = "后端上传资源页面", notes = "后端上传资源页面")
+    public String endUpload(@ApiParam(hidden = true) ModelMap map
+            , @ApiParam(hidden = true) ShiroHttpServletRequest request) {
+        Object user = request.getSession().getAttribute("userInfo");
+        map.put("user", user);
+        return "end/uploadFile";
     }
 
     @GetMapping(value = "/tab", produces = MediaType.TEXT_HTML_VALUE)
