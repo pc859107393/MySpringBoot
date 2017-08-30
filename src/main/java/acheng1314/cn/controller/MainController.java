@@ -1,27 +1,26 @@
 package acheng1314.cn.controller;
 
 import acheng1314.cn.domain.User;
+import acheng1314.cn.util.FileDownload;
 import acheng1314.cn.util.LogE;
+import acheng1314.cn.util.MySiteMap;
+import acheng1314.cn.util.StringUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-
 import io.swagger.annotations.ApiParam;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
-import org.apache.shiro.web.servlet.ShiroHttpSession;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.swing.text.html.HTML;
-import java.util.HashMap;
-import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
 
 @Controller
 @Api(value = "外层信息，无需Shiro接管")
@@ -41,6 +40,9 @@ public class MainController {
 
     @GetMapping(value = "login", produces = MediaType.TEXT_HTML_VALUE)
     public String login() {
+        //如果用户已经登录跳转到系统首页
+        Object userInfo = SecurityUtils.getSubject().getSession().getAttribute("userInfo");
+        if (userInfo != null) return "redirect:/endSys/index";
         return "login";
     }
 
@@ -67,6 +69,39 @@ public class MainController {
             LogE.getInstance(this.getClass()).logOutLittle(e.getMessage());
             map.addAttribute("msg", e.getMessage());
             return "login";
+        }
+
+    }
+
+    @GetMapping(path = "logOut", produces = MediaType.TEXT_HTML_VALUE)
+    @ApiOperation(value = "退出登录", notes = "退出登录，清空session")
+    public String logOut() {
+        Subject subject = SecurityUtils.getSubject();
+        if (subject.isAuthenticated()) {
+            subject.getSession().removeAttribute("userInfo");
+            subject.logout(); // session 会销毁，在SessionListener监听session销毁，清理权限缓存
+        }
+        return "redirect:/";
+    }
+
+    @GetMapping(path = MySiteMap.FILE_PATH + "/{path}/{fileName}")
+    public void getFile(@PathVariable("fileName") String fileName
+            , @PathVariable("path") String path, HttpServletRequest request
+            , HttpServletResponse response) {
+        String usrHome = System.getProperty("user.home");
+        if (StringUtils.isEmpty(path, fileName)) try {
+            response.sendRedirect("../error");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String[] strings = request.getRequestURL().toString().split("\\.");
+        if (!StringUtils.isEmpty(strings[1])) fileName += ("." + strings[1]);
+        String filePath = usrHome + MySiteMap.FILE_PATH + path + "/" + fileName;
+
+        try {
+            FileDownload.fileDownload(response, filePath, fileName);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }

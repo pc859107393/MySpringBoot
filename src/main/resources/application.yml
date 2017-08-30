@@ -84,6 +84,10 @@ spring:
       force-request: true
     converters:
       preferred-json-mapper: gson
+    multipart:
+      enabled: true
+      max-file-size: "1024MB"
+      max-request-size: "1024MB"
 
   freemarker:
     template-loader-path: "classpath:/templates/"

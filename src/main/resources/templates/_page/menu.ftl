@@ -49,7 +49,7 @@
                         <li class="divider"></li>
 
                         <li>
-                            <a href="#">
+                            <a href="../logOut">
                                 <i class="icon-off"></i>
                                 退出
                             </a>
@@ -233,7 +233,7 @@
                 </li>
 
                 <li>
-                    <a href="dropzone.html">
+                    <a onclick="menuOnclick('zUpload','资源上传','../endSys/uploadFile')">
                         <i class="icon-double-angle-right"></i>
                         文件上传
                     </a>
