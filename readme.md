@@ -20,6 +20,16 @@
 
 ----
 
+> 17-08-31
+
+在框架中加入了shiro控制，在[登录登出](https://github.com/pc859107393/MySpringBoot/blob/master/src/main/java/acheng1314/cn/controller/MainController.java)中完全使用了shiro控制。
+
+同时，我们可以在任意地方使用Shiro提供的session、Request和response。
+
+在后台页面中，我们使用了多tab切换技术，引入了[tab控制器](https://github.com/pc859107393/MySpringBoot/blob/master/src/main/resources/templates/tab.ftl)这个页面是具体的写法，用法请参照后端主页。
+
+本次设置了上传文件大小为1G。
+
 > 17-08-16
 
 acheng 整合基本框架，springboot+mybatis+mvc+mybatis plus+springbootFreemarker,暂时无有加入缓存控制，同时值得注意的是一些细节骚操作.
