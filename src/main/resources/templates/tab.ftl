@@ -49,7 +49,7 @@
         tab.add({
             id: 'tab1_index1',
             title: "主页",
-            url: "../endSys/default",
+            url: "../endSys/goodsIndex",
             isClosed: false
         });
         /**tab.add( {

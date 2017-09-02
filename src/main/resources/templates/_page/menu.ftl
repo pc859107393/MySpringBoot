@@ -82,9 +82,9 @@
         </li>
 
         <li>
-            <a href="typography.html">
+            <a onclick="menuOnclick('zAddGoods','添加商品','../endSys/addGoods/0')">
                 <i class="icon-text-width"></i>
-                <span class="menu-text"> 文字排版 </span>
+                <span class="menu-text"> 添加商品 </span>
             </a>
         </li>
 
