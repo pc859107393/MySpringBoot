@@ -3,6 +3,7 @@ package acheng1314.cn.controller.endWeb;
 import acheng1314.cn.domain.Goods;
 import acheng1314.cn.service.GoodsServiceImpl;
 import acheng1314.cn.util.StringUtils;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -36,6 +37,8 @@ public class SysGoodsController {
             , @ApiParam(hidden = true) ModelMap map) {
         if (null == pageNum) pageNum = 1;
         map.addAttribute("list", goodsService.selectPage(new Page<>(pageNum, 25)).getRecords());
+        map.addAttribute("pageNum", pageNum);
+//        map.addAttribute("pageTotal", goodsService.selectCount(new EntityWrapper<>()));
         return "end/goods/allGoods";
     }
 
@@ -64,4 +67,13 @@ public class SysGoodsController {
         }
         return addGoods(goods.getId(), map);
     }
+
+    @ApiOperation(value = "入库主页", notes = "入库主页，必须存在商品才能入库。入库改变库存和单价")
+    @GetMapping(path = "/inHouse", produces = MediaType.TEXT_HTML_VALUE)
+    public String inHouse(@ApiParam(hidden = true) ModelMap map) {
+        return "end/goods/inHouse";
+    }
+
+
+
 }

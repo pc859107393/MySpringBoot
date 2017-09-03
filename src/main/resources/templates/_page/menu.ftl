@@ -89,6 +89,20 @@
         </li>
 
         <li>
+            <a onclick="menuOnclick('zAllGoods','所有库存商品','../endSys/goodsAll')">
+                <i class="icon-text-width"></i>
+                <span class="menu-text"> 所有库存商品 </span>
+            </a>
+        </li>
+
+        <li>
+            <a onclick="menuOnclick('zInHouse','入库操作','../endSys/inHouse')">
+                <i class="icon-text-width"></i>
+                <span class="menu-text"> 商品入库 </span>
+            </a>
+        </li>
+
+        <li>
             <a href="#" class="dropdown-toggle">
                 <i class="icon-desktop"></i>
                 <span class="menu-text"> UI 组件 </span>

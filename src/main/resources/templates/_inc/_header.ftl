@@ -25,4 +25,5 @@
 <script src="${base}/static/js/html5shiv.js"></script>
 <script src="${base}/static/js/respond.min.js"></script>
 
+<#--<link rel="stylesheet" href="${base}/static/css/jquery-ui-1.10.3.full.min.css" />-->
 <link rel="stylesheet" href="${base}/static/css/datepicker.css"/><!-- 日期框 -->

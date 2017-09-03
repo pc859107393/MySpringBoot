@@ -20,6 +20,17 @@
 
 ----
 
+> 17-09-02
+
+增加了页面的基本路径.
+
+```
+<#assign base=request.contextPath />
+
+//freemarker 处理null对象
+${goods.id!}
+```
+
 > 17-08-31
 
 在框架中加入了shiro控制，在[登录登出](https://github.com/pc859107393/MySpringBoot/blob/master/src/main/java/acheng1314/cn/controller/MainController.java)中完全使用了shiro控制。

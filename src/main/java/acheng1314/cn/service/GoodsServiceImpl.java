@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service("goodsService")
 public class GoodsServiceImpl extends ServiceImpl<GoodsDao, Goods> {
 
@@ -27,5 +29,9 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsDao, Goods> {
     @Transactional
     public void addOneGoods(Goods entity) {
         goodsDao.addOneGoods(entity);
+    }
+
+    public List<Goods> findByKeyword(String keyword) {
+        return goodsDao.selectByKeyword(keyword);
     }
 }

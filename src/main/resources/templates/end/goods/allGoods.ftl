@@ -48,12 +48,12 @@
                     <#if list?exists>
                         <#list list as goods>
                         <tr>
-                            <td class="center">${goods.name}</td>
-                            <td>${goods.code}</td>
-                            <td>${goods.position}</td>
-                            <td>${goods.cost}</td>
-                            <td>${goods.sum}</td>
-                            <td>${goods.type}</td>
+                            <td class="center">${goods.name!}</td>
+                            <td>${goods.code!}</td>
+                            <td>${goods.position!}</td>
+                            <td>${goods.cost!}</td>
+                            <td>${goods.sum!}</td>
+                            <td>${goods.type!}</td>
                         </tr>
                         </#list>
                     </#if>

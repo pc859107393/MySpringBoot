@@ -26,4 +26,12 @@ public class SysGoodsApi {
         return GsonUtils.toJsonObjStr(goodsList, ResponseCode.OK, "获取数据成功!");
     }
 
+    @GetMapping(path = "/findByKeyword/{keyword}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ResponseBody
+    public Object findByKeyword(@PathVariable("keyword") String keyword) {
+        List<Goods> goodsList = goodsService.findByKeyword(keyword);
+        if (null == goodsList || goodsList.isEmpty()) return GsonUtils.toJsonObjStr(null, ResponseCode.FAILED, null);
+        return GsonUtils.toJsonObjStr(goodsList, ResponseCode.OK, "获取数据成功!");
+    }
+
 }
