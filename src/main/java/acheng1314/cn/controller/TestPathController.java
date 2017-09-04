@@ -18,6 +18,13 @@ public class TestPathController {
         return "test";
     }
 
+    @GetMapping(value = "/testReload")
+    @ApiOperation(value = "测试页面解析器", notes = "这个到底是那个路径呢？")
+    public String testReload(ModelMap map) {
+        map.addAttribute("test", "重启成功");
+        return "test";
+    }
+
     @GetMapping("/testError")
     @ApiOperation(value = "测试错误页面", notes = "测试错误页面")
     public void testError() throws Exception {

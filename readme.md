@@ -20,6 +20,24 @@
 
 ----
 
+> 17-09-04
+
+增加了spring-boot-devtools，同时需要设置。设置如下：
+
+同时我们也需要对idea做出配置： IntelliJ IDEA -> Build,Execution,Deployment -> Compiler -> 勾选Build project automatically
+
+接下来是骚操作：
+
+1.mac 电脑按下 command + alt + shift + / 出现：
+
+![mac 电脑按下 command + alt + shift + / 出现：](http://images2015.cnblogs.com/blog/592770/201704/592770-20170429001816537-861276687.png)
+
+[自定义配置](https://baijiahao.baidu.com/s?id=1575441101457442&wfr=spider&for=pc)
+
+2.找到 “compiler.automake.allow.when.app.running” 这个选项，并且勾选：
+
+![勾选自动运行](http://images2015.cnblogs.com/blog/592770/201704/592770-20170429001927506-877582695.png)
+
 > 17-09-02
 
 增加了页面的基本路径.
