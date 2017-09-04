@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>添加商品&更新库存</title>
 <#include "../../_inc/_header.ftl"/>
@@ -38,17 +38,67 @@
                     <div id="grid-pager"></div>
 
                     <div id="dialog-message" class="hide">
-                        <p>
-                            这是查找对话框。
-                        </p>
+                    <#--<div class="col-xs-12">-->
+                    <#--<label class="col-sm-2 control-label no-padding-right" for="name">关键字</label>-->
 
-                        <div class="hr hr-12 hr-double"></div>
+                    <#--<div class="col-sm-5">-->
+                    <#--<input type="text" id="name" name="name" placeholder="商品关键字" class="col-xs-15 col-sm-7">-->
+                    <#--</div>-->
+                    <#--<button class="col-sm-2 btn btn-sm btn-primary">搜索</button>-->
+                    <#--</div>-->
 
-                        <p>
-                            Currently using
-                            <b>36% of your storage space</b>
-                            .
-                        </p>
+
+                        <div class="col-xs-12 col-sm-12 ">
+                            <div class="input-group">
+                                <input type="text" class="form-control search-query"
+                                       placeholder="化妆品关键字" id="goods-val">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-purple btn-sm" onclick="searchGoods()">
+                                        查找
+                                        <i class="icon-search icon-on-right bigger-110"></i>
+                                    </button>
+
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12">
+                            <div class="table-responsive">
+                                <div class="alert alert-info hidden" id="goods-result-msg">
+                                    <i class="icon-hand-right"></i> 暂未找到对应关键字的化妆品！
+                                    <button class="close" data-dismiss="alert">
+                                        <i class="icon-remove"></i></button>
+                                </div>
+                                <table id="sample-table-1-goods-result"
+                                       class="table table-striped table-bordered table-hover hidden">
+                                    <thead>
+                                    <tr>
+                                        <th class="center">
+                                            <label>
+                                                选择
+                                                <span class="lbl"></span>
+                                            </label>
+                                        </th>
+                                        <th class="hidden">ID</th>
+                                        <th>化妆品名字</th>
+                                        <th>化妆品编码</th>
+                                        <th class="hidden-480">库存</th>
+
+                                        <th>
+                                            <i class=""></i> 单价
+                                        </th>
+                                        <th class="hidden-480">位置</th>
+
+                                        <th>类型</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="" id="sample-table-1-goods-result-body">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+
                     </div><!-- #dialog-message -->
 
                     <script type="text/javascript">
@@ -75,8 +125,36 @@
 <script src="${base}/static/js/date-time/bootstrap-datepicker.min.js"></script>
 <script src="${base}/static/js/jqGrid/jquery.jqGrid.min.js"></script>
 <script src="${base}/static/js/jqGrid/i18n/grid.locale-en.js"></script>
-
 <script type="text/javascript">
+
+    function searchGoods() {
+        $.ajax({
+            type: "GET",
+            url: '${base}/endSys/api/goods/findByKeyword/' + $("#goods-val").val(),
+            dataType: 'json', //当这里指定为json的时候，获取到了数据后会自己解析的，只需要 返回值.字段名称 就能使用了
+            cache: false,
+            success: function (data) {
+                if (data.code == 1) {
+                    $("#sample-table-1-goods-result").removeClass("hidden");
+                    var resultStr = "";
+                    for (var i = 0; i < data.data.length; i++) {
+                        resultStr += '<tr><td class="center"><input type="radio" name="goods-result-id"/></td>';
+                        resultStr += '<td class="hidden">' + data.data[i].id + '</td><td>' + data.data[i].name + '</td><td>' + data.data[i].code + '</td>';
+                        resultStr += '<td>' + data.data[i].sum + '</td><td>' + data.data[i].cost + '</td><td>' + data.data[i].position + '</td><td>' + data.data[i].type + '</td>';
+                        resultStr += '</tr>';
+                    }
+                    document.getElementById("sample-table-1-goods-result-body").innerHTML = resultStr;
+                } else {
+                    $("#goods-result-msg").removeClass("hidden");
+
+                }
+            }
+        });
+    };
+
+</script>
+<script type="text/javascript">
+
     var grid_data = [
         {
             "id": 1,
@@ -249,7 +327,6 @@
                 }, 0);
             },
 
-            editurl: $path_base + "/dummy.html", //nothing is saved
             caption: "商品入库表",
 
             autowidth: true
@@ -257,7 +334,7 @@
         });
 
         //enable search/filter toolbar
-        //jQuery(grid_selector).jqGrid('filterToolbar',{defaultSearch:true,stringResult:true})
+//        $('div').find('.ui-jqgrid-sortable').style('padding-bottom: 25px;');
 
         //switch element when editing inline
         function aceSwitch(cellvalue, options, cell) {
@@ -295,27 +372,6 @@
                     refreshicon: 'icon-refresh green',
                     view: false,
                     viewicon: 'icon-zoom-in grey'
-                }
-                , {
-                    //edit record form
-                    //closeAfterEdit: true,
-                    recreateForm: true,
-                    beforeShowForm: function (e) {
-                        var form = $(e[0]);
-                        form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
-                        style_edit_form(form);
-                    }
-                }
-                , {
-                    //new record form
-                    closeAfterAdd: true,
-                    recreateForm: true,
-                    viewPagerButtons: false,
-                    beforeShowForm: function (e) {
-                        var form = $(e[0]);
-                        form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
-                        style_edit_form(form);
-                    }
                 }
                 , {
                     //delete record form
@@ -366,18 +422,20 @@
             onClickButton: function () {
                 var dialog = $("#dialog-message").removeClass('hide').dialog({
                     modal: true,
-                    title: "添加商品",
+                    title: '--->添加化妆品',
                     title_html: true,
+                    width: 900,
+                    height: 450,
                     buttons: [
                         {
-                            text: "Cancel",
+                            text: "取消",
                             "class": "btn btn-xs",
                             click: function () {
                                 $(this).dialog("close");
                             }
                         },
                         {
-                            text: "OK",
+                            text: "添加",
                             "class": "btn btn-primary btn-xs",
                             click: function () {
                                 $(this).dialog("close");
@@ -515,6 +573,7 @@
         //var selr = jQuery(grid_selector).jqGrid('getGridParam','selrow');
         document.getElementById("grid-pager").style.height = 51 + 'px';
     });
+
 </script>
 
 
