@@ -36,6 +36,13 @@
                     <table id="grid-table"></table>
 
                     <div id="grid-pager"></div>
+                    <br/>
+                    <div class="col-xs-12 col-sm-12 center">
+                        <button class="btn btn-white btn-info btn-bold" onclick="submitGoodsIn()">
+                            <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>
+                            提交
+                        </button>
+                    </div>
 
                     <div id="dialog-message" class="hide">
                     <#--<div class="col-xs-12">-->
@@ -126,6 +133,23 @@
 <script src="${base}/static/js/jqGrid/jquery.jqGrid.min.js"></script>
 <script src="${base}/static/js/jqGrid/i18n/grid.locale-en.js"></script>
 <script type="text/javascript">
+    var selectGoodsResult = null;
+
+    function selectGoods(goodsID) {
+        $.ajax({
+            type: "GET",
+            url: '${base}/endSys/api/goods/getById/' + goodsID,
+            dataType: 'json', //当这里指定为json的时候，获取到了数据后会自己解析的，只需要 返回值.字段名称 就能使用了
+            cache: false,
+            success: function (data) {
+                if (data.code === 1) {
+                    selectGoodsResult = data.data;
+                } else {
+
+                }
+            }
+        });
+    }
 
     function searchGoods() {
         $.ajax({
@@ -134,11 +158,11 @@
             dataType: 'json', //当这里指定为json的时候，获取到了数据后会自己解析的，只需要 返回值.字段名称 就能使用了
             cache: false,
             success: function (data) {
-                if (data.code == 1) {
+                if (data.code === 1) {
                     $("#sample-table-1-goods-result").removeClass("hidden");
                     var resultStr = "";
                     for (var i = 0; i < data.data.length; i++) {
-                        resultStr += '<tr><td class="center"><input type="radio" name="goods-result-id"/></td>';
+                        resultStr += '<tr><td class="center"><input type="radio" name="goods-result-id" onclick="selectGoods(' + data.data[i].id + ')"/></td>';
                         resultStr += '<td class="hidden">' + data.data[i].id + '</td><td>' + data.data[i].name + '</td><td>' + data.data[i].code + '</td>';
                         resultStr += '<td>' + data.data[i].sum + '</td><td>' + data.data[i].cost + '</td><td>' + data.data[i].position + '</td><td>' + data.data[i].type + '</td>';
                         resultStr += '</tr>';
@@ -150,76 +174,16 @@
                 }
             }
         });
-    };
+    }
+
+    function submitGoodsIn() {
+
+    }
 
 </script>
 <script type="text/javascript">
 
-    var grid_data = [
-        {
-            "id": 1,
-            "name": "2018年计算机组成原理考研复习指导",
-            "code": "B区13库房131货架A11",
-            "position": "489498",
-            "cost": 48,
-            "sum": 50000,
-            "type": "书籍-考研-计算机-王道论坛"
-        },
-        {
-            "id": 3,
-            "name": "2018年计算机组成原理考研复习指导",
-            "code": "9787121309762",
-            "position": "B区13库房131货架A11",
-            "cost": 48,
-            "sum": 50000,
-            "type": "书籍-考研-计算机-王道论坛"
-        },
-        {
-            "id": 4,
-            "name": "考研政治马原专项突破",
-            "code": "9787121309789"
-        },
-        {
-            "id": 5,
-            "name": "考研政治早知道——马原专项突破",
-            "code": "9787502278595"
-        },
-        {
-            "id": 6,
-            "name": "考研政治早知道——西瓜皮",
-            "code": "9787502278595999",
-            "position": "",
-            "type": ""
-        },
-        {
-            "id": 7,
-            "name": "考研政治早知道——茄子",
-            "code": "9787502299999999",
-            "position": "",
-            "type": ""
-        },
-        {
-            "id": 8,
-            "name": "考研政治早知道——西瓜皮999",
-            "code": "9787502299999999999",
-            "position": "",
-            "type": ""
-        },
-        {
-            "id": 9,
-            "name": "考研政治早知道——西瓜皮888",
-            "code": "9787502299999999888",
-            "position": "没有位置不给吗？",
-            "type": ""
-        },
-        {
-            "id": 10,
-            "name": "就是要发发发",
-            "code": "888888",
-            "position": "",
-            "type": ""
-        }
-    ];
+    var grid_data = [];
 
     jQuery(function ($) {
         var grid_selector = "#grid-table";
@@ -242,7 +206,6 @@
                 formatter: 'actions',
                 formatoptions: {
                     keys: true,
-
                     delOptions: {
                         recreateForm: true,
                         beforeShowForm: beforeDeleteCallback
@@ -254,8 +217,13 @@
                     name: 'id',
                     index: 'id',
                     width: 20,
-                    sorttype: "int",
-                    editable: false
+                    sorttype: "string",
+                    editable: false,
+                    key: true,
+                    editoptions: {
+                        size: "20",
+                        maxlength: "30"
+                    }
                 },
                 {
                     name: 'name',
@@ -439,6 +407,19 @@
                             "class": "btn btn-primary btn-xs",
                             click: function () {
                                 $(this).dialog("close");
+                                var selectedId = jQuery(grid_selector).jqGrid("getGridParam", "selrow");
+                                var ids = jQuery(grid_selector).jqGrid('getDataIDs');
+                                var rowid = Math.max.apply(Math, ids) + 1;
+
+                                if (selectedId) {
+                                    jQuery(grid_selector).jqGrid("addRowData", rowid, selectGoodsResult, "after", selectedId);
+                                } else {
+                                    jQuery(grid_selector).jqGrid("addRowData", rowid, selectGoodsResult, "last");
+                                }
+
+                                //将新添加的行插入到第一列
+//                                jQuery(grid_selector).jqGrid("addRowData", rowid + 1, selectGoodsResult, "first");
+
                             }
                         }
                     ]

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/endSys")
-@Api("商品控制器")
+@Api(description = "商品控制器，控制后台访问商品信息相关")
 public class SysGoodsController {
 
     @Autowired

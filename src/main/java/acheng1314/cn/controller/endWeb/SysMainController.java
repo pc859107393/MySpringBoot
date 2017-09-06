@@ -21,7 +21,7 @@ import java.util.Map;
 
 @Controller()
 @RequestMapping("/endSys")
-@Api(value = "后端页面控制器")
+@Api(description = "控制后端页面导航，后端文件上传控制")
 public class SysMainController {
 
     @GetMapping(value = "/index", produces = MediaType.TEXT_HTML_VALUE)
