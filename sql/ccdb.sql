@@ -76,4 +76,21 @@ BEGIN;
 INSERT INTO `cc_user` VALUES ('2', '糍粑', '228568859', 'aasdasdzxkclzklxckl', 'c测试张哈', '1703864036', '0'), ('3', '程', 'pc85', '623c3218d81612bc5b327339e25eeed21347f9e96c588babf352c27e3161515b', '炒鸡admin', '1502870091', '1'), ('4', '程', 'pc8599', 'ec3434245bad39ccb5d1bbc313a68e6cca26bd3fcbffd5ff160ef33422d099db', '炒鸡admin', '1502871057', '1'), ('5', '程', 'pc8599110', 'a70d700f0430bde923a25c0d6a1d09dde271345b23c07e239b94f204ac28d795', '炒鸡admin', '1502871222', '1'), ('6', '程', 'pc859922', '4eefba35cdfbc69a6d073d865ddbf33c40711da4bd1bc05b1489bc5a4867329c', '炒鸡admin', '1502871269', '1'), ('8', 'qqq', '228596321', '725a289793d69321bd786166ad7a8bc4fa0660573460d34b2f5e87e111d947e7', 'zxczxcz', '1502871659', '1'), ('9', 'qqq', '9564564', '45a0765619c3a10c32e6ebfe94916cfe26c43185f57a12265d1ff4909ae56f66', 'zxczxcz', '1502871724', '1'), ('10', 'qqq', '9564564120', 'c30d43afeba75f98af26cae7bfb628ca4e9dcc34a385127019dda28a352d885e', 'zxczxcz', '1502871826', '1'), ('11', 'qqq', '9564564110', '5c06478ca9ae9a61ead0bf921e3406bd4d2ce6fe7a8953cda58b6a131265c004', 'zxczxcz', '1502872562', '1'), ('14', '程打野', 'pc859107393', '1b4d2f7c7438009f6bb8154b96e3c75f6a161912fc7ca8b6eb095776499363f7', 'admin', '1503347744', '0');
 COMMIT;
 
+-- ----------------------------
+--  Table structure for `cc_site`
+-- ----------------------------
+DROP TABLE IF EXISTS `cc_site`;
+CREATE TABLE `cc_site`
+(
+  `name`       TEXT NULL
+  COMMENT '站点名称',
+  `code`       TEXT NULL
+  COMMENT '站点备案号',
+  `real_ip_v4` TEXT NULL
+  COMMENT '服务器IP地址v4',
+  `real_ip_v6` TEXT NULL
+  COMMENT '服务器IP地址v6'
+)
+ALTER TABLE `cc_site` COMMENT = '站点信息存储';
+
 SET FOREIGN_KEY_CHECKS = 1;
