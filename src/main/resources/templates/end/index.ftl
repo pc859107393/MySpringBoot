@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
 <head>
     <title>后端主页</title>
 <#include "../_inc/_header.ftl"/>

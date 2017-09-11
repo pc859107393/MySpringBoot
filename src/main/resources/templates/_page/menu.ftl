@@ -81,28 +81,7 @@
             </a>
         </li>
 
-        <li>
-            <a onclick="menuOnclick('zAddGoods','添加商品','../endSys/addGoods/0')">
-                <i class="icon-text-width"></i>
-                <span class="menu-text"> 添加商品 </span>
-            </a>
-        </li>
-
-        <li>
-            <a onclick="menuOnclick('zAllGoods','所有库存商品','../endSys/goodsAll')">
-                <i class="icon-text-width"></i>
-                <span class="menu-text"> 所有库存商品 </span>
-            </a>
-        </li>
-
-        <li>
-            <a onclick="menuOnclick('zInHouse','入库操作','../endSys/inHouse')">
-                <i class="icon-text-width"></i>
-                <span class="menu-text"> 商品入库 </span>
-            </a>
-        </li>
-
-        <li>
+        <li class="hidden">
             <a href="#" class="dropdown-toggle">
                 <i class="icon-desktop"></i>
                 <span class="menu-text"> UI 组件 </span>
@@ -191,7 +170,7 @@
             </ul>
         </li>
 
-        <li>
+        <li class="hidden">
             <a href="#" class="dropdown-toggle">
                 <i class="icon-list"></i>
                 <span class="menu-text"> 表格 </span>
@@ -216,7 +195,7 @@
             </ul>
         </li>
 
-        <li>
+        <li class="hidden">
             <a href="#" class="dropdown-toggle">
                 <i class="icon-edit"></i>
                 <span class="menu-text"> 表单 </span>
@@ -255,14 +234,14 @@
             </ul>
         </li>
 
-        <li>
+        <li class="hidden">
             <a href="widgets.html">
                 <i class="icon-list-alt"></i>
                 <span class="menu-text"> 插件 </span>
             </a>
         </li>
 
-        <li>
+        <li class="hidden">
             <a href="calendar.html">
                 <i class="icon-calendar"></i>
 
@@ -276,7 +255,7 @@
             </a>
         </li>
 
-        <li>
+        <li class="hidden">
             <a href="gallery.html">
                 <i class="icon-picture"></i>
                 <span class="menu-text"> 相册 </span>
@@ -286,57 +265,74 @@
         <li>
             <a href="#" class="dropdown-toggle">
                 <i class="icon-tag"></i>
-                <span class="menu-text"> 更多页面 </span>
+                <span class="menu-text"> 化妆品管理中心 </span>
 
                 <b class="arrow icon-angle-down"></b>
             </a>
 
             <ul class="submenu">
+
                 <li>
-                    <a href="profile.html">
-                        <i class="icon-double-angle-right"></i>
-                        用户信息
+                    <a onclick="menuOnclick('zAddGoods','添加商品','../endSys/addGoods/0')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 添加商品 </span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="inbox.html">
-                        <i class="icon-double-angle-right"></i>
-                        收件箱
+                    <a onclick="menuOnclick('zAllGoods','所有库存商品','../endSys/goodsAll')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 所有库存商品 </span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="pricing.html">
-                        <i class="icon-double-angle-right"></i>
-                        售价单
+                    <a onclick="menuOnclick('zInHouse','入库操作','../endSys/inHouse')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 商品入库 </span>
                     </a>
                 </li>
 
-                <li>
-                    <a href="invoice.html">
-                        <i class="icon-double-angle-right"></i>
-                        购物车
-                    </a>
-                </li>
 
-                <li>
-                    <a href="timeline.html">
-                        <i class="icon-double-angle-right"></i>
-                        时间轴
-                    </a>
-                </li>
-
-                <li>
-                    <a href="login.html">
-                        <i class="icon-double-angle-right"></i>
-                        登录 &amp; 注册
-                    </a>
-                </li>
             </ul>
         </li>
 
         <li>
+            <a href="#" class="dropdown-toggle">
+                <i class="icon-tag"></i>
+                <span class="menu-text"> 用户管理与维护 </span>
+
+                <b class="arrow icon-angle-down"></b>
+            </a>
+
+            <ul class="submenu">
+
+                <li>
+                    <a onclick="menuOnclick('zUserIndex','用户列表','../endSys/addGoods/0')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 用户列表 </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a onclick="menuOnclick('zAllGoods','所有库存商品','../endSys/goodsAll')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 所有库存商品 </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a onclick="menuOnclick('zInHouse','入库操作','../endSys/inHouse')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 商品入库 </span>
+                    </a>
+                </li>
+
+
+            </ul>
+        </li>
+
+        <li class="hidden">
             <a href="#" class="dropdown-toggle">
                 <i class="icon-file-alt"></i>
 

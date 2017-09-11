@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
 <head>
     <title>所有库存商品</title>
 <#include "../../_inc/_header.ftl"/>

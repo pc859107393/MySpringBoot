@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>添加商品&更新库存</title>
 <#include "../../_inc/_header.ftl"/>
