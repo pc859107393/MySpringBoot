@@ -1,5 +1,6 @@
 package acheng1314.cn.controller;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * Created by pc on 2017/8/13.
  */
 @Controller
+@Api(description = "页面测试器")
 public class TestPathController {
 
     @GetMapping(value = "/testPath")

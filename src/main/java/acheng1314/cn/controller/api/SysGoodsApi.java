@@ -5,6 +5,7 @@ import acheng1314.cn.domain.ResponseCode;
 import acheng1314.cn.service.GoodsServiceImpl;
 import acheng1314.cn.util.GsonUtils;
 import com.baomidou.mybatisplus.plugins.Page;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/endSys/api/goods")
+@Api(description = "商品后台API接口")
 public class SysGoodsApi {
     @Autowired
     private GoodsServiceImpl goodsService;
