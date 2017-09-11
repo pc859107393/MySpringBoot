@@ -4,6 +4,7 @@
 <head>
     <title>添加商品&更新库存</title>
 <#include "../../_inc/_header.ftl"/>
+<#--<link rel="stylesheet" href="${base}/static/css/jquery-ui-1.10.3.full.min.css" />-->
     <link rel="stylesheet" href="${base}/static/css/ui.jqgrid.css"/>
 </head>
 <body>
@@ -72,9 +73,9 @@
 
 <#include "../../_inc/_footer.ftl"/>
 
-<script src="${base}/static/js/date-time/bootstrap-datepicker.min.js"></script>
 <script src="${base}/static/js/jqGrid/jquery.jqGrid.min.js"></script>
 <script src="${base}/static/js/jqGrid/i18n/grid.locale-en.js"></script>
+<script src="${base}/static/js/date-time/bootstrap-datepicker.min.js"></script>
 
 <script type="text/javascript">
     var grid_data = [
@@ -366,7 +367,7 @@
             onClickButton: function () {
                 var dialog = $("#dialog-message").removeClass('hide').dialog({
                     modal: true,
-                    title: "添加商品",
+                    title: "<div class='widget-header widget-header-small'><h4 class='smaller'><i class='icon-ok'></i> 查找商品</h4></div>",
                     title_html: true,
                     buttons: [
                         {
