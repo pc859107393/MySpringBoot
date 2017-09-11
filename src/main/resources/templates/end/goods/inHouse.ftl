@@ -195,7 +195,7 @@
             data: grid_data,
             datatype: "local",
             height: 300,
-            colNames: [' ', 'ID', '商品名称', '商品编码', '位置', '单价', '数量'],
+            colNames: [' ', '商品名称', '商品编码', '位置', '单价', '数量'],
             colModel: [{
                 name: 'myac',
                 index: '',
@@ -213,18 +213,18 @@
                     //editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
                 }
             },
-                {
-                    name: 'id',
-                    index: 'id',
-                    width: 20,
-                    sorttype: "string",
-                    editable: false,
-                    key: true,
-                    editoptions: {
-                        size: "20",
-                        maxlength: "30"
-                    }
-                },
+//                {
+//                    name: 'id',
+//                    index: 'id',
+//                    width: 20,
+//                    sorttype: "string",
+//                    editable: false,
+//                    key: true,
+//                    editoptions: {
+//                        size: "20",
+//                        maxlength: "30"
+//                    }
+//                },
                 {
                     name: 'name',
                     index: 'name',
