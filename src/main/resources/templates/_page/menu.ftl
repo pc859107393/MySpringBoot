@@ -81,186 +81,186 @@
             </a>
         </li>
 
-        <li class="hidden">
-            <a href="#" class="dropdown-toggle">
-                <i class="icon-desktop"></i>
-                <span class="menu-text"> UI 组件 </span>
+    <#--<li class="hidden">-->
+    <#--<a href="#" class="dropdown-toggle">-->
+    <#--<i class="icon-desktop"></i>-->
+    <#--<span class="menu-text"> UI 组件 </span>-->
 
-                <b class="arrow icon-angle-down"></b>
-            </a>
+    <#--<b class="arrow icon-angle-down"></b>-->
+    <#--</a>-->
 
-            <ul class="submenu">
-                <li>
-                    <a href="elements.html">
-                        <i class="icon-double-angle-right"></i>
-                        组件
-                    </a>
-                </li>
+    <#--<ul class="submenu">-->
+    <#--<li>-->
+    <#--<a href="elements.html">-->
+    <#--<i class="icon-double-angle-right"></i>-->
+    <#--组件-->
+    <#--</a>-->
+    <#--</li>-->
 
-                <li>
-                    <a href="buttons.html">
-                        <i class="icon-double-angle-right"></i>
-                        按钮 &amp; 图表
-                    </a>
-                </li>
+    <#--<li>-->
+    <#--<a href="buttons.html">-->
+    <#--<i class="icon-double-angle-right"></i>-->
+    <#--按钮 &amp; 图表-->
+    <#--</a>-->
+    <#--</li>-->
 
-                <li>
-                    <a href="treeview.html">
-                        <i class="icon-double-angle-right"></i>
-                        树菜单
-                    </a>
-                </li>
+    <#--<li>-->
+    <#--<a href="treeview.html">-->
+    <#--<i class="icon-double-angle-right"></i>-->
+    <#--树菜单-->
+    <#--</a>-->
+    <#--</li>-->
 
-                <li>
-                    <a href="jquery-ui.html">
-                        <i class="icon-double-angle-right"></i>
-                        jQuery UI
-                    </a>
-                </li>
+    <#--<li>-->
+    <#--<a href="jquery-ui.html">-->
+    <#--<i class="icon-double-angle-right"></i>-->
+    <#--jQuery UI-->
+    <#--</a>-->
+    <#--</li>-->
 
-                <li>
-                    <a href="nestable-list.html">
-                        <i class="icon-double-angle-right"></i>
-                        可拖拽列表
-                    </a>
-                </li>
+    <#--<li>-->
+    <#--<a href="nestable-list.html">-->
+    <#--<i class="icon-double-angle-right"></i>-->
+    <#--可拖拽列表-->
+    <#--</a>-->
+    <#--</li>-->
 
-                <li>
-                    <a href="#" class="dropdown-toggle">
-                        <i class="icon-double-angle-right"></i>
+    <#--<li>-->
+    <#--<a href="#" class="dropdown-toggle">-->
+    <#--<i class="icon-double-angle-right"></i>-->
 
-                        三级菜单
-                        <b class="arrow icon-angle-down"></b>
-                    </a>
+    <#--三级菜单-->
+    <#--<b class="arrow icon-angle-down"></b>-->
+    <#--</a>-->
 
-                    <ul class="submenu">
-                        <li>
-                            <a href="#">
-                                <i class="icon-leaf"></i>
-                                第一级
-                            </a>
-                        </li>
+    <#--<ul class="submenu">-->
+    <#--<li>-->
+    <#--<a href="#">-->
+    <#--<i class="icon-leaf"></i>-->
+    <#--第一级-->
+    <#--</a>-->
+    <#--</li>-->
 
-                        <li>
-                            <a href="#" class="dropdown-toggle">
-                                <i class="icon-pencil"></i>
+    <#--<li>-->
+    <#--<a href="#" class="dropdown-toggle">-->
+    <#--<i class="icon-pencil"></i>-->
 
-                                第四级
-                                <b class="arrow icon-angle-down"></b>
-                            </a>
+    <#--第四级-->
+    <#--<b class="arrow icon-angle-down"></b>-->
+    <#--</a>-->
 
-                            <ul class="submenu">
-                                <li>
-                                    <a href="#">
-                                        <i class="icon-plus"></i>
-                                        添加产品
-                                    </a>
-                                </li>
+    <#--<ul class="submenu">-->
+    <#--<li>-->
+    <#--<a href="#">-->
+    <#--<i class="icon-plus"></i>-->
+    <#--添加产品-->
+    <#--</a>-->
+    <#--</li>-->
 
-                                <li>
-                                    <a href="#">
-                                        <i class="icon-eye-open"></i>
-                                        查看商品
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
+    <#--<li>-->
+    <#--<a href="#">-->
+    <#--<i class="icon-eye-open"></i>-->
+    <#--查看商品-->
+    <#--</a>-->
+    <#--</li>-->
+    <#--</ul>-->
+    <#--</li>-->
+    <#--</ul>-->
+    <#--</li>-->
+    <#--</ul>-->
+    <#--</li>-->
 
-        <li class="hidden">
-            <a href="#" class="dropdown-toggle">
-                <i class="icon-list"></i>
-                <span class="menu-text"> 表格 </span>
+    <#--<li class="hidden">-->
+    <#--<a href="#" class="dropdown-toggle">-->
+    <#--<i class="icon-list"></i>-->
+    <#--<span class="menu-text"> 表格 </span>-->
 
-                <b class="arrow icon-angle-down"></b>
-            </a>
+    <#--<b class="arrow icon-angle-down"></b>-->
+    <#--</a>-->
 
-            <ul class="submenu">
-                <li>
-                    <a href="tables.html">
-                        <i class="icon-double-angle-right"></i>
-                        简单 &amp; 动态
-                    </a>
-                </li>
+    <#--<ul class="submenu">-->
+    <#--<li>-->
+    <#--<a href="tables.html">-->
+    <#--<i class="icon-double-angle-right"></i>-->
+    <#--简单 &amp; 动态-->
+    <#--</a>-->
+    <#--</li>-->
 
-                <li>
-                    <a href="jqgrid.html">
-                        <i class="icon-double-angle-right"></i>
-                        jqGrid plugin
-                    </a>
-                </li>
-            </ul>
-        </li>
+    <#--<li>-->
+    <#--<a href="jqgrid.html">-->
+    <#--<i class="icon-double-angle-right"></i>-->
+    <#--jqGrid plugin-->
+    <#--</a>-->
+    <#--</li>-->
+    <#--</ul>-->
+    <#--</li>-->
 
-        <li class="hidden">
-            <a href="#" class="dropdown-toggle">
-                <i class="icon-edit"></i>
-                <span class="menu-text"> 表单 </span>
+    <#--<li class="hidden">-->
+    <#--<a href="#" class="dropdown-toggle">-->
+    <#--<i class="icon-edit"></i>-->
+    <#--<span class="menu-text"> 表单 </span>-->
 
-                <b class="arrow icon-angle-down"></b>
-            </a>
+    <#--<b class="arrow icon-angle-down"></b>-->
+    <#--</a>-->
 
-            <ul class="submenu">
-                <li>
-                    <a href="form-elements.html">
-                        <i class="icon-double-angle-right"></i>
-                        表单组件
-                    </a>
-                </li>
+    <#--<ul class="submenu">-->
+    <#--<li>-->
+    <#--<a href="form-elements.html">-->
+    <#--<i class="icon-double-angle-right"></i>-->
+    <#--表单组件-->
+    <#--</a>-->
+    <#--</li>-->
 
-                <li>
-                    <a href="form-wizard.html">
-                        <i class="icon-double-angle-right"></i>
-                        向导提示 &amp; 验证
-                    </a>
-                </li>
+    <#--<li>-->
+    <#--<a href="form-wizard.html">-->
+    <#--<i class="icon-double-angle-right"></i>-->
+    <#--向导提示 &amp; 验证-->
+    <#--</a>-->
+    <#--</li>-->
 
-                <li>
-                    <a href="wysiwyg.html">
-                        <i class="icon-double-angle-right"></i>
-                        编辑器
-                    </a>
-                </li>
+    <#--<li>-->
+    <#--<a href="wysiwyg.html">-->
+    <#--<i class="icon-double-angle-right"></i>-->
+    <#--编辑器-->
+    <#--</a>-->
+    <#--</li>-->
 
-                <li>
-                    <a onclick="menuOnclick('zUpload','资源上传','../endSys/uploadFile')">
-                        <i class="icon-double-angle-right"></i>
-                        文件上传
-                    </a>
-                </li>
-            </ul>
-        </li>
+    <#--<li>-->
+    <#--<a onclick="menuOnclick('zUpload','资源上传','../endSys/uploadFile')">-->
+    <#--<i class="icon-double-angle-right"></i>-->
+    <#--文件上传-->
+    <#--</a>-->
+    <#--</li>-->
+    <#--</ul>-->
+    <#--</li>-->
 
-        <li class="hidden">
-            <a href="widgets.html">
-                <i class="icon-list-alt"></i>
-                <span class="menu-text"> 插件 </span>
-            </a>
-        </li>
+    <#--<li class="hidden">-->
+    <#--<a href="widgets.html">-->
+    <#--<i class="icon-list-alt"></i>-->
+    <#--<span class="menu-text"> 插件 </span>-->
+    <#--</a>-->
+    <#--</li>-->
 
-        <li class="hidden">
-            <a href="calendar.html">
-                <i class="icon-calendar"></i>
+    <#--<li class="hidden">-->
+    <#--<a href="calendar.html">-->
+    <#--<i class="icon-calendar"></i>-->
 
-                <span class="menu-text">
-									日历
-									<span class="badge badge-transparent tooltip-error"
-                                          title="2&nbsp;Important&nbsp;Events">
-										<i class="icon-warning-sign red bigger-130"></i>
-									</span>
-								</span>
-            </a>
-        </li>
+    <#--<span class="menu-text">-->
+    <#--日历-->
+    <#--<span class="badge badge-transparent tooltip-error"-->
+    <#--title="2&nbsp;Important&nbsp;Events">-->
+    <#--<i class="icon-warning-sign red bigger-130"></i>-->
+    <#--</span>-->
+    <#--</span>-->
+    <#--</a>-->
+    <#--</li>-->
 
-        <li class="hidden">
-            <a href="gallery.html">
-                <i class="icon-picture"></i>
-                <span class="menu-text"> 相册 </span>
-            </a>
-        </li>
+    <#--<li class="hidden">-->
+    <#--<a href="gallery.html">-->
+    <#--<i class="icon-picture"></i>-->
+    <#--<span class="menu-text"> 相册 </span>-->
+    <#--</a>-->
+    <#--</li>-->
 
         <li>
             <a href="#" class="dropdown-toggle">
@@ -293,6 +293,20 @@
                     </a>
                 </li>
 
+                <li>
+                    <a onclick="menuOnclick('zOutHouse','出库操作','../endSys/inHouse')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 商品出库 </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a onclick="menuOnclick('zHouseForm','台账查看','../endSys/inHouse')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 台账查看 </span>
+                    </a>
+                </li>
+
 
             </ul>
         </li>
@@ -308,23 +322,16 @@
             <ul class="submenu">
 
                 <li>
-                    <a onclick="menuOnclick('zUserIndex','用户列表','../endSys/addGoods/0')">
+                    <a onclick="menuOnclick('zUserIndex','用户列表','../endSys/userList')">
                         <i class="icon-text-width"></i>
                         <span class="menu-text"> 用户列表 </span>
                     </a>
                 </li>
 
                 <li>
-                    <a onclick="menuOnclick('zAllGoods','所有库存商品','../endSys/goodsAll')">
+                    <a onclick="menuOnclick('zAddUser','添加用户','../endSys/addUser')">
                         <i class="icon-text-width"></i>
-                        <span class="menu-text"> 所有库存商品 </span>
-                    </a>
-                </li>
-
-                <li>
-                    <a onclick="menuOnclick('zInHouse','入库操作','../endSys/inHouse')">
-                        <i class="icon-text-width"></i>
-                        <span class="menu-text"> 商品入库 </span>
+                        <span class="menu-text"> 添加用户 </span>
                     </a>
                 </li>
 
@@ -332,55 +339,55 @@
             </ul>
         </li>
 
-        <li class="hidden">
-            <a href="#" class="dropdown-toggle">
-                <i class="icon-file-alt"></i>
+    <#--<li class="hidden">-->
+    <#--<a href="#" class="dropdown-toggle">-->
+    <#--<i class="icon-file-alt"></i>-->
 
-                <span class="menu-text">
-									其他页面
-									<span class="badge badge-primary ">5</span>
-								</span>
+    <#--<span class="menu-text">-->
+    <#--其他页面-->
+    <#--<span class="badge badge-primary ">5</span>-->
+    <#--</span>-->
 
-                <b class="arrow icon-angle-down"></b>
-            </a>
+    <#--<b class="arrow icon-angle-down"></b>-->
+    <#--</a>-->
 
-            <ul class="submenu">
-                <li>
-                    <a href="faq.html">
-                        <i class="icon-double-angle-right"></i>
-                        帮助
-                    </a>
-                </li>
+    <#--<ul class="submenu">-->
+    <#--<li>-->
+    <#--<a href="faq.html">-->
+    <#--<i class="icon-double-angle-right"></i>-->
+    <#--帮助-->
+    <#--</a>-->
+    <#--</li>-->
 
-                <li>
-                    <a href="error-404.html">
-                        <i class="icon-double-angle-right"></i>
-                        404错误页面
-                    </a>
-                </li>
+    <#--<li>-->
+    <#--<a href="error-404.html">-->
+    <#--<i class="icon-double-angle-right"></i>-->
+    <#--404错误页面-->
+    <#--</a>-->
+    <#--</li>-->
 
-                <li>
-                    <a onclick="menuOnclick('zError500','错误500页面','../error')">
-                        <i class="icon-double-angle-right"></i>
-                        500错误页面
-                    </a>
-                </li>
+    <#--<li>-->
+    <#--<a onclick="menuOnclick('zError500','错误500页面','../error')">-->
+    <#--<i class="icon-double-angle-right"></i>-->
+    <#--500错误页面-->
+    <#--</a>-->
+    <#--</li>-->
 
-                <li>
-                    <a href="grid.html">
-                        <i class="icon-double-angle-right"></i>
-                        网格
-                    </a>
-                </li>
+    <#--<li>-->
+    <#--<a href="grid.html">-->
+    <#--<i class="icon-double-angle-right"></i>-->
+    <#--网格-->
+    <#--</a>-->
+    <#--</li>-->
 
-                <li>
-                    <a href="blank.html">
-                        <i class="icon-double-angle-right"></i>
-                        空白页面
-                    </a>
-                </li>
-            </ul>
-        </li>
+    <#--<li>-->
+    <#--<a href="blank.html">-->
+    <#--<i class="icon-double-angle-right"></i>-->
+    <#--空白页面-->
+    <#--</a>-->
+    <#--</li>-->
+    <#--</ul>-->
+    <#--</li>-->
     </ul><!-- /.nav-list -->
     <div class="sidebar-collapse" id="sidebar-collapse">
         <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>

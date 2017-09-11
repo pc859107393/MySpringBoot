@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 
 /**
  * Created by pc on 2017/8/11.
@@ -45,6 +47,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> {
         User result = null;
         result = findOneById(userLogin);
         if (null == result) throw new NotFoundException("用户未找到！");
+        if (!result.isUsed()) throw new EnterInfoErrorException("用户禁止登陆！");
         try {
             userPass = userPass.toLowerCase();  //将大写md5转换为小写md5
             if (userPass.length() > 16 && userPass.length() == 32) {    //32位小写转换为16位小写
@@ -66,5 +69,17 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> {
     @Transactional
     public User findOneById(String userLogin) {
         return baseMapper.findOneByKey(userLogin);
+    }
+
+    public List<User> selectList() {
+        return baseMapper.findAll();
+    }
+
+    public void delUser(String loginName) {
+        baseMapper.delUser(loginName);
+    }
+
+    public User findOneByLoginName(String loginName) {
+        return baseMapper.findOneByKey(loginName);
     }
 }
