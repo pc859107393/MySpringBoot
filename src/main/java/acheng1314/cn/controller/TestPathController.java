@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * Created by pc on 2017/8/13.
  */
 @Controller
-@Api(description = "页面测试器")
+@Api(description = "主要的测试控制器")
 public class TestPathController {
 
     @GetMapping(value = "/testPath")

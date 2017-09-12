@@ -23,7 +23,7 @@ import java.io.File;
 import java.io.IOException;
 
 @Controller
-@Api(description = "外层信息，无需Shiro接管")
+@Api(description = "外层信息，无需Shiro接管，集成文件下载控制器")
 public class MainController {
 
     @GetMapping(value = "/")
@@ -85,7 +85,6 @@ public class MainController {
     }
 
     @GetMapping(path = MySiteMap.FILE_PATH + "/{path}/{fileName}")
-    @ApiOperation(value = "全局文件下载",notes = "适用于全局的文件下载访问")
     public void getFile(@PathVariable("fileName") String fileName
             , @PathVariable("path") String path, HttpServletRequest request
             , HttpServletResponse response) {

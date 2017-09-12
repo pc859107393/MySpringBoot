@@ -32,7 +32,7 @@ public interface UserDao extends BaseMapper<User> {
     @SelectKey(statement = "SELECT LAST_INSERT_ID()"
             , keyProperty = "id"
             , before = false
-            , resultType = long.class)
+            , resultType = Long.class)
     void addUser(User user);
 
     @Override

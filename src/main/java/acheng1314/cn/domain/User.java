@@ -4,6 +4,7 @@ package acheng1314.cn.domain;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
+import io.swagger.annotations.ApiParam;
 
 import java.io.Serializable;
 
@@ -15,15 +16,19 @@ import java.io.Serializable;
  */
 @TableName(value = "cc_user")
 public class User extends Model<User> {
-    private long id;
+    @ApiParam(required = false)
+    private Long id;
+    @ApiParam(required = true)
     private String name;
-//    @TableField(value = "login_name")
+    //    @TableField(value = "login_name")
+    @ApiParam(required = true)
     private String loginName;
+    @ApiParam(required = true)
     private String password;
     private String duty;
-//    @TableField(value = "create_date")
+    //    @TableField(value = "create_date")
     private Integer createDate;
-    private Boolean used = true;
+    private Boolean used = false;
 
     public User() {
     }
@@ -51,11 +56,11 @@ public class User extends Model<User> {
         this.createDate = createDate;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -177,11 +177,9 @@ public class GsonUtils {
     public static String toJsonObjStr(Object object, ResponseCode code, String msg) {
         ResponseObj result = new ResponseObj();
         result.setCode(code.getCode());
+        result.setMsg(StringUtils.isEmpty(msg) ? code.getMsg() : msg);
         if (code.getCode() == ResponseCode.OK.getCode()) {  //数据获取成功
-            result.setMsg(StringUtils.isEmpty(msg) ? code.getMsg() : msg);
             result.setData(object);
-        } else {    //数据获取失败，或者其他问题
-            result.setMsg(msg);
         }
         return toJson(result);
     }
