@@ -23,7 +23,7 @@ import java.io.File;
 import java.io.IOException;
 
 @Controller
-@Api(value = "外层信息，无需Shiro接管")
+@Api(description = "外层信息，无需Shiro接管，集成文件下载控制器")
 public class MainController {
 
     @GetMapping(value = "/")

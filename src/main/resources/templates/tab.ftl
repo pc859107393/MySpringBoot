@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 
@@ -49,7 +49,7 @@
         tab.add({
             id: 'tab1_index1',
             title: "主页",
-            url: "../endSys/goodsIndex",
+            url: "../endSys/default",
             isClosed: false
         });
         /**tab.add( {
