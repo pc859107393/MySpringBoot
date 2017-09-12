@@ -98,6 +98,102 @@
         <li>
             <a href="#" class="dropdown-toggle">
                 <i class="icon-tag"></i>
+                <span class="menu-text"> 菜系管理 </span>
+
+                <b class="arrow icon-angle-down"></b>
+            </a>
+
+            <ul class="submenu">
+
+                <li>
+                    <a onclick="menuOnclick('zAllFoodType','所有菜系','../endSys/allFoodType')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 所有菜系 </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a onclick="menuOnclick('zAddFoodType','添加菜系','../endSys/addFoodType')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 添加菜系 </span>
+                    </a>
+                </li>
+
+
+            </ul>
+        </li>
+        <li>
+            <a href="#" class="dropdown-toggle">
+                <i class="icon-tag"></i>
+                <span class="menu-text"> 菜品管理 </span>
+
+                <b class="arrow icon-angle-down"></b>
+            </a>
+
+            <ul class="submenu">
+
+                <li>
+                    <a onclick="menuOnclick('zAllFoods','所有菜品','../endSys/userList')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 所有菜品 </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a onclick="menuOnclick('zAddOneFood','添加菜品','../endSys/addUser')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 添加菜品 </span>
+                    </a>
+                </li>
+
+
+            </ul>
+        </li>
+        <li>
+            <a href="#" class="dropdown-toggle">
+                <i class="icon-tag"></i>
+                <span class="menu-text"> 餐桌管理 </span>
+
+                <b class="arrow icon-angle-down"></b>
+            </a>
+
+            <ul class="submenu">
+
+                <li>
+                    <a onclick="menuOnclick('zAllDesk','所有餐桌','../endSys/userList')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 所有餐桌 </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a onclick="menuOnclick('zAddDesk','添加餐桌','../endSys/addUser')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 添加餐桌 </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a onclick="menuOnclick('zOderDesk','预定餐桌','../endSys/addUser')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 预定餐桌 </span>
+                    </a>
+                </li>
+
+
+            </ul>
+        </li>
+
+        <li>
+            <a onclick="menuOnclick('zAllForm','订单管理','../endSys/addUser')">
+                <i class="icon-text-width"></i>
+                <span class="menu-text"> 订单管理 </span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#" class="dropdown-toggle">
+                <i class="icon-tag"></i>
                 <span class="menu-text"> 用户管理与维护 </span>
 
                 <b class="arrow icon-angle-down"></b>
