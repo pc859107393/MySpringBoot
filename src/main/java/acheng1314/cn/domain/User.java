@@ -28,7 +28,7 @@ public class User extends Model<User> {
     private String duty;
     //    @TableField(value = "create_date")
     private Integer createDate;
-    private Boolean used = true;
+    private Boolean used = false;
 
     public User() {
     }

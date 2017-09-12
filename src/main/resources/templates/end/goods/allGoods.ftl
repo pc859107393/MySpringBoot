@@ -60,7 +60,7 @@
 
 
                     <div class="modal-footer no-margin-top">
-                        <button class="btn btn-sm btn-danger pull-left" data-dismiss="modal">
+                        <button class="btn btn-sm btn-danger pull-left hidden" data-dismiss="modal">
                             <i class="icon-remove"></i>
                             Close
                         </button>

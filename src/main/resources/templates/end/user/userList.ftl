@@ -95,7 +95,7 @@
                             <div class="col-xs-12">
 
                                 <form class="form-horizontal" role="form" action="/endSys/updateUser" method="post"
-                                      onsubmit="return checkUpdateUserInfo()">
+                                      onsubmit="return beforeUpdateUser()">
 
                                     <input type="hidden" id="id" name="id" placeholder="id">
 
@@ -143,9 +143,15 @@
 
                                         <div class="col-xs-3">
                                             <label>
-                                                <input name="used" id="used" class="ace ace-switch ace-switch-7"
-                                                       type="checkbox">
-                                                <span class="lbl"></span>
+                                            <#--<input name="used" id="used" class="ace ace-switch ace-switch-7"-->
+                                            <#--type="checkbox">-->
+                                            <#--<span class="lbl"></span>-->
+
+                                                <select id="used" name="used">
+                                                    <option value="true">可用</option>
+                                                    <option value="false">禁用</option>
+                                                </select>
+
                                             </label>
                                         </div>
                                     </div>
@@ -181,7 +187,7 @@
 </body>
 
 <#include "../../_inc/_footer.ftl"/>
-
+<script src="${base}/static/js/md5.js"></script>
 <script type="text/javascript">
 
     function getUserInfo(userLoginName) {
@@ -197,7 +203,7 @@
                     document.getElementById("loginName").value = data.data.loginName;
 //                    document.getElementById("password").value = data.data.password;
                     document.getElementById("duty").value = data.data.duty;
-                    document.getElementById("used").value = data.data.used;
+//                    document.getElementById("used").value = data.data.used;
                     $("#dialog-confirm").removeClass('hide').dialog({
                         resizable: true,
                         modal: true,
@@ -259,6 +265,20 @@
 //        }
         return true;
     }
+
+
+    function beforeUpdateUser() {
+        if (!checkUpdateUserInfo()) {
+            return false;
+        }
+
+        var userpass = hex_md5($("#password").val());
+        document.getElementById("password").value = userpass;
+        console.info($("#password").val());
+        return true;
+    }
+
+
 </script>
 
 </html>

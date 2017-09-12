@@ -52,10 +52,10 @@ public class SysUserController {
     @PostMapping(path = "/updateUser", produces = MediaType.TEXT_HTML_VALUE)
     @ApiOperation(value = "更新用户", notes = "根据ID更新用户")
     public String updateUser(User user, @ApiParam(hidden = true) ModelMap map) {
-        if (null == user.getId() || StringUtils.isEmpty(user.getId().toString()))
-            map.addAttribute("msg", "更新用户失败！原因：用户ID不能为空");
+        if (null == user.getLoginName() || StringUtils.isEmpty(user.getLoginName()))
+            map.addAttribute("msg", "更新用户失败！原因：用户登录ID不能为空");
         try {
-            userService.updateById(user);
+            userService.updateUser(user);
             map.addAttribute("msg", "更新用户成功！");
         } catch (Exception e) {
             e.printStackTrace();

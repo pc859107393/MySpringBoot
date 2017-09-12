@@ -81,6 +81,20 @@
             </a>
         </li>
 
+        <li>
+            <a onclick="menuOnclick('zSwagger','在线APIDocs','../swagger-ui.html')">
+                <i class="icon-desktop"></i>
+                <span class="menu-text"> 在线APIDocs </span>
+            </a>
+        </li>
+
+        <li>
+            <a onclick="menuOnclick('zDruid','服务器中心','../druid/index.html')">
+                <i class="icon-desktop"></i>
+                <span class="menu-text"> 服务器中心 </span>
+            </a>
+        </li>
+
     <#--<li class="hidden">-->
     <#--<a href="#" class="dropdown-toggle">-->
     <#--<i class="icon-desktop"></i>-->
@@ -294,14 +308,14 @@
                 </li>
 
                 <li>
-                    <a onclick="menuOnclick('zOutHouse','出库操作','../endSys/inHouse')">
+                    <a onclick="menuOnclick('zOutHouse','出库操作','../endSys/outHouse')">
                         <i class="icon-text-width"></i>
                         <span class="menu-text"> 商品出库 </span>
                     </a>
                 </li>
 
                 <li>
-                    <a onclick="menuOnclick('zHouseForm','台账查看','../endSys/inHouse')">
+                    <a onclick="menuOnclick('zHouseForm','台账查看','../endSys/formHouse')">
                         <i class="icon-text-width"></i>
                         <span class="menu-text"> 台账查看 </span>
                     </a>
