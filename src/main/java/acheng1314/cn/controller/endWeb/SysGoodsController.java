@@ -74,6 +74,18 @@ public class SysGoodsController {
         return "end/goods/inHouse";
     }
 
+    @ApiOperation(value = "出库主页", notes = "出库主页，必须存在商品才能出库。出库改变库存")
+    @GetMapping(path = "/outHouse", produces = MediaType.TEXT_HTML_VALUE)
+    public String outHouse(@ApiParam(hidden = true) ModelMap map) {
+        return "end/goods/outHouse";
+    }
+
+    @ApiOperation(value = "化妆品台账", notes = "台账")
+    @GetMapping(path = "/formHouse", produces = MediaType.TEXT_HTML_VALUE)
+    public String formHouse(@ApiParam(hidden = true) ModelMap map) {
+        return "end/goods/formHouse";
+    }
+
 
 
 }
