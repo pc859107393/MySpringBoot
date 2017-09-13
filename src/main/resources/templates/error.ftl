@@ -15,11 +15,8 @@
         <div class="error-container">
             <div class="well">
                 <h1 class="grey lighter smaller">
-											<span class="blue bigger-125">
-												<i class="ace-icon fa fa-random"></i>
-												500
-											</span>
-                    可能在这里发生了错误！
+                    <span class="blue bigger-125"><i class="ace-icon fa fa-random"></i>500/404</span>
+                    可能在这里发生了错误！或者并未找到？！
                 </h1>
 
                 <hr>
@@ -37,14 +34,14 @@
                         <li>
                             <i class="ace-icon fa fa-hand-o-right blue"></i>
                         <#if url?exists>
-                        ${url}
+                        ${url!}
                         </#if>
                         </li>
 
                         <li>
                             <i class="ace-icon fa fa-hand-o-right blue"></i>
                         <#if exception?exists>
-                        ${exception}
+                        ${exception!}
                         </#if>
                         </li>
                     </ul>

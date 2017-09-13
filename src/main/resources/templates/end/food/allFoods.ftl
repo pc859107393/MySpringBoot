@@ -61,7 +61,8 @@
 
                             <td class="center">
                                 <div>
-                                    <button class="btn btn-warning btn-xs" onclick="getUserInfo('${food.id!}');">
+                                    <button class="btn btn-warning btn-xs"
+                                            onclick="openMyFoodChange('../endSys/changeFoods/${food.id!}');">
                                         <i class="icon-wrench  bigger-110 icon-only"></i>
                                         修改
                                     </button>
@@ -77,21 +78,30 @@
                     <div class="modal-footer no-margin-top">
 
                         <ul class="pagination pull-right no-margin">
-                            <li class="prev disabled">
-                                <a href="#">
-                                    <i class="icon-double-angle-left"></i>
-                                </a>
-                            </li>
+                            <script type="text/javascript">
+                                var pageSize = ${foods.pageSize!};
+                                var pageNum = ${foods.pageNum!};
+                                var totalNum = ${foods.totalNum!};
+                                var result = "<li class=\"prev\" id=\"prev-li\"><a onclick='goToPrev()'><i class=\"icon-double-angle-left\"></i></a></li>";
+                                result += "<li class=\"active\"><a href=\"#\">" + pageNum + "</a></li>";
+                                result += "<li class=\"next\"  id=\"next-li\"><a onclick='goToNext()'><i class=\"icon-double-angle-right\"></i></a></li>";
+                                document.write(result);
+                                if (pageNum === 1) {
 
-                            <li class="active">
-                                <a href="#">1</a>
-                            </li>
+                                }
 
-                            <li class="next">
-                                <a href="#">
-                                    <i class="icon-double-angle-right"></i>
-                                </a>
-                            </li>
+                                function goToPrev() {
+
+                                }
+
+                                function goToNext() {
+
+                                }
+
+
+                            </script>
+
+
                         </ul>
                     </div>
                     </#if>
@@ -148,7 +158,8 @@
                                     </div>
 
                                     <div class="clearfix form-actions">
-                                        <button class="btn btn-info" type="submit">
+                                        <button class="btn btn-info" type="button"
+                                                onclick="">
                                             <i class="icon-ok bigger-110"></i>
                                             修改
                                         </button>
@@ -209,12 +220,12 @@
     function delUser(id) {
         $.ajax({
             type: 'GET',
-            url: '${base}/endSys/delFoodType/' + id,
+            url: '${base}/endSys/delFoods/' + id,
             cache: false,
             dataType: 'json',
             success: function (data) {  //请求成功，http状态码为200。返回的数据已经打包在data中了。
                 alert(data.msg);    //弹出对话框，提示返回的错误信息
-                window.location = '${base}/endSys/allFoodType';
+                window.location = '${base}/endSys/allFoods';
             }
         });
     }
@@ -232,6 +243,10 @@
         }
 
         return true;
+    }
+
+    function openMyFoodChange(id) {
+        window.open(id);
     }
 
 

@@ -5,8 +5,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class Page<T> implements Serializable {
-    private final int num;
-    private final int size;
+    private int pageNum;
+    private int pageSize;
     private int totalNum;
     /**
      * 查询数据列表
@@ -14,8 +14,8 @@ public class Page<T> implements Serializable {
     private List<T> data = Collections.emptyList();
 
     public Page(int num, int size) {
-        this.num = num;
-        this.size = size;
+        this.pageNum = num;
+        this.pageSize = size;
     }
 
     public int getTotalNum() {
@@ -39,8 +39,8 @@ public class Page<T> implements Serializable {
         StringBuilder sb = new StringBuilder();
         data.forEach((T var) -> sb.append(var.toString()).append("\n"));
         return "Page{" +
-                "num=" + num +
-                ", size=" + size +
+                "pageNum=" + pageNum +
+                ", pageSize=" + pageSize +
                 ", totalNum=" + totalNum +
                 ", data=[\n" + sb + "]\n" +
                 '}';

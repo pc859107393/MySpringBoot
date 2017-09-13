@@ -18,6 +18,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 @RequestMapping("/endSys")
 @Api(description = "点餐 → 后台管理系统")
@@ -113,18 +116,17 @@ public class SysFoodController {
         return "end/food/addFood";
     }
 
-    @PostMapping(value = "/addFoods", produces = MediaType.TEXT_HTML_VALUE)
+    @PostMapping(value = "/addFoods", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation(value = "上传菜品", notes = "上传菜品到服务器")
+    @ResponseBody
     public String addFoods(@ApiParam(hidden = true) ModelMap map, Food food) {
         try {
             foodService.insertOne(food);
-            map.addAttribute("msg", "菜品添加成功!");
+            return GsonUtils.toJsonObjStr(null, ResponseCode.OK, "菜品添加成功!");
         } catch (Exception e) {
             e.printStackTrace();
-            map.addAttribute("msg", "菜品添加失败！原因：" + e.getMessage());
+            return GsonUtils.toJsonObjStr(null, ResponseCode.FAILED, "菜品添加失败!原因：" + e.getMessage());
         }
-        map.addAttribute("food", food);
-        return addFood(map);
     }
 
     @GetMapping(value = "/allFoods", produces = MediaType.TEXT_HTML_VALUE)
@@ -148,5 +150,45 @@ public class SysFoodController {
         map.addAttribute("foods", foodService.selectList(pageNum, pageSize));
         return "end/food/allFoods";
     }
+
+    @GetMapping(value = "/delFoods/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ApiOperation(value = "删除菜品", notes = "删除菜品")
+    @ResponseBody
+    public Object delFoods(@PathVariable("id") Integer id) {
+        try {
+            foodService.deleteById(id);
+            return GsonUtils.toJsonObjStr(null, ResponseCode.OK, "成功删除！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return GsonUtils.toJsonObjStr(null, ResponseCode.FAILED, "删除失败！");
+        }
+    }
+
+    @GetMapping(value = "/changeFoods/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ApiOperation(value = "修改菜品", notes = "修改菜品")
+    public String changeFoods(@PathVariable("id") Integer id, @ApiParam(hidden = true) ModelMap map) {
+        try {
+            map.addAttribute("food", foodService.selectById(id));
+            map.addAttribute("foodType", foodTypeService.selectPage(new Page<FoodType>(1, 500)).getRecords());
+            return "/end/food/changeFood";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/error";
+        }
+    }
+
+    @PostMapping(value = "/changeFoods", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ApiOperation(value = "修改菜品", notes = "修改菜品到服务器")
+    @ResponseBody
+    public Object changeFoods(@ApiParam(hidden = true) ModelMap map, Food food) {
+        try {
+            foodService.updateById(food);
+            return GsonUtils.toJsonObjStr(null, ResponseCode.OK, "菜品修改成功!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return GsonUtils.toJsonObjStr(null, ResponseCode.FAILED, "菜品修改失败!原因：" + e.getMessage());
+        }
+    }
+
 
 }

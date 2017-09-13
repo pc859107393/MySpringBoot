@@ -75,21 +75,28 @@
                     <div class="modal-footer no-margin-top">
 
                         <ul class="pagination pull-right no-margin">
-                            <li class="prev disabled">
-                                <a href="#">
-                                    <i class="icon-double-angle-left"></i>
-                                </a>
-                            </li>
+                            <script type="text/javascript">
+                                var pageSize = ${foodTypes.pageSize!};
+                                var pageNum = ${foodTypes.pageNum!};
+                                var totalNum = ${foodTypes.totalNum!};
+                                var result = "<li class=\"prev\" id=\"prev-li\"><a onclick='goToPrev()'><i class=\"icon-double-angle-left\"></i></a></li>";
+                                result += "<li class=\"active\"><a href=\"#\">" + pageNum + "</a></li>";
+                                result += "<li class=\"next\"  id=\"next-li\"><a onclick='goToNext()'><i class=\"icon-double-angle-right\"></i></a></li>";
+                                document.write(result);
+                                if (pageNum === 1) {
 
-                            <li class="active">
-                                <a href="#">1</a>
-                            </li>
+                                }
 
-                            <li class="next">
-                                <a href="#">
-                                    <i class="icon-double-angle-right"></i>
-                                </a>
-                            </li>
+                                function goToPrev() {
+
+                                }
+
+                                function goToNext() {
+
+                                }
+
+
+                            </script>
                         </ul>
                     </div>
                     </#if>

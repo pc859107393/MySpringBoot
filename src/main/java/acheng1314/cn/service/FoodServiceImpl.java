@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.Serializable;
+
 @Service("foodService")
 public class FoodServiceImpl extends ServiceImpl<FoodDao, Food> {
 
@@ -35,5 +37,10 @@ public class FoodServiceImpl extends ServiceImpl<FoodDao, Food> {
     public void insertOne(Food food) throws Exception {
         if (StringUtils.isEmpty(food.getName())) throw new Exception("菜品名称不能为空！");
         super.baseMapper.insert(food);
+    }
+
+
+    public void deleteById(Integer id) {
+        baseMapper.deleteOneById(id);
     }
 }

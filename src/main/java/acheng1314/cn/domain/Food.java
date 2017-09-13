@@ -8,6 +8,7 @@ import java.io.Serializable;
 @TableName("cc_food")
 public class Food extends Model<Food> {
     private Integer id;
+    private Integer status = 1;
     private String name;
     private String avatar;
     private String content;
@@ -19,12 +20,33 @@ public class Food extends Model<Food> {
         return id;
     }
 
+    @Override
+    public String toString() {
+        return "Food{" +
+                "id=" + id +
+                ", status=" + status +
+                ", name='" + name + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", content='" + content + '\'' +
+                ", style='" + style + '\'' +
+                ", type='" + type + '\'' +
+                '}';
+    }
+
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public String getName() {
@@ -65,17 +87,5 @@ public class Food extends Model<Food> {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    @Override
-    public String toString() {
-        return "Food{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", avatar='" + avatar + '\'' +
-                ", content='" + content + '\'' +
-                ", style='" + style + '\'' +
-                ", type='" + type + '\'' +
-                '}';
     }
 }

@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>添加菜品</title>
+    <title>修改菜品</title>
 <#include "../../_inc/_header.ftl"/>
 
 </head>
@@ -15,7 +15,7 @@
             菜品管理
             <small>
                 <i class="icon-double-angle-right"></i>
-                添加菜品
+                修改菜品
             </small>
         </h1>
     </div>
@@ -43,7 +43,8 @@
                     <label class="col-sm-3 control-label no-padding-right" for="name"> 菜品名称： </label>
 
                     <div class="col-sm-9">
-                        <input type="text" id="name" name="name" placeholder="菜品名称" class="col-xs-10 col-sm-5"/>
+                        <input type="text" id="name" name="name" placeholder="菜品名称" class="col-xs-10 col-sm-5"
+                               value="${food.name!}"/>
                     </div>
                 </div>
 
@@ -56,7 +57,7 @@
                 <#--</div>-->
 
                     <div class="col-xs-10 col-sm-4" id="food-avatar-img">
-                        <div class="ace-file-input ace-file-multiple"><input type="file" name="avatar">
+                        <div class="ace-file-input ace-file-multiple"><input type="file" name="avatar" id="avatar">
 
                             <a class="remove" href="#">
                                 <i class="icon-remove"></i>
@@ -70,7 +71,7 @@
                     <label class="col-sm-3 control-label no-padding-right" for="style"> 菜品口味： </label>
 
                     <div class="col-sm-9">
-                        <input type="text" id="style" name="style" placeholder="菜品口味"
+                        <input type="text" id="style" name="style" placeholder="菜品口味" value="${food.style!}"
                                class="col-xs-10 col-sm-5"/>
                     </div>
                 </div>
@@ -93,7 +94,8 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="content"> 菜品详情： </label>
                     <div class="col-sm-9">
-                        <div id="content" name="content" class="wysiwyg-editor col-xs-10 col-sm-5"></div>
+                        <div id="content" name="content"
+                             class="wysiwyg-editor col-xs-10 col-sm-5">${food.content!}</div>
                     </div>
                 </div>
 
@@ -116,10 +118,9 @@
         <#if food?exists>
             <script type="application/javascript">
                 document.getElementById("name").value = '${food.name!}';
-                document.getElementById("avatar").value = '${food.avatar!}';
+                <#--document.getElementById("avatar").value = '${food.avatar!}';-->
                 document.getElementById("style").value = '${food.style!}';
                 document.getElementById("type").value = '${food.type!}';
-                document.getElementById("content").value = '${food.content!}';
             </script>
         </#if>
 
@@ -171,14 +172,14 @@
 
         $.ajax({
             type: 'POST',
-            url: '${base}/endSys/addFoods',
+            url: '${base}/endSys/changeFoods',
             cache: false,
-            data: {name: name, avatar: avatar, style: style, type: type, content: content},
+            data: {id:${food.id!}, name: name, avatar: avatar, style: style, type: type, content: content},
             dataType: 'json',
             success: function (data) {  //请求成功，http状态码为200。返回的数据已经打包在data中了。
                 alert(data.msg);    //弹出对话框，提示返回的错误信息
                 if (data.code === 1) {
-
+                    window.location = "${base}/";
                 }
             }
         });
