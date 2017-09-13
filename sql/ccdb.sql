@@ -3,19 +3,40 @@
 
  Source Server         : localhost
  Source Server Type    : MySQL
- Source Server Version : 50715
+ Source Server Version : 50718
  Source Host           : localhost
  Source Database       : ccdb
 
  Target Server Type    : MySQL
- Target Server Version : 50715
+ Target Server Version : 50718
  File Encoding         : utf-8
 
- Date: 09/13/2017 05:15:49 AM
+ Date: 09/13/2017 21:05:56 PM
 */
 
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+--  Table structure for `cc_food`
+-- ----------------------------
+DROP TABLE IF EXISTS `cc_food`;
+CREATE TABLE `cc_food` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '菜品自增主键',
+  `name` text COLLATE utf8_bin NOT NULL COMMENT '菜品名字',
+  `avatar` text COLLATE utf8_bin COMMENT '封面图片',
+  `content` text COLLATE utf8_bin COMMENT '菜品详细介绍',
+  `type` text COLLATE utf8_bin COMMENT '所属菜系',
+  `style` text COLLATE utf8_bin COMMENT '菜品特色',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='菜品表';
+
+-- ----------------------------
+--  Records of `cc_food`
+-- ----------------------------
+BEGIN;
+INSERT INTO `cc_food` VALUES ('1', 0xe99d92e6a492e88289e4b89d, null, 0xe99d92e6a492e88289e4b89defbc8ce5bd93e784b6e698afe5b79de88f9ce595a6e38082e6af8be5bab8e7bdaee79691, 0xe5b79de88f9c, 0xe5beaee8bea3), ('2', 0xe8a5bfe7baa2e69fbfe78292e89b8b, 0xe69a82e697a0, 0xe8a5bfe7baa2e69fbfe78292e9b8a1e89b8befbc8ce58f88e698afe5b79de88f9ce4b8ade79a84e4b880e98193e9a39fe8b0b1, 0xe5b79de88f9c, 0xe5be88e5a5bde59083e5958a), ('3', 0xe985b8e8bea3e59c9fe8b186e4b89d, 0xe69a82e697a0, 0xe985b8e8bea3e59c9fe8b186e4b89defbc8ce5b0b1e698afe98097e4bda0e78ea9, 0xe7ae97e595a6, 0xe5b79de88f9c), ('4', 0xe59c9fe8b186e783a7e9b8a1, 0xe783a7e9b8a1e4b99fe4b88de5a5bd, 0xe6b2a1e79a84e8afb4e4ba86efbc8ce4b88de5a5bde59083, 0xe982a3e5b0b1e698afe9aa9ae9b8a1, 0xe7b2a4e88f9c), ('5', 0xe59c9fe8b186e783a7e9b8a1, 0xe783a7e9b8a1e4b99fe4b88de5a5bd, 0xe6b2a1e79a84e8afb4e4ba86efbc8ce4b88de5a5bde59083, 0xe982a3e5b0b1e698afe9aa9ae9b8a1, 0xe7b2a4e88f9c), ('6', 0xe59c9fe8b186e783a7e9b8a1313131, 0xe783a7e9b8a1e4b99fe4b88de5a5bd313131, 0xe6b2a1e79a84e8afb4e4ba86efbc8ce4b88de5a5bde59083313131, 0xe982a3e5b0b1e698afe9aa9ae9b8a1313131, 0xe7b2a4e88f9c), ('7', 0xe59c9fe8b186e783a7e9b8a1313131323232, 0xe783a7e9b8a1e4b99fe4b88de5a5bd313131, 0xe6b2a1e79a84e8afb4e4ba86efbc8ce4b88de5a5bde59083313131, 0xe982a3e5b0b1e698afe9aa9ae9b8a1313131, 0xe7b2a4e88f9c), ('8', 0xe59c9fe8b186e783a7e9b8a1313131323232, 0xe783a7e9b8a1e4b99fe4b88de5a5bd313131, 0xe6b2a1e79a84e8afb4e4ba86efbc8ce4b88de5a5bde59083313131, 0xe7b2a4e88f9c, 0xe982a3e5b0b1e698afe9aa9ae9b8a1313131), ('9', 0xe59c9fe8b186e783a7e9b8a1313131323232e5939fe5939fe5939f, 0xe783a7e9b8a1e4b99fe4b88de5a5bd313131, 0xe6b2a1e79a84e8afb4e4ba86efbc8ce4b88de5a5bde59083313131, 0xe58c97e696b9e88f9c, 0xe982a3e5b0b1e698afe9aa9ae9b8a1313131), ('10', 0xe4bd9be8b7b3e5a299, '', 0xe5b0b1e982a3e6a0b7, 0xe5b79de88f9c, 0xe58f98e68081e8bea3);
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `cc_food_type`
@@ -27,13 +48,13 @@ CREATE TABLE `cc_food_type` (
   `description` text COLLATE utf8mb4_unicode_ci COMMENT '菜系描述',
   `other` text COLLATE utf8mb4_unicode_ci COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 --  Records of `cc_food_type`
 -- ----------------------------
 BEGIN;
-INSERT INTO `cc_food_type` VALUES ('1', '川菜', '川菜', '川菜'), ('2', '湘菜', '湘菜', '湘菜'), ('3', '粤菜', '粤菜', '据说广东人喜欢吃胡建人');
+INSERT INTO `cc_food_type` VALUES ('1', '川菜', '川菜', '川菜'), ('2', '湘菜', '湘菜', '湘菜'), ('3', '粤菜', '粤菜', '据说广东人喜欢吃胡建人'), ('5', '海南菜', '海南人吃的菜', '我这个四川人不喜欢吃海南菜'), ('6', '北方菜', '北方菜味道还是不错的！', '北方菜，你爱吃吗？'), ('8', '塞外菜', '开塞露', '开塞露');
 COMMIT;
 
 -- ----------------------------
@@ -50,13 +71,13 @@ CREATE TABLE `cc_res` (
   `type` text COLLATE utf8mb4_unicode_ci COMMENT '物品类型',
   PRIMARY KEY (`id`),
   UNIQUE KEY `cc_res_code_uindex` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='物品记录表';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='物品记录表';
 
 -- ----------------------------
 --  Records of `cc_res`
 -- ----------------------------
 BEGIN;
-INSERT INTO `cc_res` VALUES ('1', '2018年计算机组成原理考研复习指导', 'B区13库房131货架A11', '489498', '48', '50000', '书籍-考研-计算机-王道论坛'), ('3', '2018年计算机组成原理考研复习指导', '9787121309762', 'B区13库房131货架A11', '48', '50000', '书籍-考研-计算机-王道论坛'), ('4', '考研政治马原专项突破', '9787121309789', null, null, null, null), ('5', '考研政治早知道——马原专项突破', '9787502278595', null, null, null, null), ('6', '考研政治早知道——西瓜皮', '9787502278595999', '', null, null, ''), ('7', '考研政治早知道——茄子', '9787502299999999', '', null, null, ''), ('8', '考研政治早知道——西瓜皮999', '9787502299999999999', '', null, null, ''), ('9', '考研政治早知道——西瓜皮888', '9787502299999999888', '没有位置不给吗？', null, null, ''), ('10', '就是要发发发', '888888', '', null, null, ''), ('11', '1111222', '9787502278595111', '男生宿舍1A216', '999', null, 'AAA');
+INSERT INTO `cc_res` VALUES ('1', '清风牌纸手帕', '6922266448096', 'A区库房110货架', '48', '50000', '纸巾-纸手帕-清风'), ('12', '完美芦荟装40g 3支装', '1192475', '京东商城-京东热卖', '79', null, '芦荟-三支-京东热卖');
 COMMIT;
 
 -- ----------------------------
@@ -77,17 +98,11 @@ CREATE TABLE `cc_res_in` (
 -- ----------------------------
 DROP TABLE IF EXISTS `cc_site`;
 CREATE TABLE `cc_site` (
-  `value` text COLLATE utf8_bin COMMENT 'value',
-  `key` varchar(256) COLLATE utf8_bin NOT NULL COMMENT 'key',
-  UNIQUE KEY `cc_site_key_uindex` (`key`)
+  `name` text COLLATE utf8_bin COMMENT '站点名称',
+  `code` text COLLATE utf8_bin COMMENT '站点备案号',
+  `real_ip_v4` text COLLATE utf8_bin COMMENT '服务器IP地址v4',
+  `real_ip_v6` text COLLATE utf8_bin COMMENT '服务器IP地址v6'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='站点信息存储';
-
--- ----------------------------
---  Records of `cc_site`
--- ----------------------------
-BEGIN;
-INSERT INTO `cc_site` VALUES (0x736974655f6e616d65, '智能无线点餐系统'), (0x736974655f636f6465, '琼ICP备15002637号-1');
-COMMIT;
 
 -- ----------------------------
 --  Table structure for `cc_user`
@@ -103,13 +118,13 @@ CREATE TABLE `cc_user` (
   `used` tinyint(1) NOT NULL DEFAULT '1' COMMENT '账户是否可用',
   PRIMARY KEY (`id`),
   UNIQUE KEY `login_name` (`login_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='用户表';
 
 -- ----------------------------
 --  Records of `cc_user`
 -- ----------------------------
 BEGIN;
-INSERT INTO `cc_user` VALUES ('2', '糍粑', '228568859', 'aasdasdzxkclzklxckl', 'c测试张哈', '1703864036', '0'), ('3', '程', 'pc85', '623c3218d81612bc5b327339e25eeed21347f9e96c588babf352c27e3161515b', '炒鸡admin', '1502870091', '0'), ('4', '程', 'pc8599', 'ec3434245bad39ccb5d1bbc313a68e6cca26bd3fcbffd5ff160ef33422d099db', '炒鸡admin', '1502871057', '0'), ('5', '程', 'pc8599110', 'a70d700f0430bde923a25c0d6a1d09dde271345b23c07e239b94f204ac28d795', '炒鸡admin', '1502871222', '0'), ('6', '程', 'pc859922', '4eefba35cdfbc69a6d073d865ddbf33c40711da4bd1bc05b1489bc5a4867329c', '炒鸡admin', '1502871269', '0'), ('8', 'qqq', '228596321', '725a289793d69321bd786166ad7a8bc4fa0660573460d34b2f5e87e111d947e7', 'zxczxcz', '1502871659', '0'), ('9', 'qqq', '9564564', 'a2225de081c1da76160dd04d99de4a9439c9e1f31843ffd2f0bfbceda714b712', 'zxczxcz', '1502871724', '1'), ('10', 'qqq', '9564564120', 'c30d43afeba75f98af26cae7bfb628ca4e9dcc34a385127019dda28a352d885e', 'zxczxcz', '1502871826', '1'), ('11', 'qqq', '9564564110', '5c06478ca9ae9a61ead0bf921e3406bd4d2ce6fe7a8953cda58b6a131265c004', 'zxczxcz', '1502872562', '0'), ('14', '程打野', 'pc859107393', '1b4d2f7c7438009f6bb8154b96e3c75f6a161912fc7ca8b6eb095776499363f7', 'admin', '1503347744', '1'), ('15', '加快速度金坷垃', '123456789', '500f48637f4f3e081bd6a107eb8793dc9a556faeb60ce66a5c82a93321f68884', null, '1505153276', '0');
+INSERT INTO `cc_user` VALUES ('2', '糍粑', '228568859', '6c0eaef14832a719fb5a083f8aea1f606aebbfae307693b3aa06f3c891a1785a', 'admin', '1703864036', '1'), ('3', '程', 'pc85', '00df69cb6798f4b4bc36e91707f61d4c2fc00eb7a7ede338934762a5537ae9a6', '炒鸡admin', '1502870091', '0'), ('4', '程', 'pc8599', '9ebd2c0f037a0fe2c09384d0ba0818f1c06c89907917a34d4a57d9a30bb4fec2', '炒鸡admin', '1502871057', '1'), ('5', '程', 'pc8599110', 'f18e32f677b49732fb3f07802bdd1d3e286e6a59d41e164c0dfdcdfbd6342d59', '炒鸡admin', '1502871222', '1'), ('6', '程', 'pc859922', '58ae777a0985219824059b85f35faf1b5b92b4f68b16e4b4a0772623a69b596d', '炒鸡admin', '1502871269', '1'), ('8', 'qqq', '228596321', '725a289793d69321bd786166ad7a8bc4fa0660573460d34b2f5e87e111d947e7', 'zxczxcz', '1502871659', '1'), ('9', 'qqq', '9564564', 'a2225de081c1da76160dd04d99de4a9439c9e1f31843ffd2f0bfbceda714b712', 'zxczxcz', '1502871724', '0'), ('10', 'qqq', '9564564120', 'c30d43afeba75f98af26cae7bfb628ca4e9dcc34a385127019dda28a352d885e', 'zxczxcz', '1502871826', '0'), ('11', 'qqq', '9564564110', '5c06478ca9ae9a61ead0bf921e3406bd4d2ce6fe7a8953cda58b6a131265c004', 'zxczxcz', '1502872562', '1'), ('14', '超级管理员', 'pc859107393', '1b4d2f7c7438009f6bb8154b96e3c75f6a161912fc7ca8b6eb095776499363f7', 'admin', '1503347744', '1'), ('17', '完美芦荟装40g 3支装', 'pc85910739310086', 'e5628505b6890d2ff87ad1f49d47771fcf120d2ae6f4b86fe8f4c12e6c4f67fd', null, '1505180651', '1');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

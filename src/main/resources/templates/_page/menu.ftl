@@ -133,14 +133,14 @@
             <ul class="submenu">
 
                 <li>
-                    <a onclick="menuOnclick('zAllFoods','所有菜品','../endSys/userList')">
+                    <a onclick="menuOnclick('zAllFoods','所有菜品','../endSys/allFoods')">
                         <i class="icon-text-width"></i>
                         <span class="menu-text"> 所有菜品 </span>
                     </a>
                 </li>
 
                 <li>
-                    <a onclick="menuOnclick('zAddOneFood','添加菜品','../endSys/addUser')">
+                    <a onclick="menuOnclick('zAddOneFood','添加菜品','../endSys/addFoods')">
                         <i class="icon-text-width"></i>
                         <span class="menu-text"> 添加菜品 </span>
                     </a>

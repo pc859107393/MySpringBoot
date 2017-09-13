@@ -39,6 +39,6 @@ public interface FoodTypeDao extends BaseMapper<FoodType> {
 
     @Update("UPDATE `cc_food_type` SET `name` = #{name}" +
             ",`description` = #{description}" +
-            ",`other`=#{other}) WHERE id=#{id}")
+            ",`other`=#{other} WHERE id=#{id}")
     int update(FoodType entity);
 }

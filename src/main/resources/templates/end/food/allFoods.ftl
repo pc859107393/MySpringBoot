@@ -12,10 +12,10 @@
 
     <div class="page-header">
         <h1>
-            菜系管理
+            菜品管理
             <small>
                 <i class="icon-double-angle-right"></i>
-                所有菜系
+                所有菜品
             </small>
         </h1>
     </div>
@@ -39,32 +39,34 @@
                     <thead>
                     <tr>
                         <th class="center">
-                            菜系名称
+                            菜品封面
                         </th>
-                        <th>菜系描述</th>
-                        <th>菜系备注</th>
-                        <th>操作</th>
+                        <th>菜品名称</th>
+                        <th>菜品口味</th>
+                        <th>所属菜系</th>
+                        <th>&nbsp; &nbsp; &nbsp;</th>
 
                     </tr>
                     </thead>
 
                     <tbody>
 
-                    <#if foodTypes?exists>
-                        <#list foodTypes.data as foodType>
+                    <#if foods?exists>
+                        <#list foods.data as food>
                         <tr>
-                            <td class="center">${foodType.name!}</td>
-                            <td>${foodType.description!}</td>
-                            <td>${foodType.other!}</td>
+                            <td class="center">${food.avatar!}</td>
+                            <td>${food.name!}</td>
+                            <td>${food.style!}</td>
+                            <td>${food.type!}</td>
 
-                            <td>
+                            <td class="center">
                                 <div>
-                                    <button class="btn btn-warning btn-xs" onclick="getUserInfo('${foodType.id!}');">
+                                    <button class="btn btn-warning btn-xs" onclick="getUserInfo('${food.id!}');">
                                         <i class="icon-wrench  bigger-110 icon-only"></i>
                                         修改
                                     </button>
-
-                                    <button class="btn btn-error btn-xs" onclick="delUser('${foodType.id!}');">
+                                    &nbsp;
+                                    <button class="btn btn-error btn-xs" onclick="delUser('${food.id!}');">
                                         <i class="icon-trash  bigger-110 icon-only"></i>
                                         删除
                                     </button>

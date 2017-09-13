@@ -1,11 +1,14 @@
 package acheng1314.cn.controller.endWeb;
 
 
+import acheng1314.cn.domain.Food;
 import acheng1314.cn.domain.FoodType;
 import acheng1314.cn.domain.ResponseCode;
-import acheng1314.cn.service.FoodTypeService;
+import acheng1314.cn.service.FoodServiceImpl;
+import acheng1314.cn.service.FoodTypeServiceImpl;
 import acheng1314.cn.util.GsonUtils;
-import acheng1314.cn.util.StringUtils;
+import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.baomidou.mybatisplus.plugins.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -21,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
 public class SysFoodController {
 
     @Autowired
-    private FoodTypeService foodTypeService;
+    private FoodTypeServiceImpl foodTypeService;
 
     @GetMapping(value = "/getOneFoodType/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation(value = "获取一个菜系信息", notes = "获取一个菜系信息")
@@ -98,4 +101,52 @@ public class SysFoodController {
             return GsonUtils.toJsonObjStr(null, ResponseCode.FAILED, "删除失败！");
         }
     }
+
+    @Autowired
+    private FoodServiceImpl foodService;
+
+    @GetMapping(value = "/addFoods", produces = MediaType.TEXT_HTML_VALUE)
+    @ApiOperation(value = "添加菜品", notes = "添加菜品")
+    public String addFood(@ApiParam(hidden = true) ModelMap map) {
+        //菜系可能会很多，直接巴拉巴拉的来500个，应该够了吧
+        map.addAttribute("foodType", foodTypeService.selectPage(new Page<FoodType>(1, 500)).getRecords());
+        return "end/food/addFood";
+    }
+
+    @PostMapping(value = "/addFoods", produces = MediaType.TEXT_HTML_VALUE)
+    @ApiOperation(value = "上传菜品", notes = "上传菜品到服务器")
+    public String addFoods(@ApiParam(hidden = true) ModelMap map, Food food) {
+        try {
+            foodService.insertOne(food);
+            map.addAttribute("msg", "菜品添加成功!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            map.addAttribute("msg", "菜品添加失败！原因：" + e.getMessage());
+        }
+        map.addAttribute("food", food);
+        return addFood(map);
+    }
+
+    @GetMapping(value = "/allFoods", produces = MediaType.TEXT_HTML_VALUE)
+    @ApiOperation(value = "所有菜品", notes = "所有菜品")
+    public String allFoods(@ApiParam(hidden = true) ModelMap map
+            , @ApiParam(value = "当前页码,默认不能为空，否则为1",
+            //参数默认值为1
+            defaultValue = "1") @RequestParam(required = false) Integer pageNum
+            , @ApiParam(value = "当前页面数量,默认不能为空，否则为25",
+            //参数默认值为1
+            defaultValue = "25") @RequestParam(required = false) Integer pageSize) {
+
+        if (null == pageNum || pageNum <= 0) {
+            pageNum = 1;
+        }
+        if (null == pageSize || pageSize == 0) {
+            pageSize = 25;
+            return "redirect:/endSys/allFoods?pageNum=" + pageNum + "&pageSize=" + pageSize;
+        }
+
+        map.addAttribute("foods", foodService.selectList(pageNum, pageSize));
+        return "end/food/allFoods";
+    }
+
 }

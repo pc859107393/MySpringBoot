@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 @Service("foodTypeService")
-public class FoodTypeService extends ServiceImpl<FoodTypeDao, FoodType> {
+public class FoodTypeServiceImpl extends ServiceImpl<FoodTypeDao, FoodType> {
 
     public Page<FoodType> selectList(Integer pageNum, Integer pageSize) {
         Page<FoodType> result = new Page<>(pageNum, pageSize);
