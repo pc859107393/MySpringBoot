@@ -3,15 +3,15 @@
 
  Source Server         : localhost
  Source Server Type    : MySQL
- Source Server Version : 50715
+ Source Server Version : 50718
  Source Host           : localhost
  Source Database       : ccdb
 
  Target Server Type    : MySQL
- Target Server Version : 50715
+ Target Server Version : 50718
  File Encoding         : utf-8
 
- Date: 09/14/2017 04:33:10 AM
+ Date: 09/14/2017 10:45:46 AM
 */
 
 SET NAMES utf8;

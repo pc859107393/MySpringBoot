@@ -8,7 +8,6 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.Serializable;
 
 @Service("foodService")
 public class FoodServiceImpl extends ServiceImpl<FoodDao, Food> {

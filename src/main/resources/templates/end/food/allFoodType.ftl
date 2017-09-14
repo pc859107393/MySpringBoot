@@ -74,29 +74,8 @@
                         </#list>
                     <div class="modal-footer no-margin-top">
 
-                        <ul class="pagination pull-right no-margin">
-                            <script type="text/javascript">
-                                var pageSize = ${foodTypes.pageSize!};
-                                var pageNum = ${foodTypes.pageNum!};
-                                var totalNum = ${foodTypes.totalNum!};
-                                var result = "<li class=\"prev\" id=\"prev-li\"><a onclick='goToPrev()'><i class=\"icon-double-angle-left\"></i></a></li>";
-                                result += "<li class=\"active\"><a href=\"#\">" + pageNum + "</a></li>";
-                                result += "<li class=\"next\"  id=\"next-li\"><a onclick='goToNext()'><i class=\"icon-double-angle-right\"></i></a></li>";
-                                document.write(result);
-                                if (pageNum === 1) {
+                        <ul class="pagination pull-right no-margin" id="location-menu">
 
-                                }
-
-                                function goToPrev() {
-
-                                }
-
-                                function goToNext() {
-
-                                }
-
-
-                            </script>
                         </ul>
                     </div>
                     </#if>
@@ -241,5 +220,31 @@
 
 
 </script>
+<script type="text/javascript">
+    var pageSize = ${foodTypes.pageSize!};
+    var pageNum = ${foodTypes.pageNum!};
+    var totalNum = ${foodTypes.totalNum!};
+    var result = "<li class=\"prev\" id=\"prev-li\"><a onclick='goToPrev()'><i class=\"icon-double-angle-left\"></i></a></li>";
+    result += "<li class=\"active\"><a href=\"#\">" + pageNum + "</a></li>";
+    result += "<li class=\"next\"  id=\"next-li\"><a onclick='goToNext()'><i class=\"icon-double-angle-right\"></i></a></li>";
+    document.getElementById("location-menu").innerHTML = result;
+    if (pageNum === 1) {
+        $("#prev-li").addClass("disabled");
+    }
+    if (pageNum === totalNum) {
+        $("#next-li").addClass("disabled");
+    }
 
+    function goToPrev() {
+        if (parseInt(pageNum) > 1)
+            window.location = '${base}/endSys/allFoodType?pageNum=' + (parseInt(pageNum) - 1) + '&pageSize=' + pageSize;
+    }
+
+    function goToNext() {
+        if (parseInt(pageNum) < parseInt(totalNum))
+            window.location = '${base}/endSys/allFoodType?pageNum=' + (parseInt(pageNum) + 1) + '&pageSize=' + pageSize;
+    }
+
+
+</script>
 </html>

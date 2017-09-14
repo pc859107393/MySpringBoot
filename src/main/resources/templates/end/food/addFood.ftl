@@ -93,7 +93,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="content"> 菜品详情： </label>
                     <div class="col-sm-9">
-                        <div id="content" name="content" class="wysiwyg-editor col-xs-10 col-sm-5"></div>
+                        <div id="content" name="content" class="wysiwyg-editor"></div>
                     </div>
                 </div>
 

@@ -18,6 +18,9 @@ public class Page<T> implements Serializable {
         this.pageSize = size;
     }
 
+    public Page() {
+    }
+
     public int getTotalNum() {
         return totalNum;
     }
@@ -32,6 +35,22 @@ public class Page<T> implements Serializable {
 
     public void setTotalNum(int totalNum) {
         this.totalNum = totalNum;
+    }
+
+    public int getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
     }
 
     @Override
