@@ -14,6 +14,9 @@ public class Food extends Model<Food> {
     private String content;
     private String style;
     private String type;
+    private Float cost;
+    private Float costVip;
+
 
     @Override
     protected Serializable pkVal() {
@@ -30,6 +33,8 @@ public class Food extends Model<Food> {
                 ", content='" + content + '\'' +
                 ", style='" + style + '\'' +
                 ", type='" + type + '\'' +
+                ", cost=" + cost +
+                ", costVip=" + costVip +
                 '}';
     }
 
@@ -87,5 +92,21 @@ public class Food extends Model<Food> {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Float getCost() {
+        return cost;
+    }
+
+    public void setCost(Float cost) {
+        this.cost = cost;
+    }
+
+    public Float getCostVip() {
+        return costVip;
+    }
+
+    public void setCostVip(Float costVip) {
+        this.costVip = costVip;
     }
 }

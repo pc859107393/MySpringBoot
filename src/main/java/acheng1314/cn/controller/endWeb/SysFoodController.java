@@ -1,13 +1,14 @@
 package acheng1314.cn.controller.endWeb;
 
 
+import acheng1314.cn.domain.Desk;
 import acheng1314.cn.domain.Food;
 import acheng1314.cn.domain.FoodType;
 import acheng1314.cn.domain.ResponseCode;
+import acheng1314.cn.service.DeskServiceImpl;
 import acheng1314.cn.service.FoodServiceImpl;
 import acheng1314.cn.service.FoodTypeServiceImpl;
 import acheng1314.cn.util.GsonUtils;
-import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,9 +18,6 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/endSys")
@@ -187,6 +185,89 @@ public class SysFoodController {
         } catch (Exception e) {
             e.printStackTrace();
             return GsonUtils.toJsonObjStr(null, ResponseCode.FAILED, "菜品修改失败!原因：" + e.getMessage());
+        }
+    }
+
+    @Autowired
+    private DeskServiceImpl deskService;
+
+    @GetMapping(value = "/allDesk", produces = MediaType.TEXT_HTML_VALUE)
+    @ApiOperation(value = "所有餐桌界面", notes = "所有餐桌")
+    public String allDeskGet(@ApiParam(hidden = true) ModelMap map
+            , @ApiParam(value = "当前页码,默认不能为空，否则为1",
+            //参数默认值为1
+            defaultValue = "1") @RequestParam(required = false) Integer pageNum
+            , @ApiParam(value = "当前页面数量,默认不能为空，否则为25",
+            //参数默认值为1
+            defaultValue = "25") @RequestParam(required = false) Integer pageSize) {
+
+        if (null == pageNum || pageNum <= 0) {
+            pageNum = 1;
+        }
+        if (null == pageSize || pageSize == 0) {
+            pageSize = 25;
+            return "redirect:/endSys/allDesk?pageNum=" + pageNum + "&pageSize=" + pageSize;
+        }
+        map.addAttribute("desks", deskService.selectList(pageNum, pageSize));
+        return "end/food/allDesk";
+    }
+
+    @PostMapping(value = "/addDesk", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ApiOperation(value = "添加桌子", notes = "添加餐桌")
+    @ResponseBody
+    public Object addDesk(Desk desk) {
+        try {
+            deskService.insert(desk);
+            return GsonUtils.toJsonObjStr(desk
+                    , ResponseCode.OK
+                    , "添加餐桌成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return GsonUtils.toJsonObjStr(null
+                    , ResponseCode.FAILED
+                    , "添加餐桌失败！原因：" + e.getMessage());
+        }
+    }
+
+    @PostMapping(value = "/updateDesk", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ApiOperation(value = "更新桌子", notes = "更新餐桌")
+    @ResponseBody
+    public Object updateDesk(Desk desk) {
+        try {
+            deskService.update(desk);
+            return GsonUtils.toJsonObjStr(desk
+                    , ResponseCode.OK
+                    , "更新餐桌成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return GsonUtils.toJsonObjStr(null
+                    , ResponseCode.FAILED
+                    , "更新餐桌失败！原因：" + e.getMessage());
+        }
+    }
+
+    @GetMapping(value = "/delDesk/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ApiOperation(value = "删除菜品", notes = "删除菜品")
+    @ResponseBody
+    public Object delDesk(@PathVariable("id") Integer id) {
+        try {
+            deskService.deleteById(id);
+            return GsonUtils.toJsonObjStr(null, ResponseCode.OK, "删除餐桌成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return GsonUtils.toJsonObjStr(null, ResponseCode.FAILED, "删除餐桌失败！");
+        }
+    }
+
+    @GetMapping(value = "/getOneDesk/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ApiOperation(value = "查找桌子", notes = "查找桌子")
+    @ResponseBody
+    public Object getOneDesk(@PathVariable("id") Integer id) {
+        try {
+            return GsonUtils.toJsonObjStr(deskService.selectById(id), ResponseCode.OK, "查找桌子成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return GsonUtils.toJsonObjStr(null, ResponseCode.FAILED, "查找桌子失败！");
         }
     }
 

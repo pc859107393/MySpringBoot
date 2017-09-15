@@ -48,6 +48,22 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="cost"> 菜品单价(￥)： </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="cost" name="cost" placeholder="菜品单价" class="col-xs-10 col-sm-5"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="costVip"> 菜品会员价(￥)： </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="costVip" name="costVip" placeholder="菜品会员价" class="col-xs-10 col-sm-5"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="avatar"> 封面图片： </label>
 
                 <#--<div class="col-sm-9">-->
@@ -116,6 +132,8 @@
         <#if food?exists>
             <script type="application/javascript">
                 document.getElementById("name").value = '${food.name!}';
+                document.getElementById("cost").value = '${food.cost!}';
+                document.getElementById("costVip").value = '${food.costVip!}';
                 document.getElementById("avatar").value = '${food.avatar!}';
                 document.getElementById("style").value = '${food.style!}';
                 document.getElementById("type").value = '${food.type!}';
@@ -164,6 +182,8 @@
     function postFoodInfo() {
         if (!checkFoodTypeInfo()) return;
         var name = $('#name').val();
+        var costVip = $('#costVip').val();
+        var cost = $('#cost').val();
         var avatar = $('#avatar').val();
         var style = $('#style').val();
         var type = $('#type').val();
@@ -173,7 +193,15 @@
             type: 'POST',
             url: '${base}/endSys/addFoods',
             cache: false,
-            data: {name: name, avatar: avatar, style: style, type: type, content: content},
+            data: {
+                name: name,
+                avatar: avatar,
+                style: style,
+                type: type,
+                content: content,
+                cost: cost,
+                costVip: costVip
+            },
             dataType: 'json',
             success: function (data) {  //请求成功，http状态码为200。返回的数据已经打包在data中了。
                 alert(data.msg);    //弹出对话框，提示返回的错误信息

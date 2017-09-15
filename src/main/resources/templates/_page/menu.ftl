@@ -160,16 +160,9 @@
             <ul class="submenu">
 
                 <li>
-                    <a onclick="menuOnclick('zAllDesk','所有餐桌','../endSys/userList')">
+                    <a onclick="menuOnclick('zAllDesk','所有餐桌','../endSys/allDesk')">
                         <i class="icon-text-width"></i>
                         <span class="menu-text"> 所有餐桌 </span>
-                    </a>
-                </li>
-
-                <li>
-                    <a onclick="menuOnclick('zAddDesk','添加餐桌','../endSys/addUser')">
-                        <i class="icon-text-width"></i>
-                        <span class="menu-text"> 添加餐桌 </span>
                     </a>
                 </li>
 

@@ -44,6 +44,7 @@
                         <th>菜品名称</th>
                         <th>菜品口味</th>
                         <th>所属菜系</th>
+                        <th>原价&nbsp;/&nbsp;会员价(￥)</th>
                         <th>&nbsp; &nbsp; &nbsp;</th>
 
                     </tr>
@@ -58,6 +59,7 @@
                             <td>${food.name!}</td>
                             <td>${food.style!}</td>
                             <td>${food.type!}</td>
+                            <td>${food.cost!}&nbsp;/&nbsp;${food.costVip!}</td>
 
                             <td class="center">
                                 <div>
@@ -91,76 +93,6 @@
         <!-- /span -->
     </div>
 
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div id="dialog-confirm" class="hide">
-                        <div class="row">
-                            <div class="col-xs-12">
-
-                                <form class="form-horizontal" role="form" action="/endSys/updateFoodType" method="post"
-                                      onsubmit="return beforeUpdateFoodType()">
-
-                                    <input type="hidden" id="id" name="id" placeholder="id">
-
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label no-padding-right" for="name">
-                                            菜系名称： </label>
-
-                                        <div class="col-sm-8">
-                                            <input type="text" id="name" name="name" placeholder="菜系名称"
-                                                   class="col-xs-10 col-sm-8"/>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label no-padding-right" for="description">
-                                            菜系描述： </label>
-
-                                        <div class="col-sm-8">
-                                            <input type="text" id="description" name="description" placeholder="菜系描述"
-                                                   class="col-xs-10 col-sm-8"/>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-sm-4 control-label no-padding-right" for="other">
-                                            菜系备注： </label>
-
-                                        <div class="col-sm-8">
-                                            <input type="text" id="other" name="other" placeholder="菜系备注"
-                                                   class="col-xs-10 col-sm-8"/>
-                                        </div>
-                                    </div>
-
-                                    <div class="clearfix form-actions">
-                                        <button class="btn btn-info" type="button"
-                                                onclick="">
-                                            <i class="icon-ok bigger-110"></i>
-                                            修改
-                                        </button>
-
-                                        &nbsp;
-                                        <button class="btn" type="reset">
-                                            <i class="icon-undo bigger-110"></i>
-                                            清除
-                                        </button>
-                                    </div>
-
-                                </form>
-
-
-                            </div>
-                            <!-- /span -->
-                        </div>
-                    </div><!-- #dialog-confirm -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /row -->
-
 </div><!-- /.page-content -->
 
 </body>
@@ -168,31 +100,6 @@
 <#include "../../_inc/_footer.ftl"/>
 <script src="${base}/static/js/md5.js"></script>
 <script type="text/javascript">
-
-    function getUserInfo(id) {
-        $.ajax({
-            type: 'GET',
-            url: '${base}/endSys/getOneFoodType/' + id,
-            cache: false,
-            dataType: 'json',
-            success: function (data) {  //请求成功，http状态码为200。返回的数据已经打包在data中了。
-                if (data.code === 1) {
-                    document.getElementById("id").value = data.data.id;
-                    document.getElementById("name").value = data.data.name;
-                    document.getElementById("description").value = data.data.description;
-                    document.getElementById("other").value = data.data.other;
-                    $("#dialog-confirm").removeClass('hide').dialog({
-                        resizable: true,
-                        modal: true,
-                        title: "    修改菜系！",
-                        title_html: true
-                    });
-                } else {
-                    alert(data.msg);    //弹出对话框，提示返回的错误信息
-                }
-            }
-        });
-    }
 
     function delUser(id) {
         $.ajax({
@@ -211,7 +118,7 @@
         if ("" == $("#name").val()) {
             $("#name").tips({
                 side: 2,
-                msg: '菜系名称不得为空',
+                msg: '菜品名称不得为空',
                 bg: '#AE81FF',
                 time: 3
             });
