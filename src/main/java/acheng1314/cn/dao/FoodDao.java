@@ -19,7 +19,7 @@ public interface FoodDao extends BaseMapper<Food> {
     @Override
     Integer insert(Food entity);
 
-    @Select("SELECT * FROM `cc_food` WHERE status!='0' GROUP BY `id` DESC LIMIT #{offset}, #{limit};")
+    @Select("SELECT * FROM `cc_food` WHERE status!='0' GROUP BY `id` LIMIT #{offset}, #{limit};")
     List<Food> selectList(@Param("offset") int offset, @Param("limit") int limit);
 
     @Select("SELECT COUNT(*) FROM `cc_food` WHERE status!='0';")

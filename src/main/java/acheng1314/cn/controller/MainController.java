@@ -1,6 +1,8 @@
 package acheng1314.cn.controller;
 
 import acheng1314.cn.domain.User;
+import acheng1314.cn.service.FoodServiceImpl;
+import acheng1314.cn.service.FoodTypeServiceImpl;
 import acheng1314.cn.util.FileDownload;
 import acheng1314.cn.util.LogE;
 import acheng1314.cn.util.MySiteMap;
@@ -12,6 +14,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -26,10 +29,17 @@ import java.io.IOException;
 @Api(description = "外层信息，无需Shiro接管，集成文件下载控制器")
 public class MainController {
 
+    @Autowired
+    private FoodServiceImpl foodService;
+    @Autowired
+    private FoodTypeServiceImpl foodTypeService;
+
     @GetMapping(value = "/")
     @ApiOperation(value = "主页")
-    public String home() {
-        return apiDocs();
+    public String home(@ApiParam(hidden = true) ModelMap map) {
+        map.addAttribute("foodTypes", foodTypeService.selectList(1, 50));
+        map.addAttribute("foods", foodService.selectList(1, 500));
+        return "/front/home";
     }
 
     @GetMapping(value = "/apiDocs")
