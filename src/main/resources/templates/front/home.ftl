@@ -46,6 +46,12 @@
                 </#list>
             </#if>
 
+                <li>
+                    <a href="#foodType-car">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 我的订单 </span>
+                    </a>
+                </li>
 
             </ul>
             <!-- /.nav-list -->
@@ -167,6 +173,79 @@
 
                     </#list>
                 </#if>
+
+                    <div class="row">
+                        <a name="foodType-car">
+                            <div class="page-header">
+                                <h1>我的订单
+                                </h1>
+                            </div>
+                        </a>
+
+                        <div class="col-xs-12 col-sm-9">
+                            <div class="widget-box">
+                                <div class="widget-header">
+                                    <h4> 我的订单</h4>
+
+
+                                    <div class="widget-toolbar">
+                                        <a href="#" data-action="collapse">
+                                            <i class="icon-chevron-up"></i>
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                                <div class="widget-body">
+                                    <div class="widget-main">
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>菜名</th>
+                                                <th class="center">
+                                                    口味
+                                                </th>
+                                                <th>原价&nbsp;/&nbsp;会员价(￥)</th>
+                                                <th>&nbsp; &nbsp; &nbsp;</th>
+
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+                                            <#--<#if foods?exists>-->
+                                                <#--<#list foods.data as food>-->
+                                                <#--<tr>-->
+                                                    <#--<#if food.type! == foodType.name!>-->
+                                                        <#--<td>-->
+                                                        <#--${food.name!}-->
+                                                        <#--</td>-->
+                                                        <#--<td>-->
+                                                        <#--${food.style!}-->
+                                                        <#--</td>-->
+                                                        <#--<td>-->
+                                                        <#--${food.cost!}&nbsp;/&nbsp;${food.costVip!}-->
+                                                        <#--</td>-->
+                                                        <#--<td class="center">-->
+                                                            <#--<div>-->
+                                                                <#--<button class="btn btn-warning btn-xs"-->
+                                                                        <#--onclick="">-->
+                                                                    <#--<i class="icon-arrow-right  bigger-110 icon-only"></i>-->
+                                                                    <#--添加到点菜单-->
+                                                                <#--</button>-->
+                                                            <#--</div>-->
+                                                        <#--</td>-->
+                                                    <#--</#if>-->
+                                                <#--</tr>-->
+                                                <#--</#list>-->
+                                            <#--</#if>-->
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.row -->
             </div>
