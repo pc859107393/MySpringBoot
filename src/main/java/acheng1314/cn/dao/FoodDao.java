@@ -10,7 +10,7 @@ import java.util.List;
 @Repository("foodDao")
 public interface FoodDao extends BaseMapper<Food> {
 
-    //    @Insert("INSERT INTO `cc_food` " +
+//        @Insert("INSERT INTO `cc_food` " +
 //            "VALUES (#{id}, #{name}, #{avatar}, #{content}, #{style}, #{type})")
     @SelectKey(statement = "SELECT LAST_INSERT_ID()"
             , keyProperty = "id"

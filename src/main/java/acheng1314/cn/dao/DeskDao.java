@@ -4,6 +4,7 @@ import acheng1314.cn.domain.Desk;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -23,4 +24,6 @@ public interface DeskDao extends BaseMapper<Desk> {
     @Select("SELECT COUNT(*) FROM `cc_desk` WHERE status!='0';")
     int getCount();
 
+    @Update("UPDATE `cc_desk` SET `status` = '0' WHERE `id`= #{id};")
+    void delDesk4Id(Integer id);
 }

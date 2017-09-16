@@ -251,11 +251,11 @@ public class SysFoodController {
     @ResponseBody
     public Object delDesk(@PathVariable("id") Integer id) {
         try {
-            deskService.deleteById(id);
+            deskService.delDesk4Id(id);
             return GsonUtils.toJsonObjStr(null, ResponseCode.OK, "删除餐桌成功！");
         } catch (Exception e) {
             e.printStackTrace();
-            return GsonUtils.toJsonObjStr(null, ResponseCode.FAILED, "删除餐桌失败！");
+            return GsonUtils.toJsonObjStr(null, ResponseCode.FAILED, "删除餐桌失败！原因：" + e.getMessage());
         }
     }
 

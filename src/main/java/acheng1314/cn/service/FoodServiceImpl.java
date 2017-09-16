@@ -37,8 +37,8 @@ public class FoodServiceImpl extends ServiceImpl<FoodDao, Food> {
     public void insertOne(Food food) throws Exception {
         if (StringUtils.isEmpty(food.getName())) throw new Exception("菜品名称不能为空！");
         //初始化价格
-        if (null == food.getCost()) food.setCost(0f);
-        if (null == food.getCostVip()) food.setCostVip(food.getCost());
+//        if (null == food.getCost()) food.setCost(0f);
+//        if (null == food.getCostVip()) food.setCostVip(food.getCost());
         super.baseMapper.insert(food);
     }
 

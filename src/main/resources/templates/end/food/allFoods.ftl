@@ -55,7 +55,9 @@
                     <#if foods?exists>
                         <#list foods.data as food>
                         <tr>
-                            <td class="center">${food.avatar!}</td>
+                            <td class="center">
+                                <img class="" src="${food.avatar!}" height="55" width="55">
+                            </td>
                             <td>${food.name!}</td>
                             <td>${food.style!}</td>
                             <td>${food.type!}</td>

@@ -124,6 +124,7 @@
                                             <table class="table table-striped table-bordered table-hover">
                                                 <thead>
                                                 <tr>
+                                                    <th></th>
                                                     <th>菜名</th>
                                                     <th class="center">
                                                         口味
@@ -139,6 +140,9 @@
                                                         <#list foods.data as food>
                                                         <tr>
                                                             <#if food.type! == foodType.name!>
+                                                                <td class="center">
+                                                                    <img class="" src="${food.avatar!}" height="55" width="55">
+                                                                </td>
                                                                 <td>
                                                                 ${food.name!}
                                                                 </td>

@@ -41,4 +41,9 @@ public class DeskServiceImpl extends ServiceImpl<DeskDao, Desk> {
         return result;
     }
 
+    public void delDesk4Id(Integer id) throws Exception {
+        if (null == id || id < 1) throw new Exception("餐桌错误！删除失败");
+        baseMapper.delDesk4Id(id);
+    }
+
 }

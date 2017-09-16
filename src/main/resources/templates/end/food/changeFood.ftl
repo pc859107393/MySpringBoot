@@ -67,18 +67,14 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="avatar"> 封面图片： </label>
 
-                <#--<div class="col-sm-9">-->
-                <#--<input type="text" id="avatar" name="avatar" placeholder="封面图片"-->
-                <#--class="col-xs-10 col-sm-5"/>-->
-                <#--</div>-->
+                    <div class="col-sm-9">
+                        <input type="text" id="avatar" name="avatar" placeholder="封面图片"
+                               class="col-xs-10 col-sm-5 hidden"/>
+                    </div>
 
-                    <div class="col-xs-10 col-sm-4" id="food-avatar-img">
-                        <div class="ace-file-input ace-file-multiple"><input type="file" name="avatar" id="avatar">
-
-                            <a class="remove" href="#">
-                                <i class="icon-remove"></i>
-                            </a>
-                        </div>
+                    <div class="col-xs-10 col-sm-8" id="food-avatar-img">
+                        <input type="file" id="upfile" name="upfile">
+                        <input type="button" id="upJQuery" value="上传封面">
                     </div>
 
                 </div>
@@ -111,7 +107,7 @@
                     <label class="col-sm-3 control-label no-padding-right" for="content"> 菜品详情： </label>
                     <div class="col-sm-9">
                         <div id="content" name="content"
-                             class="wysiwyg-editor col-xs-10 col-sm-5">${food.content!}</div>
+                             class="wysiwyg-editor">${food.content!}</div>
                     </div>
                 </div>
 
@@ -215,6 +211,26 @@
 
     }
 
+</script>
+
+<script type="text/javascript">
+    $('#upJQuery').on('click', function () {
+        var fd = new FormData();
+        fd.append("upload", 1);
+        fd.append("upfile", $("#upfile").get(0).files[0]);
+        $.ajax({
+            url: "${base}/endSys/uploadFile",
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: fd,
+            dataType: 'json',
+            success: function (d) {
+                console.log(d.url);
+                document.getElementById("avatar").value = d.url;
+            }
+        });
+    });
 </script>
 
 </html>

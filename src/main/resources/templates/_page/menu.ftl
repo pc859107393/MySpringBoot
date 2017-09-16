@@ -212,6 +212,13 @@
             </ul>
         </li>
 
+        <li>
+            <a onclick="menuOnclick('zUpload','资源上传','../endSys/uploadFile')">
+                <i class="icon-double-angle-right"></i>
+                文件上传
+            </a>
+        </li>
+
     </ul><!-- /.nav-list -->
     <div class="sidebar-collapse" id="sidebar-collapse">
         <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
