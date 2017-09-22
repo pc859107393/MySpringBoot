@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class MyCredentialsMatcher extends SimpleCredentialsMatcher {
 
-    @Autowired
-    private UserServiceImpl userService;
+//    @Autowired
+//    private UserServiceImpl userService;
 
     /**
      * 密码比较方法
