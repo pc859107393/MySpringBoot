@@ -96,6 +96,13 @@
         </li>
 
         <li>
+            <a onclick="menuOnclick('zCreateCode','代码生成器','../endSys/createCode')">
+                <i class="icon-desktop"></i>
+                <span class="menu-text"> 代码生成器 </span>
+            </a>
+        </li>
+
+        <li>
             <a href="#" class="dropdown-toggle">
                 <i class="icon-tag"></i>
                 <span class="menu-text"> 用户管理与维护 </span>
