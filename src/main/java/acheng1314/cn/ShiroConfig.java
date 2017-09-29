@@ -73,7 +73,7 @@ public class ShiroConfig {
         //authc表示需要验证身份才能访问，还有一些比如anon表示不需要验证身份就能访问等。
         filterChainDefinitionMap.put("/druid/*/**", "authc");
         filterChainDefinitionMap.put("/endSys/*/**", "authc");
-        filterChainDefinitionMap.put("/swagger-ui.html/*/**", "authc");
+        filterChainDefinitionMap.put("/swagger*/**", "authc");
 
 
         shiroFilterFactoryBean.setLoginUrl("/login");
