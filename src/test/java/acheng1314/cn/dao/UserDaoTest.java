@@ -34,7 +34,7 @@ public class UserDaoTest extends BaseTest {
 
     @Test
     public void addUser() throws Exception {
-        Integer time = DateUtil.getIntTime();
+        Integer time = DateUtil.INSTANCE.getIntTime();
         String password = EncryptUtils.encryptPassword(CipherUtils.small32md5("laopo5201314")
                 , time.toString());
         loge(time.toString());

@@ -31,7 +31,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> {
         if (StringUtils.isEmpty(entity.getLoginName(), entity.getPassword()))
             throw new Exception("用户名或密码不能为空！");
         //创建插入时间
-        Integer createTime = DateUtil.getIntTime();
+        Integer createTime = DateUtil.INSTANCE.getIntTime();
         entity.setCreateDate(createTime);
         //MD5密码加盐后再sha256加密
         entity.setPassword(EncryptUtils.encryptPassword(entity.getPassword().toLowerCase()

@@ -71,7 +71,7 @@ public class SysMainController {
             }
             String usrHome = System.getProperty("user.home");
 
-            String fileRename = DateUtil.getDays();//按照日期分类的目录
+            String fileRename = DateUtil.INSTANCE.getDays();//按照日期分类的目录
             String filePath = usrHome + MySiteMap.FILE_PATH + fileRename;        //文件上传路径
             String fileResultName = FileUpload.fileUp(file, filePath, StringUtils.get32UUID());//执行上传
             //分装百度上传信息

@@ -21,7 +21,7 @@ public class UserServiceImplTest extends BaseTest {
 
     @Test
     public void addOneUser() throws Exception {
-        User u = new User("程打野", "pc859107393", "laopo5201314", "admin", DateUtil.getIntTime());
+        User u = new User("程打野", "pc859107393", "laopo5201314", "admin", DateUtil.INSTANCE.getIntTime());
         u.setPassword(CipherUtils.small16md5(u.getPassword()));
         System.out.println(u.getId() + "\n" + u.toString() + "\n" + CipherUtils.small16md5("laopo5201314"));
         userService.addOneUser(u);
