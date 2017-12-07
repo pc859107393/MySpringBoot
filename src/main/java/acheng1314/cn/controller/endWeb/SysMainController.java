@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,11 +53,11 @@ public class SysMainController {
     }
 
     @PostMapping(value = "/uploadFile", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @ApiOperation(value = "后端上传文件。兼容Ueditor", notes = "后端上传文件。兼容Ueditor")
+    @ApiOperation(value = "后端上传文件。兼容Ueditor、wangEditor", notes = "后端上传文件。兼容Ueditor、wangEditor")
     @ResponseBody
     public Object upload(@RequestParam(value = "upfile", required = false) MultipartFile file
             , HttpServletRequest request) {
-        Map<String, String> resultMap = new HashMap<>();    //返回结果
+        Map<String, Object> resultMap = new HashMap<>();    //返回结果
 
         try {
             //服务器地址
@@ -67,6 +68,7 @@ public class SysMainController {
             serverPath.append(request.getContextPath());
             if (null == file || file.isEmpty()) {
                 resultMap.put("state", "上传失败");
+                resultMap.put("errno", -1);
                 return resultMap;
             }
             String usrHome = System.getProperty("user.home");
@@ -76,14 +78,21 @@ public class SysMainController {
             String fileResultName = FileUpload.fileUp(file, filePath, StringUtils.get32UUID());//执行上传
             //分装百度上传信息
             resultMap.put("state", "SUCCESS");
+            //兼容wangEditor必须返回errno和data数组
+            resultMap.put("errno", 0);
+            ArrayList<String> resultList = new ArrayList<>();
+            resultList.add(serverPath + MySiteMap.FILE_PATH + fileRename + "/" + fileResultName);
+            resultMap.put("data", resultList);
             resultMap.put("url", serverPath + MySiteMap.FILE_PATH + fileRename + "/" + fileResultName);
             resultMap.put("title", "");
             resultMap.put("original", file.getOriginalFilename());
         } catch (Exception e) {
             resultMap.put("state", "上传失败");
+            resultMap.put("errno", -1);
         }
         return resultMap;
     }
+
 
     @GetMapping(value = "/tab", produces = MediaType.TEXT_HTML_VALUE)
     @ApiOperation(value = "web页面标签", notes = "web页面内部导航标签")
