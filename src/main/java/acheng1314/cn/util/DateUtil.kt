@@ -59,9 +59,7 @@ object DateUtil {
      * @return
      */
     fun isInEasternEightZones(): Boolean {
-        var defaultVaule = true
-        defaultVaule = TimeZone.getDefault() === TimeZone.getTimeZone("GMT+08")
-        return defaultVaule
+        return TimeZone.getDefault() === TimeZone.getTimeZone("GMT+08")
     }
 
     /**
@@ -85,7 +83,7 @@ object DateUtil {
      * @return
      */
     fun friendlyTime(sdate: String): String {
-        var time: Date? = null
+        var time: Date?
 
         if (isInEasternEightZones()) {
             time = toDate(sdate)
@@ -97,7 +95,7 @@ object DateUtil {
         if (time == null) {
             return "Unknown"
         }
-        var ftime = ""
+        val ftime: String
         val cal = Calendar.getInstance()
 
         // 判断是否是同一天
@@ -233,12 +231,11 @@ object DateUtil {
 
     fun getDiffYear(startTime: String, endTime: String): Int {
         val fmt = SimpleDateFormat("yyyy-MM-dd")
-        try {
-            val aa: Long = 0
-            return ((fmt.parse(endTime).time - fmt.parse(startTime).time) / (1000 * 60 * 60 * 24) / 365) as Int
+        return try {
+            ((fmt.parse(endTime).time - fmt.parse(startTime).time) / (1000 * 60 * 60 * 24) / 365).toInt()
         } catch (e: Exception) {
             // 如果throw java.text.ParseException或者NullPointerException，就说明格式不对
-            return 0
+            0
         }
 
     }
@@ -252,7 +249,7 @@ object DateUtil {
      * @author Administrator
      */
     fun getDaySub(beginDateStr: String, endDateStr: String): Long {
-        var day: Long = 0
+        val day: Long
         val format = java.text.SimpleDateFormat("yyyy-MM-dd")
         var beginDate: java.util.Date? = null
         var endDate: java.util.Date? = null
