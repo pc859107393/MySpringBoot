@@ -16,8 +16,8 @@
                     <div class="center">
                         <h1>
                             <i class="icon-leaf green"></i>
-                            <span class="red">Ace</span>
-                            <span class="white">Application</span>
+                            <span class="red">快客</span>
+                            <span class="white">短租</span>
                         </h1>
                         <h4 class="blue"> 后台登录</h4>
                     </div>
