@@ -3,7 +3,7 @@ package acheng1314.cn.controller.endWeb;
 import acheng1314.cn.domain.ResponseCode;
 import acheng1314.cn.domain.User;
 import acheng1314.cn.service.UserServiceImpl;
-import acheng1314.cn.util.GsonUtils;
+import acheng1314.cn.util.GsonUtil;
 import acheng1314.cn.util.StringUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -70,10 +70,10 @@ public class SysUserController {
     public Object delUser(@PathVariable("loginName") String loginName) {
         try {
             userService.delUser(loginName);
-            return GsonUtils.toJsonObjStr(null, ResponseCode.OK, "禁用用户成功！");
+            return GsonUtil.INSTANCE.toJsonObjStr(null, ResponseCode.OK, "禁用用户成功！");
         } catch (Exception e) {
             e.printStackTrace();
-            return GsonUtils.toJsonObjStr(null, ResponseCode.FAILED, "禁用用户失败！原因：" + e.getMessage());
+            return GsonUtil.INSTANCE.toJsonObjStr(null, ResponseCode.FAILED, "禁用用户失败！原因：" + e.getMessage());
         }
     }
 
@@ -83,10 +83,10 @@ public class SysUserController {
     public Object getUserInfo(@PathVariable("loginName") String loginName) {
         try {
             User oneByLoginName = userService.findOneByLoginName(loginName);
-            return GsonUtils.toJsonObjStr(oneByLoginName, ResponseCode.OK, "查找用户成功！");
+            return GsonUtil.INSTANCE.toJsonObjStr(oneByLoginName, ResponseCode.OK, "查找用户成功！");
         } catch (Exception e) {
             e.printStackTrace();
-            return GsonUtils.toJsonObjStr(null, ResponseCode.FAILED, "查找用户失败！原因：" + e.getMessage());
+            return GsonUtil.INSTANCE.toJsonObjStr(null, ResponseCode.FAILED, "查找用户失败！原因：" + e.getMessage());
         }
     }
 
