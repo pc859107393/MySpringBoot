@@ -17,7 +17,7 @@ import javax.annotation.Resource
 @Api(description = "后台获取用户信息的API接口，需要用户登录权限！")
 @RestController
 @RequestMapping("/endSys/api/user")
-open class SysUserApi() {
+class SysUserApi {
 
     @Resource
     private lateinit var userService: UserServiceImpl
@@ -31,9 +31,9 @@ open class SysUserApi() {
                 val userList = userService.selectList()
                 if (userList != null) {
                     if (userList.isNotEmpty())
-                        GsonUtil.toJsonObjStr(null, ResponseCode.EMPTY, null!!)
-                    else
                         GsonUtil.toJsonObjStr(userList, ResponseCode.OK, "获取数据成功!")
+                    else
+                        GsonUtil.toJsonObjStr(null, ResponseCode.EMPTY, null)
                 } else throw NotFoundException("出现问题了？！！！")
             } catch (e: Exception) {
                 e.printStackTrace()

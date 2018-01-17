@@ -31,7 +31,7 @@ open class UserServiceImpl : ServiceImpl<UserDao, User>() {
         val createTime = DateUtil.getIntTime()
         entity.createDate = createTime
         //MD5密码加盐后再sha256加密
-        entity.password = EncryptUtils.encryptPassword(entity.password.toLowerCase(), createTime!!.toString())
+        entity.password = EncryptUtils.encryptPassword(entity.password!!.toLowerCase(), createTime!!.toString())
         entity.isUsed = true   //默认可用
         baseMapper.addUser(entity)
     }
@@ -86,7 +86,7 @@ open class UserServiceImpl : ServiceImpl<UserDao, User>() {
     @Transactional
     @Throws(Exception::class)
     open fun updateUser(user: User) {
-        val tmpSwap = findOneByLoginName(user.loginName)
+        val tmpSwap = findOneByLoginName(user.loginName!!)
         if (tmpSwap != null) {
             var notDo = 0
             //交换昵称
@@ -102,12 +102,12 @@ open class UserServiceImpl : ServiceImpl<UserDao, User>() {
             //交换密码
             if (!StringUtils.isEmpty(user.password)) {
                 //32位小写转换为16位小写
-                if (user.password.length > 16 && user.password.length == 32) {
-                    user.password = user.password
+                if (user.password!!.length > 16 && user.password!!.length == 32) {
+                    user.password = user.password!!
                             .substring(8, 24)
                             .toLowerCase()
                 }
-                tmpSwap.password = EncryptUtils.encryptPassword(user.password.toLowerCase(), tmpSwap.createDate!!.toString())
+                tmpSwap.password = EncryptUtils.encryptPassword(user.password!!.toLowerCase(), tmpSwap.createDate!!.toString())
             } else
                 notDo++
             //交换可否使用

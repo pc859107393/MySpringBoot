@@ -172,7 +172,7 @@ object GsonUtil {
      * @param msg    不成功状态的提示信息
      * @return
      */
-    fun toJsonObjStr(`object`: Any?, code: ResponseCode, msg: String): String {
+    fun toJsonObjStr(`object`: Any?, code: ResponseCode, msg: String?): String {
         val result = ResponseObj<Any>()
         result.code = code.code
         result.msg = if (StringUtils.isEmpty(msg)) code.msg else msg
