@@ -7,6 +7,7 @@ import acheng1314.cn.service.UserServiceImpl
 import acheng1314.cn.util.GsonUtil
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -17,9 +18,9 @@ import javax.annotation.Resource
 @Api(description = "后台获取用户信息的API接口，需要用户登录权限！")
 @RestController
 @RequestMapping("/endSys/api/user")
-class SysUserApi {
+open class SysUserApi {
 
-    @Resource
+    @Autowired
     private lateinit var userService: UserServiceImpl
 
     val goodsList: Any

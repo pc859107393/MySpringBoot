@@ -23,7 +23,7 @@ import java.util.HashMap
 @Controller
 @RequestMapping("/endSys")
 @Api(description = "控制后端页面导航，后端文件上传控制")
-class SysMainController {
+open class SysMainController {
 
     @GetMapping(value = ["/index"], produces = [(MediaType.TEXT_HTML_VALUE)])
     @ApiOperation(value = "后端主页框架", notes = "后端主页框架")

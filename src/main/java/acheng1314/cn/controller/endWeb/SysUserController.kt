@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*
 @Controller
 @RequestMapping("/endSys")
 @Api(description = "用户控制器，控制后台访问用户信息相关")
-class SysUserController {
+open class SysUserController {
 
     @Autowired
     private val userService: UserServiceImpl? = null

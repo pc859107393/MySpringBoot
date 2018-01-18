@@ -20,6 +20,19 @@
 
 ----
 
+> 18-01-18
+
+项目主要转换为kotlin开发：
+
+kotlin版本：1.2.10
+mysql版本： mysql-5.7.18
+系统：macOS10.12.6
+IDE：IntelliJ IDEA 2017.3.2 (Ultimate Edition)（内置kotlin1.2.10插件）
+JRE：JRE: 1.8.0_152-release-1024-b8 x86_64
+JVM: JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
+构建工具：Gradle
+
+
 > 17-09-23
 
 构建基础手脚架完成。下一期完成代码生成器。

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping
  */
 @Controller
 @Api(description = "主要的测试控制器")
-class TestController {
+open class TestController {
 
     @GetMapping(value = ["/testPath"])
     @ApiOperation(value = "测试页面解析器", notes = "这个到底是那个路径呢？")

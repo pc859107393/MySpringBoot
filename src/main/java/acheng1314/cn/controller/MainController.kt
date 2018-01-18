@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse
 
 @Controller
 @Api(description = "外层信息，无需Shiro接管，集成文件下载控制器")
-class MainController {
+open class MainController {
 
     @GetMapping(value = ["/"])
     @ApiOperation(value = "主页")

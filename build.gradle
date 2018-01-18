@@ -22,7 +22,7 @@ buildscript {
         classpath 'org.springframework:springloaded:1.2.7.RELEASE'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
         classpath "org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}"
-        classpath "org.jetbrains.kotlin:kotlin-noarg:${kotlinVersion}"
+//        classpath "org.jetbrains.kotlin:kotlin-noarg:${kotlinVersion}"
         // See https://kotlinlang.org/docs/reference/compiler-plugins.html#kotlin-spring-compiler-plugin
     }
 
@@ -38,9 +38,8 @@ apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'idea'
 apply plugin: 'kotlin'
-apply plugin: "kotlin-allopen"
 apply plugin: "kotlin-spring"
-apply plugin: "kotlin-noarg"
+//apply plugin: "kotlin-noarg"
 apply plugin: 'org.springframework.boot'
 
 sourceCompatibility = 1.8

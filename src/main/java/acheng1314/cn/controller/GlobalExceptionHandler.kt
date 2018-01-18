@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView
 import javax.servlet.http.HttpServletRequest
 
 @ControllerAdvice
-class GlobalExceptionHandler {
+open class GlobalExceptionHandler {
 
     @ExceptionHandler(value = [(Exception::class)])
     @Throws(Exception::class)

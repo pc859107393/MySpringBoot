@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest
 @RequestMapping("/endSys")
 @Controller
 @Api(description = "代码生成器控制器")
-class SysCreateCodeController {
+open class SysCreateCodeController {
 
     @GetMapping(path = arrayOf("/createCode"), produces = arrayOf(MediaType.TEXT_HTML_VALUE))
     @ApiOperation(notes = "浏览器打开代码生成器网页", value = "浏览器访问代码生成器页面")
