@@ -1,4 +1,4 @@
-package acheng1314.cn.controller.endWeb
+package acheng1314.cn.controller.admin
 
 
 import io.swagger.annotations.Api
