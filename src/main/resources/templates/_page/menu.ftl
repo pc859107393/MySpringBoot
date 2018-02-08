@@ -130,6 +130,48 @@
             </ul>
         </li>
 
+        <li>
+            <a href="#" class="dropdown-toggle">
+                <i class="icon-tag"></i>
+                <span class="menu-text"> 首页功能 </span>
+
+                <b class="arrow icon-angle-down"></b>
+            </a>
+
+            <ul class="submenu">
+
+                <li>
+                    <a onclick="menuOnclick('zUserIndex','轮播图管理','../endSys/homePage/banner')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 轮播图管理 </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a onclick="menuOnclick('zAddUser','热门城市管理','../endSys/addUser')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 热门城市管理 </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a onclick="menuOnclick('zAddUser','我们的热评管理','../endSys/addUser')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 我们的热评管理 </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a onclick="menuOnclick('zAddUser','你我的故事管理','../endSys/addUser')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 你我的故事管理 </span>
+                    </a>
+                </li>
+
+
+            </ul>
+        </li>
+
     </ul><!-- /.nav-list -->
     <div class="sidebar-collapse" id="sidebar-collapse">
         <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
