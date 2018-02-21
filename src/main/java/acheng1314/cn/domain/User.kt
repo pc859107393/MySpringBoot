@@ -34,7 +34,7 @@ class User : Model<User> {
             this.used = used
         }
 
-    constructor() {}
+    constructor()
 
     override fun pkVal(): Serializable? {
         return this.id
