@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 
 @Controller
 @RequestMapping("/endSys/homePage")
-@Api(description = "网站首页控制器")
+@Api(description = "网站首页控制器", hidden = true)
 class SysHomePageController {
     @GetMapping(value = ["/banner"], produces = [MediaType.TEXT_HTML_VALUE])
     @ApiOperation(value = "编辑首页轮播图", notes = "首页轮播图编辑器")

@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>添加商品&更新库存</title>
+    <title>轮播图管理</title>
 <#include "../../_inc/_header.ftl"/>
 
 </head>
