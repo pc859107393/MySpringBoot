@@ -12,6 +12,10 @@ import com.google.gson.stream.JsonWriter
 import java.io.IOException
 import java.io.Reader
 import java.lang.reflect.Type
+import java.util.ArrayList
+import com.google.gson.JsonElement
+import com.google.gson.JsonArray
+
 
 object GsonUtil {
 
@@ -180,5 +184,19 @@ object GsonUtil {
             result.data = `object`
         }
         return toJson(result)
+    }
+
+    fun <T> toList(json: String, type: Class<T>): ArrayList<T>? {
+        val list = ArrayList<T>()
+        try {
+            val parser = JsonParser()
+            val jsonarray = parser.parse(json).asJsonArray
+            jsonarray.forEach { element -> list.add(gson!!.fromJson(element, type)) }
+            return ArrayList(list)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return null
+        }
+
     }
 }

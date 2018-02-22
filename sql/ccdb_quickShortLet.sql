@@ -27,6 +27,7 @@ CREATE TABLE `cc_banner` (
   `url` text COLLATE utf8_bin NOT NULL COMMENT '网址',
   `pic` text COLLATE utf8_bin NOT NULL COMMENT '图片地址',
   `other` text COLLATE utf8_bin COMMENT '其他描述',
+  `used`  TINYINT NOT NULL COMMENT '是否可用',
   PRIMARY KEY (`id`),
   UNIQUE KEY `cc_banner_id_uindex` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='首页轮播图';
