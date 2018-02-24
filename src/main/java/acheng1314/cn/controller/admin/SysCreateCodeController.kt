@@ -14,15 +14,15 @@ import javax.servlet.http.HttpServletRequest
 @RequestMapping("/endSys")
 @Controller
 @Api(description = "代码生成器控制器")
-open class SysCreateCodeController {
+class SysCreateCodeController {
 
-    @GetMapping(path = arrayOf("/createCode"), produces = arrayOf(MediaType.TEXT_HTML_VALUE))
+    @GetMapping(path = ["/createCode"], produces = arrayOf(MediaType.TEXT_HTML_VALUE))
     @ApiOperation(notes = "浏览器打开代码生成器网页", value = "浏览器访问代码生成器页面")
     fun createCode(): String {
         return "end/createCode/index"
     }
 
-    @PostMapping(path = arrayOf("/createCode"))
+    @PostMapping(path = ["/createCode"])
     @ApiOperation(notes = "post提交实体信息，生成对应的代码下载", value = "生成代码压缩包下载")
     fun createCode(request: HttpServletRequest) {
     }
