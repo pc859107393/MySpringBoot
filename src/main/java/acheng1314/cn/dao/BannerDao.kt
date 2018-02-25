@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository
 @Repository(value = "bannerDao")
 interface BannerDao : BaseMapper<Banner> {
 
-    @Select("SELECT * FROM `cc_banner` ORDER BY `id` DESC")
+    @Select("SELECT * FROM `cc_banner` ORDER BY concat(`used`,`id`) DESC")
     fun findAll(): ArrayList<Banner>
 
 

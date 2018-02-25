@@ -13,16 +13,7 @@ import java.io.Serializable
 @Service(value = "bannerService")
 class BannerServiceImpl : ServiceImpl<BannerDao, Banner>() {
 
-    fun findAll(): ArrayList<Banner> {
-        val all = baseMapper.findAll()
-        return if (all.isNotEmpty()) {
-            val list = arrayListOf<Banner>()
-            list.addAll(all.filter { banner -> banner.used == true })
-            list.addAll(all.filter { banner -> banner.used == false })
-            list
-        } else arrayListOf()
-
-    }
+    fun findAll(): ArrayList<Banner> = baseMapper.findAll()
 
     @Throws(Exception::class)
     override fun updateById(banner: Banner): Boolean {
