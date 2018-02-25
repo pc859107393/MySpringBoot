@@ -1,5 +1,5 @@
-debug: true
-
+#debug: true
+#
 #logging:
 #  level:
 #    root: info
@@ -129,10 +129,8 @@ mybatis-plus:
 
 server:
   port: 8181
-
-#server:
-#  servlet-path: "/"
-#  context-path: "/"
+  servlet-path: "/"
+  context-path: "/"
 
 #---
 #
