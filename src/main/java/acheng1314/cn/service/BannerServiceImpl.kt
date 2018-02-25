@@ -41,4 +41,12 @@ class BannerServiceImpl : ServiceImpl<BannerDao, Banner>() {
         banner.used = false
         return super.updateById(banner)
     }
+
+
+    @Throws(Exception::class)
+    fun findPublish(): ArrayList<Banner> {
+        val result: ArrayList<Banner> = baseMapper.findPublish()
+        if (result.isNotEmpty()) return result
+        else throw Exception("暂无轮播图！")
+    }
 }

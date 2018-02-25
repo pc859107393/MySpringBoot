@@ -28,7 +28,7 @@
 
                     <div class="widget-toolbar">
                         <a href="#" data-action="collapse">
-                            <i class="ace-icon fa fa-chevron-up"></i>
+                            <i class="icon-chevron-up"></i>
                         </a>
                     </div>
                 </div>
@@ -145,7 +145,10 @@
 
                     <div class="widget-toolbar">
                         <a href="#" data-action="collapse">
-                            <i class="ace-icon fa fa-chevron-up"></i>
+                            <i class="icon-chevron-up"></i>
+                        </a>
+                        <a href="#" data-action="reload">
+                            <i class="icon-refresh"></i>
                         </a>
                     </div>
                 </div>
@@ -155,11 +158,11 @@
                         <div class="rollpic">
                             <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}'>
                                 <ul class="am-slides">
-                                    <li><img src="${base}/static/images/gallery/image-1.jpg"/></li>
-                                    <li><img src="${base}/static/images/gallery/image-2.jpg"/></li>
-                                    <li><img src="${base}/static/images/gallery/image-3.jpg"/></li>
-                                    <li><img src="${base}/static/images/gallery/image-4.jpg"/></li>
-                                    <li><img src="${base}/static/images/gallery/image-5.jpg"/></li>
+                                    <#if banners?exists>
+                                        <#list banners as banner>
+                                            <li><a href="${banner.url}"><img src="${banner.pic}"/></a></li>
+                                        </#list>
+                                    </#if>
                                 </ul>
                             </div>
                         </div>
