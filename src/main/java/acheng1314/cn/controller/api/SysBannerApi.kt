@@ -85,4 +85,26 @@ class SysBannerApi {
         }
     }
 
+
+    @ApiOperation(value = "分页查询轮播图", notes = "分页查询轮播图")
+    @RequestMapping(value = ["/allByPage"], method = [RequestMethod.GET, RequestMethod.POST], produces = [(MediaType.APPLICATION_JSON_UTF8_VALUE)])
+    @ResponseBody
+    fun findBannerByPage(@ApiParam(required = false, value = "页码")
+                         @RequestParam(required = false) pageNum: Int?
+                         , @ApiParam(required = false, value = "每页大小")
+                         @RequestParam(required = false) pageSize: Int?): Any {
+        return try {
+            if (this::bannerService.isInitialized) {
+                if (pageNum == null || pageSize == null) throw Exception("页码或分页大小不能为空！")
+                val result = bannerService.findallByPage(pageSize, pageNum)
+                if (result.isNotEmpty()) GsonUtil.toJsonObjStr(result, ResponseCode.OK, "查找成功")
+                else GsonUtil.toJsonObjStr(null, ResponseCode.EMPTY, "查找成功")
+            } else throw Exception("组件初始化失败")
+        } catch (e: Exception) {
+            e.printStackTrace()
+            GsonUtil.toJsonObjStr(null, ResponseCode.FAILED, e.message!!)
+        }
+    }
+
+
 }

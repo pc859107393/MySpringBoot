@@ -1,6 +1,7 @@
 package acheng1314.cn
 
 
+import com.baomidou.mybatisplus.plugins.PaginationInterceptor
 import org.mybatis.spring.annotation.MapperScan
 import org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator
 import org.springframework.boot.SpringApplication
@@ -8,8 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
-import org.springframework.context.annotation.Import
 import org.springframework.transaction.PlatformTransactionManager
+import org.springframework.transaction.annotation.EnableTransactionManagement
 import org.springframework.transaction.interceptor.TransactionInterceptor
 import org.springframework.web.servlet.config.annotation.EnableWebMvc
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
@@ -20,9 +21,7 @@ import springfox.documentation.builders.RequestHandlerSelectors
 import springfox.documentation.spi.DocumentationType
 import springfox.documentation.spring.web.plugins.Docket
 import springfox.documentation.swagger2.annotations.EnableSwagger2
-
-import java.util.Properties
-import springfox.documentation.swagger.web.UiConfiguration
+import java.util.*
 
 
 /**
@@ -31,12 +30,13 @@ import springfox.documentation.swagger.web.UiConfiguration
  * @author acheng
  */
 @SpringBootApplication
+@EnableTransactionManagement
 @MapperScan("acheng1314.cn")
 @EnableWebMvc
 @EnableSwagger2
 @ComponentScan(basePackages = ["acheng1314.cn"])
 @Configuration
-class Application : WebMvcConfigurerAdapter() {
+open class Application : WebMvcConfigurerAdapter() {
 
     override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
         registry.addResourceHandler("swagger-ui.html")
@@ -50,7 +50,7 @@ class Application : WebMvcConfigurerAdapter() {
     }
 
     @Bean(name = ["transactionInterceptor"])
-    fun transactionInterceptor(
+    open fun transactionInterceptor(
             platformTransactionManager: PlatformTransactionManager): TransactionInterceptor {
         val transactionInterceptor = TransactionInterceptor()
         // 事物管理器
@@ -83,7 +83,7 @@ class Application : WebMvcConfigurerAdapter() {
 
     //代理到ServiceImpl的Bean
     @Bean
-    fun transactionAutoProxy(): BeanNameAutoProxyCreator {
+    open fun transactionAutoProxy(): BeanNameAutoProxyCreator {
         val transactionAutoProxy = BeanNameAutoProxyCreator()
         transactionAutoProxy.isProxyTargetClass = true
         transactionAutoProxy.setBeanNames("acheng1314.cn.service.*ServiceImpl.*(..)")
@@ -93,7 +93,7 @@ class Application : WebMvcConfigurerAdapter() {
 
     val SWAGGER_SCAN_BASE_PACKAGE = "acheng1314.cn.controller.api"
     @Bean
-    fun createRestApi(): Docket {
+    open fun createRestApi(): Docket {
         return Docket(DocumentationType.SWAGGER_2)  //Docket，Springfox的私有API设置初始化为Swagger2
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(SWAGGER_SCAN_BASE_PACKAGE))
@@ -106,6 +106,14 @@ class Application : WebMvcConfigurerAdapter() {
                         .version("v1.01")
                         .termsOfServiceUrl("http://acheng1314.cn/")
                         .build())
+    }
+
+    /**
+     * 分页插件
+     */
+    @Bean
+    open fun paginationInterceptor(): PaginationInterceptor {
+        return PaginationInterceptor()
     }
 
     companion object {

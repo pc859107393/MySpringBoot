@@ -125,7 +125,7 @@ mybatis-plus:
     capital-mode: true
   configuration:
     map-underscore-to-camel-case: true
-    cache-enabled: false
+    cache-enabled: true
 
 server:
   port: 8181
