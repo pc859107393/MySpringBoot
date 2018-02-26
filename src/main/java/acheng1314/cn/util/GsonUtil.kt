@@ -177,7 +177,7 @@ object GsonUtil {
      * @return
      */
     fun toJsonObjStr(`object`: Any?, code: ResponseCode, msg: String?): String {
-        val result = ResponseObj<Any>()
+        val result = ResponseObj()
         result.code = code.code
         result.msg = if (StringUtils.isEmpty(msg)) code.msg else msg
         if (code.code == ResponseCode.OK.code) {  //数据获取成功

@@ -3,11 +3,12 @@ package acheng1314.cn.domain
 import java.io.Serializable
 
 
-class ResponseObj<T> : Serializable {
+open class ResponseObj : Serializable {
+    open var code: Int = 0 // 状态码,1成功;-1空数据;0请求失败
 
-    var code: Int = 0 // 状态码,0成功;1空数据;-1请求失败
-    var msg: String? = null
-    var data: T? = null
+    open var msg: String? = null
+
+    open var data: Any? = null
 
     companion object {
         val OK = 1
@@ -16,6 +17,14 @@ class ResponseObj<T> : Serializable {
         val OK_STR = "success"
         val FAILED_STR = "failed"
         val EMPUTY_STR = "empty"
+    }
+
+    constructor()
+
+    constructor(code: Int, msg: String, data: Any) {
+        this.code = code
+        this.msg = msg
+        this.data = data
     }
 
 }

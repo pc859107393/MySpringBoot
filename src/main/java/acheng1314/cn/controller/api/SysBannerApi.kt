@@ -2,6 +2,7 @@ package acheng1314.cn.controller.api
 
 import acheng1314.cn.domain.Banner
 import acheng1314.cn.domain.ResponseCode
+import acheng1314.cn.domain.ResponseList
 import acheng1314.cn.service.BannerServiceImpl
 import acheng1314.cn.util.GsonUtil
 import io.swagger.annotations.Api
@@ -97,8 +98,10 @@ class SysBannerApi {
             if (this::bannerService.isInitialized) {
                 if (pageNum == null || pageSize == null) throw Exception("页码或分页大小不能为空！")
                 val result = bannerService.findallByPage(pageSize, pageNum)
-                if (result.isNotEmpty()) GsonUtil.toJsonObjStr(result, ResponseCode.OK, "查找成功")
-                else GsonUtil.toJsonObjStr(null, ResponseCode.EMPTY, "查找成功")
+                if (result.isNotEmpty()) {
+                    val resultBean = ResponseList(pageSize, pageNum, ResponseCode.OK.code, "查找成功", result)
+                    GsonUtil.toJson(resultBean)
+                } else GsonUtil.toJsonObjStr(null, ResponseCode.EMPTY, "查找成功")
             } else throw Exception("组件初始化失败")
         } catch (e: Exception) {
             e.printStackTrace()
