@@ -82,7 +82,7 @@
         </li>
 
         <li>
-            <a onclick="menuOnclick('zSwagger','在线APIDocs','../swagger-ui.html')">
+            <a onclick="menuOnclick('zSwagger','在线APIDocs','../apiDocs')">
                 <i class="icon-desktop"></i>
                 <span class="menu-text"> 在线APIDocs </span>
             </a>

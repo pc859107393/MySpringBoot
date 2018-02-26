@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
 import javax.annotation.Resource
 
-@Api(description = "后台获取用户信息的API接口，需要用户登录权限！")
+@Api(description = "后台获取用户信息的API接口，需要用户登录权限！", tags = ["后端管理用户信息"])
 @RestController
 @RequestMapping("/endSys/api/user")
 open class SysUserApi {

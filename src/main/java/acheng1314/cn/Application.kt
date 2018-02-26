@@ -41,6 +41,8 @@ open class Application : WebMvcConfigurerAdapter() {
     override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
         registry.addResourceHandler("swagger-ui.html")
                 .addResourceLocations("classpath:/META-INF/resources/")
+        registry.addResourceHandler("doc.html")
+                .addResourceLocations("classpath:/META-INF/resources/")
 
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/")
@@ -92,7 +94,7 @@ open class Application : WebMvcConfigurerAdapter() {
     }
 
     val SWAGGER_SCAN_BASE_PACKAGE = "acheng1314.cn.controller.api"
-    @Bean
+    @Bean(name = ["defaultApi"])
     open fun createRestApi(): Docket {
         return Docket(DocumentationType.SWAGGER_2)  //Docket，Springfox的私有API设置初始化为Swagger2
                 .select()
@@ -106,6 +108,7 @@ open class Application : WebMvcConfigurerAdapter() {
                         .version("v1.01")
                         .termsOfServiceUrl("http://acheng1314.cn/")
                         .build())
+                .groupName("默认接口")
     }
 
     /**

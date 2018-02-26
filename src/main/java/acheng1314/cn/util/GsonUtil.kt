@@ -188,14 +188,14 @@ object GsonUtil {
 
     fun <T> toList(json: String, type: Class<T>): ArrayList<T>? {
         val list = ArrayList<T>()
-        try {
+        return try {
             val parser = JsonParser()
             val jsonarray = parser.parse(json).asJsonArray
             jsonarray.forEach { element -> list.add(gson!!.fromJson(element, type)) }
-            return ArrayList(list)
+            ArrayList(list)
         } catch (e: Exception) {
             e.printStackTrace()
-            return null
+            null
         }
 
     }

@@ -36,7 +36,7 @@ open class MainController {
     @GetMapping(value = ["/apiDocs"])
     @ApiOperation(value = "在线api文档")
     fun apiDocs(): String {
-        return "redirect:/swagger-ui.html"
+        return "redirect:/doc.html"
     }
 
     @GetMapping(value = ["login"], produces = [(MediaType.TEXT_HTML_VALUE)])

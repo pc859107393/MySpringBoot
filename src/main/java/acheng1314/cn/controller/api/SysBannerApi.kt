@@ -11,14 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
 
-@Api(description = "后台管理轮播图的API接口，需要用户登录权限！")
+@Api(description = "后台管理轮播图的API接口，需要用户登录权限！", tags = ["后端管理轮播图"])
 @RestController
 @RequestMapping("/endSys/api/banner")
 class SysBannerApi {
     @Autowired private lateinit var bannerService: BannerServiceImpl
 
     val bannerList: Any
-        @ApiOperation(value = "获取轮播图的集合", notes = "轮播图查询")
+        @ApiOperation(value = "获取轮播图的集合", notes = "轮播图查询", responseContainer = "List", response = Banner::class)
         @GetMapping(value = ["/all"], produces = [(MediaType.APPLICATION_JSON_UTF8_VALUE)])
         @ResponseBody
         get() {
@@ -86,7 +86,7 @@ class SysBannerApi {
     }
 
 
-    @ApiOperation(value = "分页查询轮播图", notes = "分页查询轮播图")
+    @ApiOperation(value = "分页查询轮播图", notes = "分页查询轮播图", responseContainer = "List", response = Banner::class)
     @RequestMapping(value = ["/allByPage"], method = [RequestMethod.GET, RequestMethod.POST], produces = [(MediaType.APPLICATION_JSON_UTF8_VALUE)])
     @ResponseBody
     fun findBannerByPage(@ApiParam(required = false, value = "页码")
