@@ -12,6 +12,7 @@ import org.springframework.ui.ModelMap
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import springfox.documentation.annotations.ApiIgnore
 
 @Controller
@@ -39,8 +40,27 @@ class SysBannerController {
 
     @GetMapping(value = ["/manager"], produces = [MediaType.TEXT_HTML_VALUE])
     @ApiOperation(value = "管理轮播图", notes = "管理轮播图")
-    fun managerBanner(@ApiParam(hidden = true) model: ModelMap):String {
-        model.addAttribute("banners",bannerService.findAll())
+    fun managerBanner(@ApiParam(hidden = true) model: ModelMap): String {
+        model.addAttribute("banners", bannerService.findAll())
         return "end/webHome/managerBanner"
     }
+
+    @GetMapping(value = ["/delete"], produces = [MediaType.TEXT_HTML_VALUE])
+    @ApiOperation(value = "管理轮播图", notes = "管理轮播图")
+    fun deleteBanner(@ApiParam(hidden = true) model: ModelMap
+                     , @ApiParam(required = false, value = "轮播图id")
+                     @RequestParam(required = false) id: Long?): String {
+        try {
+            if (this::bannerService.isInitialized)
+                bannerService.deleteById(id ?: throw NullPointerException("该轮播图id不存在"))
+            else throw Exception("组件初始化失败")
+        } catch (e: Exception) {
+            e.printStackTrace()
+            model.addAttribute("msg", e.message)
+        }
+        return managerBanner(model)
+
+    }
+
+
 }

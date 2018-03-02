@@ -43,6 +43,7 @@
     <script src="../../../static/js/html5shiv.js"></script>
     <script src="../../../static/js/respond.min.js"></script>
     <![endif]-->
+    <#assign base=request.contextPath />
 </head>
 
 <body>
@@ -63,6 +64,17 @@
     <div class="row">
         <div class="col-xs-12">
             <!-- PAGE CONTENT BEGINS -->
+
+            <#if msg?exists>
+                <div class="alert alert-block alert-success">
+
+                    <i class="icon-ok green"></i>
+                    <strong class="green">
+                        ${msg}
+                    </strong>
+                </div>
+
+            </#if>
 
             <div class="row-fluid">
                 <ul class="ace-thumbnails">
@@ -101,7 +113,8 @@
                                     <i class="icon-pencil"></i>
                                 </a>
 
-                                <a href="#">
+                                <a href="${base}/endSys/banner/delete?id=${banner.id}">
+                                <#--onclick="removeBanner(${banner.id})"-->
                                     <i class="icon-remove red"></i>
                                 </a>
                             </div>
@@ -205,6 +218,22 @@
 					} catch(e){}
 				});*/
     })
+</script>
+
+<script type="text/javascript">
+    function removeBanner(id) {
+        $.ajax({
+            type: 'GET',
+            url: "${base}/endSys/api/banner/delete?id=" + id,
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                if (data.code == 1) {
+
+                }
+            }
+        })
+    }
 </script>
 
 </body>
