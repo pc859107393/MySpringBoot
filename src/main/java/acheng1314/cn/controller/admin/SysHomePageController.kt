@@ -22,6 +22,7 @@ class SysHomePageController {
     fun editBanner(model: ModelMap): String {
         try {
             model.addAttribute("banners", bannerService.findPublish())
+            model.addAttribute("allBanner", bannerService.findAllByPage(10, 1))
         } catch (e: Exception) {
             e.printStackTrace()
             model.addAttribute("msg", e.message)

@@ -97,7 +97,7 @@ class SysBannerApi {
         return try {
             if (this::bannerService.isInitialized) {
                 if (pageNum == null || pageSize == null) throw Exception("页码或分页大小不能为空！")
-                val result = bannerService.findallByPage(pageSize, pageNum)
+                val result = bannerService.findAllByPage(pageSize, pageNum)
                 if (result.isNotEmpty()) {
                     val resultBean = ResponseList(pageSize, pageNum, ResponseCode.OK.code, "查找成功", result)
                     GsonUtil.toJson(resultBean)

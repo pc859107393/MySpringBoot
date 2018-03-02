@@ -9,12 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Controller
 import org.springframework.ui.ModelMap
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
+import springfox.documentation.annotations.ApiIgnore
 
 @Controller
 @RequestMapping("/endSys/banner")
-@Api(description = "轮播图控制器", hidden = true)
+@Api(description = "轮播图控制器")
+@ApiIgnore
 class SysBannerController {
     @Autowired private lateinit var bannerService: BannerServiceImpl
 
@@ -32,5 +35,12 @@ class SysBannerController {
             model.addAttribute("msg", "保存失败！")
         }
         return "end/webHome/editBanner"
+    }
+
+    @GetMapping(value = ["/manager"], produces = [MediaType.TEXT_HTML_VALUE])
+    @ApiOperation(value = "管理轮播图", notes = "管理轮播图")
+    fun managerBanner(@ApiParam(hidden = true) model: ModelMap):String {
+        model.addAttribute("banners",bannerService.findAll())
+        return "end/webHome/managerBanner"
     }
 }

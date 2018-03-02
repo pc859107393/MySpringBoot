@@ -44,7 +44,7 @@ class BannerServiceImpl : ServiceImpl<BannerDao, Banner>() {
     }
 
     @Throws(Exception::class)
-    fun findallByPage(pageSize: Int, pageNum: Int) = try {
+    fun findAllByPage(pageSize: Int, pageNum: Int) = try {
         baseMapper.findAllByPage(Pagination(pageNum, pageSize))
     } catch (e: Exception) {
         arrayListOf<Banner>()

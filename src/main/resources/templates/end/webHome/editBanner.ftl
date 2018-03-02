@@ -13,9 +13,12 @@
 <div class="page-content">
 
     <div class="page-header">
-        <h1>
-            轮播图管理
-        </h1>
+        <li class="next">
+            <a href="${base}/endSys/banner/manager">
+                <h1><i class="icon-double-angle-right">轮播图管理</i></h1>
+            </a>
+        </li>
+
     </div>
     <!-- /.page-header -->
 
@@ -35,8 +38,7 @@
 
                 <div class="widget-body" style="display: block;">
                     <div class="widget-main">
-                        <form class="form-horizontal" role="form" action="${base}/endSys/banner/save" method="post"
-                              onsubmit="return checkAddUserInfo()">
+                        <form class="form-horizontal" role="form" action="${base}/endSys/banner/save" method="post">
             <#if msg?exists>
                 <div class="alert alert-block alert-success">
 
@@ -172,12 +174,11 @@
         </div>
     </div>
 
-
-</div><!-- /.page-content -->
-
 </body>
 
 <#include "../../_inc/_footer.ftl"/>
 
 <script src="${base}/static/js/amazeui.min.js"></script>
+
+
 </html>

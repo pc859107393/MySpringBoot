@@ -10,13 +10,13 @@
 <link href="${base}/static/css/bootstrap.min.css" rel="stylesheet"/>
 <link rel="stylesheet" href="${base}/static/css/font-awesome.min.css"/>
 
+<link rel="stylesheet" href="../../static/css/googleapis-css.css" />
+
 <!--[if IE 7]>
 <!--<link rel="stylesheet" href="${base}/static/css/font-awesome-ie7.min.css"/>-->
 <#--<![endif]&ndash;&gt;-->
 
 <#--<link rel="stylesheet" href="${base}/static/css/ace-ie.min.css"/>-->
-
-<script src="${base}/static/js/ace-extra.min.js"></script>
 
 <#--<script src="${base}/static/js/html5shiv.js"></script>-->
 <#--<script src="${base}/static/js/respond.min.js"></script>-->
@@ -27,3 +27,5 @@
 <link rel="stylesheet" href="${base}/static/css/ace.min.css"/>
 <link rel="stylesheet" href="${base}/static/css/ace-rtl.min.css"/>
 <link rel="stylesheet" href="${base}/static/css/ace-skins.min.css"/>
+
+<script src="${base}/static/js/ace-extra.min.js"></script>
