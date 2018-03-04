@@ -2,6 +2,7 @@ package acheng1314.cn.controller
 
 
 import acheng1314.cn.domain.User
+import acheng1314.cn.service.BannerServiceImpl
 import acheng1314.cn.util.FileDownload
 import acheng1314.cn.util.LogE
 import acheng1314.cn.util.MySiteMap
@@ -12,6 +13,7 @@ import io.swagger.annotations.ApiParam
 import org.apache.shiro.SecurityUtils
 import org.apache.shiro.authc.UsernamePasswordToken
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Controller
 import org.springframework.ui.ModelMap
@@ -25,12 +27,21 @@ import javax.servlet.http.HttpServletResponse
 
 @Controller
 @Api(description = "外层信息，无需Shiro接管，集成文件下载控制器")
-open class MainController {
+class MainController {
+
+    @Autowired lateinit var bannerService: BannerServiceImpl
 
     @GetMapping(value = ["/"])
     @ApiOperation(value = "主页")
-    fun home(): String {
-        return apiDocs()
+    fun home(@ApiParam(hidden = true) modelMap: ModelMap): String {
+        return try {
+            if (!this::bannerService.isInitialized) throw Exception("组件初始化失败！")
+            modelMap.addAttribute("banners", bannerService.findPublish())
+            "web/index"
+        } catch (e: Exception) {
+            modelMap.addAttribute("msg", e.message)
+            "../error"
+        }
     }
 
     @GetMapping(value = ["/apiDocs"])
