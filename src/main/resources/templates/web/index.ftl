@@ -12,7 +12,7 @@
 
     <link rel="alternate icon" type="img/hengwang-1.png" href="../../static/web/img/hengwang-1.png">
     <link rel="stylesheet" href="../../static/web/css/amazeui.css"/>
-    <link rel="stylesheet" href="../../static/plugins/tab/skins/sky/style.css"/>
+    <link rel="stylesheet" href="../../static/web/css/style.css"/>
 </head>
 
 
