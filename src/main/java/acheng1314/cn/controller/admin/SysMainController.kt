@@ -23,7 +23,7 @@ import java.util.HashMap
 @Controller
 @RequestMapping("/endSys")
 @Api(description = "控制后端页面导航，后端文件上传控制")
-open class SysMainController {
+class SysMainController {
 
     @GetMapping(value = ["/index"], produces = [(MediaType.TEXT_HTML_VALUE)])
     @ApiOperation(value = "后端主页框架", notes = "后端主页框架")
@@ -81,7 +81,7 @@ open class SysMainController {
             resultMap.put("data", resultList)
             resultMap.put("url", serverPath.toString() + MySiteMap.FILE_PATH + fileRename + "/" + fileResultName)
             resultMap.put("title", "")
-            resultMap.put("original", file.originalFilename)
+            resultMap.put("original", file.originalFilename!!)
         } catch (e: Exception) {
             resultMap.put("state", "上传失败")
             resultMap.put("errno", -1)

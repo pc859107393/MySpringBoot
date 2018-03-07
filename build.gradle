@@ -42,10 +42,22 @@ apply plugin: 'kotlin'
 apply plugin: "kotlin-spring"
 //apply plugin: "kotlin-noarg"
 apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-
+compileKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ["-Xjsr305=strict"]
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ["-Xjsr305=strict"]
+        jvmTarget = "1.8"
+    }
+}
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
@@ -84,9 +96,7 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.8.1'
 
     //druid-spring-boot-starter
-    compile('com.github.drtrang:druid-spring-boot-starter:1.0.3') {
-        exclude group: 'com.alibaba'
-    }
+    compile('com.github.drtrang:druid-spring-boot-starter:1.1.7')
 
     compile 'com.alibaba:druid:1.1.2'
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent
@@ -120,5 +130,7 @@ dependencies {
 
     //加入shiro作为安全管理
     compile "org.apache.shiro:shiro-all:1.3.2"
-    compile "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
+//    compile "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
+    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    compile("org.jetbrains.kotlin:kotlin-reflect")
 }
