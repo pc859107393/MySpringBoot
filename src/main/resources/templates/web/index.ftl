@@ -1,3 +1,4 @@
+<#assign base=request.contextPath />
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -32,14 +33,12 @@
 
             <div class=" am-topbar-left am-form-inline am-topbar-right" role="search">
                 <ul class="am-nav am-nav-pills am-topbar-nav hw-menu">
-                    <li class="hw-menu-active"><a href="index.html">首页</a></li>
-                    <li><a href="solutions.html">解决方案</a></li>
-                    <li><a href="product-show.html">产品展示 </a></li>
-                    <li><a href="customer-case.html">客户案例</a></li>
-                    <li><a href="service-center.html">服务中心 </a></li>
-                    <li><a href="news.html">新闻动态 </a></li>
+                    <li class="hw-menu-active"><a href="${base}">首页</a></li>
+                    <li><a href="solutions.html">登录/注册</a></li>
+                    <li><a href="product-show.html">成为房东 </a></li>
+                    <li><a href="customer-case.html">微信小程序</a></li>
+                    <li><a href="service-center.html">成为房东</a></li>
                     <li><a href="about-us.html">关于我们</a></li>
-                    <li><a href="recruit.html">招贤纳士 </a></li>
                 </ul>
             </div>
 
@@ -62,7 +61,7 @@
         <div class="part-title">
             <a href="solutions.html">
                 <i class="am-icon-lightbulb-o part-title-i"></i>
-                <span class="part-title-span">解决方案</span>
+                <span class="part-title-span">热门民宿</span>
                 <p>Solutions</p>
             </a>
         </div>
@@ -95,11 +94,30 @@
 <div class="gray-li">
     <div class="customer-case part-all ">
         <div class="part-title">
-            <a href="customer-case.html">
-                <i class=" am-icon-briefcase part-title-i"></i>
-                <span class="part-title-span">客户案例</span>
-                <p>Customer Case</p>
-            </a>
+
+            <ul class="am-g part-content solutions-content">
+                <li class="am-u-sm-6 am-u-md-3 am-u-lg-3">
+                    <i class="am-btn am-secondary am-icon-home am-icon-lg"></i>
+                    <span class="solutions-title">放心入住</span>
+                    <p class="solutions-way">所有房源经过审核</p>
+                </li>
+                <li class="am-u-sm-6 am-u-md-3 am-u-lg-3">
+                    <i class="am-btn am-secondary am-icon-heart am-icon-lg"></i>
+                    <span class="solutions-title">贴心服务</span>
+                    <p class="solutions-way">7*24小时线上呼叫</p>
+                </li>
+                <li class="am-u-sm-6 am-u-md-3 am-u-lg-3">
+                    <i class="am-btn am-secondary am-icon-credit-card am-icon-lg"></i>
+                    <span class="solutions-title">信用认证</span>
+                    <p class="solutions-way">芝麻信用实名认证</p>
+                </li>
+                <li class="am-u-sm-6 am-u-md-3 am-u-lg-3">
+                    <i class="am-btn am-secondary am-icon-truck am-icon-lg"></i>
+                    <span class="solutions-title">安全无忧</span>
+                    <p class="solutions-way">房东房客均有保障</p>
+                </li>
+
+            </ul>
         </div>
 
 
