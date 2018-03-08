@@ -62,27 +62,26 @@
             <a href="solutions.html">
                 <i class="am-icon-lightbulb-o part-title-i"></i>
                 <span class="part-title-span">热门民宿</span>
-                <p>Solutions</p>
             </a>
         </div>
         <ul class="am-g part-content solutions-content">
             <li class="am-u-sm-6 am-u-md-3 am-u-lg-3">
-                <i class="am-icon-safari solution-circle"></i>
+                <i class="am-icon-safari"></i>
                 <span class="solutions-title">网站、移动网站</span>
                 <p class="solutions-way">微信公众号开发移动网站微信公众号开发</p>
             </li>
             <li class="am-u-sm-6 am-u-md-3 am-u-lg-3">
-                <i class="am-icon-magic solution-circle"></i>
+                <i class="am-icon-magic"></i>
                 <span class="solutions-title">网站、移动网站</span>
                 <p class="solutions-way">移动网站微信公众号开发移动网站微信公众号开发,解决方案</p>
             </li>
             <li class="am-u-sm-6 am-u-md-3 am-u-lg-3">
-                <i class="am-icon-phone solution-circle"></i>
+                <i class="am-icon-phone"></i>
                 <span class="solutions-title">网站、移动网站</span>
                 <p class="solutions-way">移动网站微信公众号开发移动网站微信公众号开发</p>
             </li>
             <li class="am-u-sm-6 am-u-md-3 am-u-lg-3">
-                <i class="am-icon-hacker-news solution-circle"></i>
+                <i class="am-icon-hacker-news"></i>
                 <span class="solutions-title">网站、移动网站</span>
                 <p class="solutions-way">网站、移动网站微信公众号开发移动网站微信公众号开发,解决方案</p>
             </li>
