@@ -40,7 +40,7 @@ class MainController {
             "web/index"
         } catch (e: Exception) {
             modelMap.addAttribute("msg", e.message)
-            "../error"
+            "error"
         }
     }
 

@@ -39,14 +39,14 @@ class BannerServiceImpl : ServiceImpl<BannerDao, Banner>() {
     @Throws(Exception::class)
     fun findPublish(): ArrayList<Banner> {
         val result: ArrayList<Banner> = baseMapper.findPublish()
-        if (result.isNotEmpty()) {
+        return if (result.isNotEmpty()) {
             if (result.size > 10) {
                 val subList = result.subList(0, 10)
                 result.clear()
                 result.addAll(subList)
             }
-            return result
-        } else throw Exception("暂无轮播图！")
+            result
+        } else arrayListOf()
     }
 
     @Throws(Exception::class)
