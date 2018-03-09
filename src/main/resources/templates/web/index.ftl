@@ -261,8 +261,8 @@
             <div class="part-title">
                 <a href="news.html">
                     <i class="am-icon-newspaper-o part-title-i"></i>
-                    <span class="part-title-span">新闻动态</span>
-                    <p>Hengwang News</p>
+                    <span class="part-title-span">热门出租</span>
+                    <p>Hot House</p>
                 </a>
             </div>
             <div class="news-content ">

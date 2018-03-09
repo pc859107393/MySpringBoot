@@ -638,12 +638,12 @@ a {
     width: 100%;
 }
 
-.news-content-ul li img:hover {
-    transform: scale(1.4);
-    transition: all 1s ease 0s;
-    -webkit-transform: scale(1.4);
-    -webkit-transform: all 1s ease 0s;
-}
+/*.news-content-ul li img:hover {*/
+    /*transform: scale(1.4);*/
+    /*transition: all 1s ease 0s;*/
+    /*-webkit-transform: scale(1.4);*/
+    /*-webkit-transform: all 1s ease 0s;*/
+/*}*/
 
 .news-content-ul li div {
     margin: 0;
