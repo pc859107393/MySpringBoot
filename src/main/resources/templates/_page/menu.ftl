@@ -141,7 +141,7 @@
             <ul class="submenu">
 
                 <li>
-                    <a onclick="menuOnclick('zUserIndex','轮播图管理','../endSys/homePage/banner')">
+                    <a onclick="menuOnclick('zBannerManner','轮播图管理','../endSys/homePage/banner')">
                         <i class="icon-text-width"></i>
                         <span class="menu-text"> 轮播图管理 </span>
                     </a>
@@ -150,7 +150,14 @@
                 <li>
                     <a onclick="menuOnclick('zAddUser','热门城市管理','../endSys/addUser')">
                         <i class="icon-text-width"></i>
-                        <span class="menu-text"> 热门城市管理 </span>
+                        <span class="menu-text"> 热门房源管理 </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a onclick="menuOnclick('zDifferent','我们的特色保障','../endSys/homePage/different')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 特色保障管理 </span>
                     </a>
                 </li>
 
