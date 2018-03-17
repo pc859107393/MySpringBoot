@@ -48,8 +48,8 @@ CREATE TABLE `cc_guard` (
   `title` text COLLATE utf8_bin NOT NULL COMMENT '标题',
   `date` datetime NOT NULL COMMENT '创建时间',
   `content` text COLLATE utf8_bin NOT NULL COMMENT '内容',
-  `cover` text COLLATE utf8_bin NOT NULL COMMENT '特色图片地址，用,分割',
-  `description` text COLLATE utf8_bin NOT NULL COMMENT '特色的文字描述',
+  `cover` text COLLATE utf8_bin COMMENT '特色图片地址，用,分割',
+  `description` text COLLATE utf8_bin COMMENT '特色的文字描述',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='我们的保障';
 

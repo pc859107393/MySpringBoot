@@ -48,59 +48,55 @@
 <#if guard?exists>
 <div class=" am-container-1">
     <div class="part-title part-title-mar">
-        <a href="customer-case.html">
-            <i class=" am-icon-paper-plane part-title-i"></i>
-            <span class="part-title-span">关于${guard.title!}</span>
-        </a>
+        <i class=" am-icon-paper-plane part-title-i"></i>
+        <span class="part-title-span">关于${guard.title!}</span>
     </div>
     <div class="company-intro">
         ${guard.content!}
     </div>
 </div>
-<div class="gray-li company-thought-all">
-    <div class="am-container-1">
-        <ul class="company-thought">
-            <#list guard.description ?split(",") as name>
-            <li>
-                <div class="thought-all">
-                    <i class="am-icon-hand-o-right"></i>
-                    <span>${name!}</span>
-                    <div class="thought-all-none">
-                        <h5>${name!}</h5>
-                    </div>
-                </div>
-            </li>
-            </#list>
-            <#list guard.cover ?split(",") as name>
-            <li>
-                <div class="thought-all">
-                    <div class="cam-u-lg-3 am-u-md-3 am-u-sm-6">
-                        <img src="${name!}"/>
-                    </div>
-                </div>
-            </li>
-            </#list>
-            <div class="clear"></div>
-        </ul>
-    </div>
+<#--<div class="gray-li company-thought-all">-->
+<#--<div class="am-container-1">-->
+<#--<ul class="company-thought">-->
+<#--<#list guard.description ?split(",") as name>-->
+<#--<li>-->
+<#--<div class="thought-all">-->
+<#--<i class="am-icon-hand-o-right"></i>-->
+<#--<span>${name!}</span>-->
+<#--<div class="thought-all-none">-->
+<#--<h5>${name!}</h5>-->
+<#--</div>-->
+<#--</div>-->
+<#--</li>-->
+<#--</#list>-->
+<#--<#list guard.cover ?split(",") as name>-->
+<#--<li>-->
+<#--<div class="thought-all">-->
+<#--<div class="cam-u-lg-3 am-u-md-3 am-u-sm-6">-->
+<#--<img src="${name!}"/>-->
+<#--</div>-->
+<#--</div>-->
+<#--</li>-->
+<#--</#list>-->
+<#--<div class="clear"></div>-->
+<#--</ul>-->
+<#--</div>-->
 </div>
 
 </#if>
 
 <div class=" am-container-1">
     <div class="part-title part-title-mar">
-        <a href="customer-case.html">
-            <i class=" am-icon-comments-o part-title-i"></i>
-            <span class="part-title-span">联系我们</span>
-            <p>Contact Us</p>
-        </a>
+        <i class=" am-icon-comments-o part-title-i"></i>
+        <span class="part-title-span">联系我们</span>
+        <p>Contact Us</p>
     </div>
 </div>
 <div class="gray-li">
     <div class=" am-container-1">
         <div class="contact-us">
             <div class="am-u-lg-6 am-u-md-6 am-u-sm-12">
-                <img src="img/map.png"/>
+                <img src="../../static/web/img/map.png"/>
             </div>
             <div class="am-u-lg-6 am-u-md-6 am-u-sm-12">
                 <ul class="contact-add">

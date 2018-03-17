@@ -34,7 +34,8 @@
 
                 <div class="widget-body" style="display: block;">
                     <div class="widget-main">
-                        <form class="form-horizontal" role="form" action="${base}/endSys/guard/save" method="post">
+                        <form class="form-horizontal" role="form" action="${base}/endSys/guard/save" method="post"
+                              onsubmit="return beforeSubmitGuard()">
             <#if msg?exists>
                 <div class="alert alert-block alert-success">
 
@@ -49,52 +50,55 @@
                             <input type="hidden" id="id" name="id" placeholder="id">
 
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="title"> 轮播图标题 </label>
+                                <label class="col-sm-1 control-label no-padding-right" for="title"> 标题 </label>
 
-                                <div class="col-sm-9">
-                                    <input type="text" id="title" name="title" placeholder="轮播图标题"
+                                <div class="col-sm-11">
+                                    <input type="text" id="title" name="title" placeholder="标题"
                                            class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="url"> 访问地址 </label>
+                                <label class="col-sm-1 control-label no-padding-right" for="editor"> 内容 </label>
 
-                                <div class="col-sm-9">
-                                    <input type="text" id="url" name="url" placeholder="访问地址"
+                                <div class="col-sm-11">
+                                    <div id="editor">
+                                        <p>请在此处 <b>编辑内容</b></p>
+                                    </div>
+                                    <input type="hidden" id="content" name="content" placeholder="内容"
                                            class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="pic"> 图片地址 </label>
+                        <#--<div class="form-group">-->
+                        <#--<label class="col-sm-1 control-label no-padding-right" for="cover1"> 图片1 </label>-->
 
-                                <div class="col-sm-9">
-                                    <input type="text" id="pic" name="pic" placeholder="图片地址"
-                                           class="col-xs-10 col-sm-5"/>
-                                </div>
-                            </div>
+                        <#--<div class="col-sm-11">-->
+                        <#--<input type="file" id="cover1" name="cover1" placeholder="图片地址"-->
+                        <#--class="col-xs-10 col-sm-5"/>-->
+                        <#--</div>-->
+                        <#--</div>-->
 
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="other"> 备注 </label>
+                        <#--<div class="form-group">-->
+                        <#--<label class="col-sm-1 control-label no-padding-right" for="other"> 描述1 </label>-->
 
-                                <div class="col-sm-9">
-                                    <input type="text" id="other" name="other" placeholder="备注"
-                                           class="col-xs-10 col-sm-5"/>
-                                </div>
-                            </div>
+                        <#--<div class="col-sm-11">-->
+                        <#--<input type="text" id="other" name="other" placeholder="描述1"-->
+                        <#--class="col-xs-10 col-sm-5"/>-->
+                        <#--</div>-->
+                        <#--</div>-->
 
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="used"> 是否可用 </label>
+                        <#--<div class="form-group">-->
+                        <#--<label class="col-sm-1 control-label no-padding-right" for="used"> 是否可用 </label>-->
 
-                                <div class="col-sm-9">
-                                    <select id="used" name="used"
-                                            class="col-xs-10 col-sm-5">
-                                        <option value="true"> true</option>
-                                        <option value="false"> false</option>
-                                    </select>
-                                </div>
-                            </div>
+                        <#--<div class="col-sm-11">-->
+                        <#--<select id="used" name="used"-->
+                        <#--class="col-xs-10 col-sm-5">-->
+                        <#--<option value="true"> true</option>-->
+                        <#--<option value="false"> false</option>-->
+                        <#--</select>-->
+                        <#--</div>-->
+                        <#--</div>-->
 
                             <div class="clearfix form-actions">
                                 <div class="col-md-offset-3 col-md-9">
@@ -113,17 +117,6 @@
 
                         </form>
 
-        <#if banner?exists>
-            <script type="application/javascript">
-                document.getElementById("id").value = '${banner.id!}';
-                document.getElementById("title").value = '${banner.title!}';
-                document.getElementById("url").value = '${banner.url!}';
-                document.getElementById("pic").value = '${banner.pic!}';
-                document.getElementById("other").value = '${banner.other!}';
-                document.getElementById("used").value = '${banner.used!}';
-
-            </script>
-        </#if>
                     </div>
                 </div>
             </div>
@@ -132,37 +125,31 @@
     </div>
     <!-- /row -->
 
-    <div class="row">
-        <div class="col-sm-7">
-
-            <div class="page-header">
-            </div>
-            <div class="widget-box">
-                <div class="widget-header">
-                    <h4 class="widget-title">轮播图预览</h4>
-
-                    <div class="widget-toolbar">
-                        <a href="#" data-action="collapse">
-                            <i class="icon-chevron-up"></i>
-                        </a>
-                        <a href="#" data-action="reload">
-                            <i class="icon-refresh"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="widget-body" style="display: block;">
-                    <div class="widget-main">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </body>
 
 <#include "../../_inc/_footer.ftl"/>
+<script type="text/javascript" src="../../../static/js/wangEditor.min.js"></script>
+<script type="text/javascript">
+    var E = window.wangEditor;
+    var editor = new E('#editor');
+    // 或者 var editor = new E( document.getElementById('editor') )
+    // 配置服务器端地址
+    editor.customConfig.uploadImgServer = '${base}/endSys/api/file/save';
+    // 限制一次最多上传 5 张图片
+    editor.customConfig.uploadImgMaxLength = 5;
+    editor.customConfig.uploadFileName = 'upfile';
+    editor.create();
 
+        <#if different?exists>
+        <#--document.getElementById("id").value = '${different.id!}';-->
+                document.getElementById("title").value = '${different.title!}';
+                document.getElementById("content").value = '${different.content!}';
+        </#if>
+
+    function beforeSubmitGuard() {
+        document.getElementById("content").value = editor.txt.html();
+        return true;
+    }
+</script>
 
 </html>

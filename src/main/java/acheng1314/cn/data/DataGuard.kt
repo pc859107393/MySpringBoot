@@ -1,19 +1,25 @@
 package acheng1314.cn.data
 
 import acheng1314.cn.domain.Guard
+import acheng1314.cn.util.DateUtil
 import acheng1314.cn.util.StringUtils
+import org.springframework.web.bind.annotation.RequestParam
 import java.io.Serializable
 
-data class DataGuard(val title: String?
-                     , val content: String?
-                     , val cover1: String?
-                     , val cover2: String?
-                     , val cover3: String?
-                     , val cover4: String?
-                     , val description1: String?
-                     , val description2: String?
-                     , val description3: String?
-                     , val description4: String?) : Serializable {
+class DataGuard : Serializable {
+
+    var title: String? = null
+    var content: String? = null
+
+    var cover1: String? = null
+    var cover2: String? = null
+    var cover3: String? = null
+    var cover4: String? = null
+
+    var description1: String? = null
+    var description2: String? = null
+    var description3: String? = null
+    var description4: String? = null
 
     val convert2Guard: Guard
         get() {
@@ -33,6 +39,8 @@ data class DataGuard(val title: String?
                     .append(if (!StringUtils.isEmpty(description3)) description3!! + "," else "")
                     .append(if (!StringUtils.isEmpty(description4)) description4!! else "")
                     .toString()
+            //当前插入时间
+            result.date = DateUtil.getDate()
 
             return result
         }
