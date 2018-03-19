@@ -93,30 +93,32 @@
 <div class="gray-li">
     <div class="customer-case part-all ">
         <div class="part-title">
+            <a href="/help/guard">
 
-            <ul class="am-g part-content solutions-content">
-                <li class="am-u-sm-6 am-u-md-3 am-u-lg-3">
-                    <i class="am-btn am-secondary am-icon-home am-icon-lg"></i>
-                    <span class="solutions-title">放心入住</span>
-                    <p class="solutions-way">所有房源经过审核</p>
-                </li>
-                <li class="am-u-sm-6 am-u-md-3 am-u-lg-3">
-                    <i class="am-btn am-secondary am-icon-heart am-icon-lg"></i>
-                    <span class="solutions-title">贴心服务</span>
-                    <p class="solutions-way">7*24小时线上呼叫</p>
-                </li>
-                <li class="am-u-sm-6 am-u-md-3 am-u-lg-3">
-                    <i class="am-btn am-secondary am-icon-credit-card am-icon-lg"></i>
-                    <span class="solutions-title">信用认证</span>
-                    <p class="solutions-way">芝麻信用实名认证</p>
-                </li>
-                <li class="am-u-sm-6 am-u-md-3 am-u-lg-3">
-                    <i class="am-btn am-secondary am-icon-truck am-icon-lg"></i>
-                    <span class="solutions-title">安全无忧</span>
-                    <p class="solutions-way">房东房客均有保障</p>
-                </li>
+                <ul class="am-g part-content solutions-content">
+                    <li class="am-u-sm-6 am-u-md-3 am-u-lg-3">
+                        <i class="am-btn am-secondary am-icon-home am-icon-lg"></i>
+                        <span class="solutions-title">放心入住</span>
+                        <p class="solutions-way">所有房源经过审核</p>
+                    </li>
+                    <li class="am-u-sm-6 am-u-md-3 am-u-lg-3">
+                        <i class="am-btn am-secondary am-icon-heart am-icon-lg"></i>
+                        <span class="solutions-title">贴心服务</span>
+                        <p class="solutions-way">7*24小时线上呼叫</p>
+                    </li>
+                    <li class="am-u-sm-6 am-u-md-3 am-u-lg-3">
+                        <i class="am-btn am-secondary am-icon-credit-card am-icon-lg"></i>
+                        <span class="solutions-title">信用认证</span>
+                        <p class="solutions-way">芝麻信用实名认证</p>
+                    </li>
+                    <li class="am-u-sm-6 am-u-md-3 am-u-lg-3">
+                        <i class="am-btn am-secondary am-icon-truck am-icon-lg"></i>
+                        <span class="solutions-title">安全无忧</span>
+                        <p class="solutions-way">房东房客均有保障</p>
+                    </li>
 
-            </ul>
+                </ul>
+            </a>
         </div>
 
 

@@ -11,10 +11,7 @@
 <div class="page-content">
 
     <div class="page-header">
-        <li class="next">
-            <h1><i class="icon-double-angle-right">我们的保障管理</i></h1>
-        </li>
-
+        <h1><i class="icon-double-angle-right">我们的保障管理</i></h1>
     </div>
     <!-- /.page-header -->
 
