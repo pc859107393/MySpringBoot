@@ -179,6 +179,40 @@
             </ul>
         </li>
 
+        <li>
+            <a href="#" class="dropdown-toggle">
+                <i class="icon-tag"></i>
+                <span class="menu-text"> 房源管理 </span>
+
+                <b class="arrow icon-angle-down"></b>
+            </a>
+
+            <ul class="submenu">
+
+                <li>
+                    <a onclick="menuOnclick('zAddHouse','添加房源','../endSys/houseCon/add')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 添加房源 </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a onclick="menuOnclick('zHouseManager','热门城市管理','../endSys/houseCon/all')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 所有可用房源 </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a onclick="menuOnclick('zDifferent','我们的特色保障','../endSys/homePage/different')">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 已删除房源 </span>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
     </ul><!-- /.nav-list -->
     <div class="sidebar-collapse" id="sidebar-collapse">
         <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>

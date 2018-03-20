@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>添加商品&更新库存</title>
+    <title>添加房源</title>
 <#include "../../_inc/_header.ftl"/>
 
 </head>
@@ -12,10 +12,10 @@
 
     <div class="page-header">
         <h1>
-            用户管理
+            房源管理
             <small>
                 <i class="icon-double-angle-right"></i>
-                添加用户
+                添加房源
             </small>
         </h1>
     </div>
@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-xs-12">
 
-            <form class="form-horizontal" role="form" action="${base}/endSys/addUser" method="post"
+            <form class="form-horizontal" role="form" action="${base}/endSys/houseCon/add" method="post"
                   onsubmit="return checkAddHouseInfo()">
             <#if msg?exists>
                 <div class="alert alert-block alert-success">
@@ -40,26 +40,26 @@
                 <input type="hidden" id="id" name="id" placeholder="id">
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="name"> 房源名称 </label>
+                    <label class="col-sm-1 control-label no-padding-right" for="name"> 房源名称 </label>
 
-                    <div class="col-sm-9">
+                    <div class="col-sm-11">
                         <input type="text" id="name" name="name" placeholder="房源名称" class="col-xs-10 col-sm-5"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="loginName"> 登录账号 </label>
+                    <label class="col-sm-1 control-label no-padding-right" for="houseType"> 房屋户型 </label>
 
-                    <div class="col-sm-9">
-                        <input type="text" id="loginName" name="loginName" placeholder="登录账号"
+                    <div class="col-sm-11">
+                        <input type="text" id="houseType" name="houseType" placeholder="房屋户型"
                                class="col-xs-10 col-sm-5"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="password"> 登录密码 </label>
+                    <label class="col-sm-1 control-label no-padding-right" for="password"> 登录密码 </label>
 
-                    <div class="col-sm-9">
+                    <div class="col-sm-11">
                         <input type="password" id="password" name="password" placeholder="登录密码"
                                class="col-xs-10 col-sm-5"/>
                     </div>
