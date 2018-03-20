@@ -11,7 +11,7 @@
  Target Server Version : 50718
  File Encoding         : utf-8
 
- Date: 03/20/2018 15:26:53 PM
+ Date: 03/20/2018 18:37:05 PM
 */
 
 SET NAMES utf8;
@@ -55,6 +55,7 @@ CREATE TABLE `cc_base_house` (
   `used` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否可用，默认不可用，需审核',
   `status` int(11) DEFAULT NULL COMMENT '房源状态',
   `rent_type` int(11) DEFAULT NULL COMMENT '租售类型，短租 1，长租 2',
+  `date` datetime NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `cc_base_house_id_uindex` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='基本房源数据';
