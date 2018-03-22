@@ -2,6 +2,7 @@ package acheng1314.cn.service
 
 import acheng1314.cn.dao.BaseHouseDao
 import acheng1314.cn.domain.BaseHouse
+import acheng1314.cn.util.LogE
 import com.baomidou.mybatisplus.plugins.pagination.Pagination
 import com.baomidou.mybatisplus.service.impl.ServiceImpl
 import org.springframework.stereotype.Service
@@ -19,12 +20,14 @@ class HouseServiceImpl : ServiceImpl<BaseHouseDao, BaseHouse>() {
         }
     }
 
-    fun findAllByPage(pageNum: Int, pageSize: Int): ArrayList<BaseHouse>? = try {
-        val pagination = Pagination(pageNum, pageSize)
-        setTotalPage(pagination.pages)
-        baseMapper.findAllByPage(pagination)
-    } catch (e: Exception) {
-        null
+    fun findAllByPage(pageNum: Int, pageSize: Int): ArrayList<BaseHouse>? {
+        return try {
+            val pagination = Pagination(pageNum, pageSize)
+            setTotalPage(pagination.pages)
+            baseMapper.findAllByPage(pagination)
+        } catch (e: Exception) {
+            null
+        }
     }
 
     var totalPage: Int? = null

@@ -50,18 +50,90 @@
                 <div class="form-group">
                     <label class="col-sm-1 control-label no-padding-right" for="houseType"> 房屋户型 </label>
 
+                    <div class="col-xs-11 col-sm-4">
+                        <select id="houseType" name="houseType"
+                                class="form-control">
+                            <option value="一室一厅">一室一厅</option>
+                            <option value="二室一厅">二室一厅</option>
+                            <option value="三室二厅">三室二厅</option>
+                            <option value="三室以上">三室以上</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="rentType"> 租售类型 </label>
+
+                    <div class="col-xs-11 col-sm-4">
+                        <select id="rentType" name="rentType"
+                                class="form-control">
+                            <option value="短租">短租</option>
+                            <option value="长租">长租</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="used"> 是否可用 </label>
+
+                    <div class="col-xs-11 col-sm-4">
+                        <select id="used" name="used"
+                                class="form-control">
+                            <option value="false">不可用</option>
+                            <option value="true">可用</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="liveNum"> 宜居人数 </label>
+
                     <div class="col-sm-11">
-                        <input type="text" id="houseType" name="houseType" placeholder="房屋户型"
+                        <input type="number" id="liveNum" name="liveNum" placeholder="宜居人数" class="col-xs-10 col-sm-5"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="address"> 房屋地址 </label>
+
+                    <div class="col-sm-11">
+                        <input type="text" id="address" name="address" placeholder="房屋地址（越详细越好）"
                                class="col-xs-10 col-sm-5"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-1 control-label no-padding-right" for="password"> 登录密码 </label>
+                    <label class="col-sm-1 control-label no-padding-right" for="address"> 房屋地址 </label>
 
                     <div class="col-sm-11">
-                        <input type="password" id="password" name="password" placeholder="登录密码"
+                        <input type="text" id="address" name="address" placeholder="房屋地址（越详细越好）"
                                class="col-xs-10 col-sm-5"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="householdId"> 户主ID </label>
+
+                    <div class="col-sm-11">
+                        <input type="text" id="householdId" name="householdId" placeholder="户主ID"
+                               class="col-xs-10 col-sm-5"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="longitude"> 经度 </label>
+
+                    <div class="col-sm-11">
+                        <input type="text" id="longitude" name="longitude" placeholder="经度" class="col-xs-10 col-sm-5"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="latitude"> 纬度 </label>
+
+                    <div class="col-sm-11">
+
+                        <input type="text" id="latitude" name="latitude" placeholder="纬度" class="col-xs-10 col-sm-5"/>
                     </div>
                 </div>
 

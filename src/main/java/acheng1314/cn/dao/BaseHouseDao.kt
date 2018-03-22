@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository
 @Repository("houseDao")
 interface BaseHouseDao : BaseMapper<BaseHouse> {
 
-    @Select("SELECT * FROM `cc_banner` ORDER BY concat(`used`,`id`) DESC")
+    @Select("SELECT * FROM `cc_base_house` ORDER BY concat(`used`,`id`) DESC")
     fun findAllByPage(pagination: Pagination): ArrayList<BaseHouse>
 
 }
