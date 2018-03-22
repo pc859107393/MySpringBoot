@@ -12,6 +12,8 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.transaction.PlatformTransactionManager
 import org.springframework.transaction.annotation.EnableTransactionManagement
 import org.springframework.transaction.interceptor.TransactionInterceptor
+import org.springframework.validation.beanvalidation.BeanValidationPostProcessor
+import org.springframework.validation.beanvalidation.MethodValidationPostProcessor
 import org.springframework.web.servlet.config.annotation.EnableWebMvc
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
@@ -36,7 +38,7 @@ import java.util.*
 @EnableSwagger2
 @ComponentScan(basePackages = ["acheng1314.cn"])
 @Configuration
-open class Application : WebMvcConfigurerAdapter() {
+class Application : WebMvcConfigurerAdapter() {
 
     override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
         registry.addResourceHandler("swagger-ui.html")
@@ -52,7 +54,7 @@ open class Application : WebMvcConfigurerAdapter() {
     }
 
     @Bean(name = ["transactionInterceptor"])
-    open fun transactionInterceptor(
+    fun transactionInterceptor(
             platformTransactionManager: PlatformTransactionManager): TransactionInterceptor {
         val transactionInterceptor = TransactionInterceptor()
         // 事物管理器
@@ -85,7 +87,7 @@ open class Application : WebMvcConfigurerAdapter() {
 
     //代理到ServiceImpl的Bean
     @Bean
-    open fun transactionAutoProxy(): BeanNameAutoProxyCreator {
+    fun transactionAutoProxy(): BeanNameAutoProxyCreator {
         val transactionAutoProxy = BeanNameAutoProxyCreator()
         transactionAutoProxy.isProxyTargetClass = true
         transactionAutoProxy.setBeanNames("acheng1314.cn.service.*ServiceImpl.*(..)")
@@ -95,7 +97,7 @@ open class Application : WebMvcConfigurerAdapter() {
 
     val SWAGGER_SCAN_BASE_PACKAGE = "acheng1314.cn.controller.api"
     @Bean(name = ["defaultApi"])
-    open fun createRestApi(): Docket {
+    fun createRestApi(): Docket {
         return Docket(DocumentationType.SWAGGER_2)  //Docket，Springfox的私有API设置初始化为Swagger2
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(SWAGGER_SCAN_BASE_PACKAGE))
@@ -115,9 +117,11 @@ open class Application : WebMvcConfigurerAdapter() {
      * 分页插件
      */
     @Bean
-    open fun paginationInterceptor(): PaginationInterceptor {
-        return PaginationInterceptor()
-    }
+    fun paginationInterceptor() = PaginationInterceptor()
+
+
+    @Bean
+    fun methodValidationPostProcessor() = MethodValidationPostProcessor()
 
     companion object {
 

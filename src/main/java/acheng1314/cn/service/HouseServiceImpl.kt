@@ -2,7 +2,7 @@ package acheng1314.cn.service
 
 import acheng1314.cn.dao.BaseHouseDao
 import acheng1314.cn.domain.BaseHouse
-import acheng1314.cn.util.LogE
+import acheng1314.cn.validate.BeanValidator
 import com.baomidou.mybatisplus.plugins.pagination.Pagination
 import com.baomidou.mybatisplus.service.impl.ServiceImpl
 import org.springframework.stereotype.Service
@@ -12,8 +12,9 @@ import javax.validation.Valid
 class HouseServiceImpl : ServiceImpl<BaseHouseDao, BaseHouse>() {
 
     @Throws(Exception::class)
-    fun saveBaseHouse(@Valid data: BaseHouse) {
+    fun saveBaseHouse(data: BaseHouse) {
         try {
+            BeanValidator.validate(data)
             baseMapper.insert(data)
         } catch (e: Exception) {
             throw Exception(e.message)

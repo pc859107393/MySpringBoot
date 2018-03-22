@@ -15,17 +15,33 @@
         <div class="error-container">
             <div class="well">
                 <h1 class="grey lighter smaller">
-											<span class="blue bigger-125">
-												<i class="ace-icon fa fa-random"></i>
-												500
-											</span>
+                    <span class="blue bigger-125"><i class="ace-icon fa fa-random"></i>
+                        500
+                    </span>
                     可能在这里发生了错误！
                 </h1>
 
                 <hr>
                 <h3 class="lighter smaller">
-                    但是我希望他是正常工作的！
+                    <ul class="list-unstyled spaced inline bigger-110 margin-15">
+                        <li>
+                            <i class="ace-icon fa fa-hand-o-right blue"></i>
+                        <#if url?exists>
+                            错误地址：${url}
+                        </#if>
+                        </li>
 
+                        <li>
+                            <i class="ace-icon fa fa-hand-o-right blue"></i>
+                        <#if exception?exists>
+                            <#if exception.defaultMessage?exists>
+                                错误原因：${exception.defaultMessage!}
+                            <#else >
+                                错误原因：${exception.message!}
+                            </#if>
+                        </#if>
+                        </li>
+                    </ul>
                 </h3>
 
                 <div class="space"></div>
@@ -33,21 +49,6 @@
                 <div>
                     <h4 class="lighter smaller">或许，你需要返回上一页！</h4>
 
-                    <ul class="list-unstyled spaced inline bigger-110 margin-15">
-                        <li>
-                            <i class="ace-icon fa fa-hand-o-right blue"></i>
-                        <#if url?exists>
-                        ${url}
-                        </#if>
-                        </li>
-
-                        <li>
-                            <i class="ace-icon fa fa-hand-o-right blue"></i>
-                        <#if exception?exists>
-                        ${exception}
-                        </#if>
-                        </li>
-                    </ul>
                 </div>
 
                 <hr>

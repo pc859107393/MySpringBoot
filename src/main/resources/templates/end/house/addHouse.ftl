@@ -67,8 +67,8 @@
                     <div class="col-xs-11 col-sm-4">
                         <select id="rentType" name="rentType"
                                 class="form-control">
-                            <option value="短租">短租</option>
-                            <option value="长租">长租</option>
+                            <option value="1">短租</option>
+                            <option value="2">长租</option>
                         </select>
                     </div>
                 </div>
@@ -90,15 +90,6 @@
 
                     <div class="col-sm-11">
                         <input type="number" id="liveNum" name="liveNum" placeholder="宜居人数" class="col-xs-10 col-sm-5"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-sm-1 control-label no-padding-right" for="address"> 房屋地址 </label>
-
-                    <div class="col-sm-11">
-                        <input type="text" id="address" name="address" placeholder="房屋地址（越详细越好）"
-                               class="col-xs-10 col-sm-5"/>
                     </div>
                 </div>
 
@@ -183,7 +174,7 @@
         if ("" == $("#name").val()) {
             $("#name").tips({
                 side: 2,
-                msg: '昵称不得为空',
+                msg: '房源名称不得为空',
                 bg: '#AE81FF',
                 time: 3
             });
@@ -191,25 +182,36 @@
             return false;
         }
 
-        if ($("#loginName").val() == "") {
-            $("#loginName").tips({
+        if ($("#houseType").val() == "") {
+            $("#houseType").tips({
                 side: 2,
-                msg: '登录名称不得为空',
+                msg: '房屋户型不得为空',
                 bg: '#AE81FF',
                 time: 3
             });
-            $("#loginName").focus();
+            $("#houseType").focus();
             return false;
         }
 
-        if ($("#password").val() == "") {
-            $("#password").tips({
+        if ($("#address").val() == "") {
+            $("#address").tips({
                 side: 2,
-                msg: '登录密码不得为空',
+                msg: '房屋详细地址不得为空',
                 bg: '#AE81FF',
                 time: 3
             });
-            $("#password").focus();
+            $("#address").focus();
+            return false;
+        }
+
+        if ($("#householdId").val() == "") {
+            $("#householdId").tips({
+                side: 2,
+                msg: '房屋所有人ID不得为空',
+                bg: '#AE81FF',
+                time: 3
+            });
+            $("#householdId").focus();
             return false;
         }
 
