@@ -45,8 +45,6 @@ class BaseHouse : Model<BaseHouse>() {
 
     var status: Int? = null
 
-    @Valid
-    @NotNull(message = "创建时间不能为空")
     var date: Date? = null
 
 }
