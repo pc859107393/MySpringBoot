@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.EnableAspectJAutoProxy
 import org.springframework.transaction.PlatformTransactionManager
 import org.springframework.transaction.annotation.EnableTransactionManagement
 import org.springframework.transaction.interceptor.TransactionInterceptor
@@ -38,6 +39,7 @@ import java.util.*
 @EnableSwagger2
 @ComponentScan(basePackages = ["acheng1314.cn"])
 @Configuration
+@EnableAspectJAutoProxy
 class Application : WebMvcConfigurerAdapter() {
 
     override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
@@ -90,7 +92,7 @@ class Application : WebMvcConfigurerAdapter() {
     fun transactionAutoProxy(): BeanNameAutoProxyCreator {
         val transactionAutoProxy = BeanNameAutoProxyCreator()
         transactionAutoProxy.isProxyTargetClass = true
-        transactionAutoProxy.setBeanNames("acheng1314.cn.service.*ServiceImpl.*(..)")
+        transactionAutoProxy.setBeanNames("*ServiceImpl")
         transactionAutoProxy.setInterceptorNames("transactionInterceptor")
         return transactionAutoProxy
     }

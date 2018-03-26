@@ -19,12 +19,11 @@ import org.springframework.transaction.annotation.Transactional
  * Created by pc on 2017/8/11.
  */
 @Service("userService")
-@Aspect
-open class UserServiceImpl : ServiceImpl<UserDao, User>() {
+class UserServiceImpl : ServiceImpl<UserDao, User>() {
 
     @Transactional
     @Throws(Exception::class)
-    open fun addOneUser(entity: User) {
+    fun addOneUser(entity: User) {
         if (StringUtils.isEmpty(entity.loginName, entity.password))
             throw Exception("用户名或密码不能为空！")
         //创建插入时间
@@ -38,7 +37,7 @@ open class UserServiceImpl : ServiceImpl<UserDao, User>() {
 
     @Transactional
     @Throws(EnterInfoErrorException::class, NotFoundException::class)
-    open fun login(userLogin: String, userPass: String): User {
+    fun login(userLogin: String, userPass: String): User {
         var userPass = userPass
         if (StringUtils.isEmpty(userLogin) || StringUtils.isEmpty(userPass)) {
             throw EnterInfoErrorException("用户名和密码不能为空！请检查！")
@@ -67,7 +66,7 @@ open class UserServiceImpl : ServiceImpl<UserDao, User>() {
     }
 
     @Transactional
-    open fun findOneById(userLogin: String): User? {
+    fun findOneById(userLogin: String): User? {
         return baseMapper.findOneByKey(userLogin)
     }
 
@@ -85,7 +84,7 @@ open class UserServiceImpl : ServiceImpl<UserDao, User>() {
 
     @Transactional
     @Throws(Exception::class)
-    open fun updateUser(user: User) {
+    fun updateUser(user: User) {
         val tmpSwap = findOneByLoginName(user.loginName!!)
         if (tmpSwap != null) {
             var notDo = 0
