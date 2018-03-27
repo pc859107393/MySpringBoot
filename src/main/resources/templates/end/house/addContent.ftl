@@ -15,7 +15,7 @@
             房源管理
             <small>
                 <i class="icon-double-angle-right"></i>
-                ①、添加房源基础信息
+                ②、添加房源描述信息
             </small>
         </h1>
     </div>

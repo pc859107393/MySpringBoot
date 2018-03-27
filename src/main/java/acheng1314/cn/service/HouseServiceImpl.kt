@@ -12,11 +12,12 @@ import org.springframework.stereotype.Service
 class HouseServiceImpl : ServiceImpl<BaseHouseDao, BaseHouse>() {
 
     @Throws(Exception::class)
-    fun saveBaseHouse(data: BaseHouse) {
-        try {
+    fun saveBaseHouse(data: BaseHouse): BaseHouse {
+        return try {
             BeanValidator.validate(data)
             data.date = DateUtil.getDate()
             baseMapper.insert(data)
+            data
         } catch (e: Exception) {
             throw Exception(e.message)
         }

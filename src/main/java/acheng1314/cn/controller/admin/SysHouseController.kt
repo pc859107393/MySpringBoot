@@ -22,15 +22,20 @@ class SysHouseController {
         @GetMapping(value = ["/add"], produces = [MediaType.TEXT_HTML_VALUE])
         get() = "end/house/addHouse"
 
+    val addHouseContent: String
+        @GetMapping(value = ["/addContent"], produces = [MediaType.TEXT_HTML_VALUE])
+        get() = "end/house/addContent"
+
     @PostMapping(value = ["/add"], produces = [MediaType.TEXT_HTML_VALUE])
     fun addHouse(modelMap: ModelMap, baseHouse: BaseHouse): String {
         try {
-            houseService.saveBaseHouse(baseHouse)
-            modelMap.addAttribute("msg", "添加成功")
+            val house = houseService.saveBaseHouse(baseHouse)
+            modelMap.addAttribute("msg", "添加成功，请继续添加房屋配套信息！")
+            modelMap.addAttribute("id", house.id)
         } catch (e: Exception) {
             modelMap.addAttribute("msg", e.message)
         }
-        return addHouse
+        return addHouseContent
     }
 
     @GetMapping(value = ["/all"], produces = [MediaType.TEXT_HTML_VALUE])
