@@ -25,7 +25,7 @@
         <div class="col-xs-12">
 
             <form class="form-horizontal" role="form" action="${base}/endSys/houseCon/add" method="post"
-                  onsubmit="return checkAddHouseInfo()">
+                  onsubmit="return beforeSubmitGuard()">
             <#if msg?exists>
                 <div class="alert alert-block alert-success">
 
@@ -36,98 +36,116 @@
                 </div>
 
             </#if>
-
-                <input type="hidden" id="id" name="id" placeholder="id">
+            <#if id?exists>
+                <input type="hidden" id="houseId" name="houseId" placeholder="houseId" value="${id}">
+            <#else >
+            <#--<script type="text/javascript">-->
+            <#--window.location.href = "${base}/endSys/houseCon/add";-->
+            <#--</script>-->
+            </#if>
 
                 <div class="form-group">
-                    <label class="col-sm-1 control-label no-padding-right" for="name"> 房源名称 </label>
+                    <label class="col-sm-1 control-label no-padding-right" for="name"> 详细描述 </label>
 
                     <div class="col-sm-11">
-                        <input type="text" id="name" name="name" placeholder="房源名称" class="col-xs-10 col-sm-5"/>
+                        <div id="editor">
+                            <p>请在此处 <b>编辑内容</b></p>
+                        </div>
+                        <input type="hidden" id="content" name="content" placeholder="内容"
+                               class="col-xs-10 col-sm-5"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-1 control-label no-padding-right" for="houseType"> 房屋户型 </label>
+                    <label class="col-sm-1 control-label no-padding-right" for="houseType"> 交易规则 </label>
 
                     <div class="col-xs-11 col-sm-4">
                         <select id="houseType" name="houseType"
                                 class="form-control">
-                            <option value="一室一厅">一室一厅</option>
-                            <option value="二室一厅">二室一厅</option>
-                            <option value="三室二厅">三室二厅</option>
-                            <option value="三室以上">三室以上</option>
+                            <option value="灵活">灵活：</option>
+                            <option value="中等">中等</option>
+                            <option value="严格">严格</option>
+                            <option value="不可退">不可退</option>
                         </select>
                     </div>
                 </div>
-
+                <h3 class="header smaller lighter blue">
+                    房屋设施选择
+                    <small>常见配套设施</small>
+                </h3>
                 <div class="form-group">
-                    <label class="col-sm-1 control-label no-padding-right" for="rentType"> 租售类型 </label>
-
-                    <div class="col-xs-11 col-sm-4">
-                        <select id="rentType" name="rentType"
-                                class="form-control">
-                            <option value="1">短租</option>
-                            <option value="2">长租</option>
-                        </select>
+                    <div class="col-xs-2">
+                        <label>
+                            宽带上网
+                            <input name="network" class="ace ace-switch ace-switch-6" type="checkbox"/>
+                            <span class="lbl"></span>
+                        </label>
+                    </div>
+                    <div class="col-xs-2">
+                        <label>
+                            无线WIFI
+                            <input name="wifi" class="ace ace-switch ace-switch-6" type="checkbox"/>
+                            <span class="lbl"></span>
+                        </label>
+                    </div>
+                    <div class="col-xs-2">
+                        <label>
+                            电视
+                            <input name="tv" class="ace ace-switch ace-switch-6" type="checkbox"/>
+                            <span class="lbl"></span>
+                        </label>
+                    </div>
+                    <div class="col-xs-2">
+                        <label>
+                            浴室
+                            <input name="bathroom" class="ace ace-switch ace-switch-6" type="checkbox"/>
+                            <span class="lbl"></span>
+                        </label>
+                    </div>
+                    <div class="col-xs-2">
+                        <label>
+                            空调
+                            <input name="air" class="ace ace-switch ace-switch-6" type="checkbox"/>
+                            <span class="lbl"></span>
+                        </label>
+                    </div>
+                    <div class="col-xs-2">
+                        <label>
+                            暖气
+                            <input name="warmAir" class="ace ace-switch ace-switch-6" type="checkbox"/>
+                            <span class="lbl"></span>
+                        </label>
+                    </div>
+                    <div class="col-xs-2">
+                        <label>
+                            洗衣机
+                            <input name="washer" class="ace ace-switch ace-switch-6" type="checkbox"/>
+                            <span class="lbl"></span>
+                        </label>
+                    </div>
+                    <div class="col-xs-2">
+                        <label>
+                            电冰箱
+                            <input name="refrigerator" class="ace ace-switch ace-switch-6" type="checkbox"/>
+                            <span class="lbl"></span>
+                        </label>
+                    </div>
+                    <div class="col-xs-2">
+                        <label>
+                            被子
+                            <input name="quilt" class="ace ace-switch ace-switch-6" type="checkbox"/>
+                            <span class="lbl"></span>
+                        </label>
                     </div>
                 </div>
 
+                <h3 class="header smaller lighter blue">
+                    房屋设施选择
+                    <small>其他便利设施</small>
+                </h3>
                 <div class="form-group">
-                    <label class="col-sm-1 control-label no-padding-right" for="used"> 是否可用 </label>
 
-                    <div class="col-xs-11 col-sm-4">
-                        <select id="used" name="used"
-                                class="form-control">
-                            <option value="false">不可用</option>
-                            <option value="true">可用</option>
-                        </select>
-                    </div>
                 </div>
-
-                <div class="form-group">
-                    <label class="col-sm-1 control-label no-padding-right" for="liveNum"> 宜居人数 </label>
-
-                    <div class="col-sm-11">
-                        <input type="number" id="liveNum" name="liveNum" placeholder="宜居人数" class="col-xs-10 col-sm-5"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-sm-1 control-label no-padding-right" for="address"> 房屋地址 </label>
-
-                    <div class="col-sm-11">
-                        <input type="text" id="address" name="address" placeholder="房屋地址（越详细越好）"
-                               class="col-xs-10 col-sm-5"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-sm-1 control-label no-padding-right" for="householdId"> 户主ID </label>
-
-                    <div class="col-sm-11">
-                        <input type="text" id="householdId" name="householdId" placeholder="户主ID"
-                               class="col-xs-10 col-sm-5"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-sm-1 control-label no-padding-right" for="longitude"> 经度 </label>
-
-                    <div class="col-sm-11">
-                        <input type="text" id="longitude" name="longitude" placeholder="经度" class="col-xs-10 col-sm-5"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-sm-1 control-label no-padding-right" for="latitude"> 纬度 </label>
-
-                    <div class="col-sm-11">
-
-                        <input type="text" id="latitude" name="latitude" placeholder="纬度" class="col-xs-10 col-sm-5"/>
-                    </div>
-                </div>
-
                 <div class="clearfix form-actions">
                     <div class="col-md-offset-3 col-md-9">
                         <button class="btn btn-info" type="submit">
@@ -168,7 +186,7 @@
 </body>
 
 <#include "../../_inc/_footer.ftl"/>
-
+<script type="text/javascript" src="../../../static/js/wangEditor.min.js"></script>
 <script type="text/javascript">
     function checkAddHouseInfo() {
         if ("" == $("#name").val()) {
@@ -215,6 +233,27 @@
             return false;
         }
 
+        return true;
+    }
+
+    var E = window.wangEditor;
+    var editor = new E('#editor');
+    // 或者 var editor = new E( document.getElementById('editor') )
+    // 配置服务器端地址
+    editor.customConfig.uploadImgServer = '${base}/endSys/api/file/save';
+    // 限制一次最多上传 5 张图片
+    editor.customConfig.uploadImgMaxLength = 5;
+    editor.customConfig.uploadFileName = 'upfile';
+    editor.create();
+
+        <#if different?exists>
+        <#--document.getElementById("id").value = '${different.id!}';-->
+                document.getElementById("title").value = '${different.title!}';
+                document.getElementById("content").value = '${different.content!}';
+        </#if>
+
+    function beforeSubmitGuard() {
+        document.getElementById("content").value = editor.txt.html();
         return true;
     }
 

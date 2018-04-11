@@ -60,7 +60,7 @@
                             <td>${house.houseType!}</td>
                             <td>${house.liveNum!}</td>
                             <td>${house.address!}&nbsp;/&nbsp;</td>
-                            <td>${house.date!}</td>
+                            <td>${house.date!?string('yyyy-MM-dd hh:mm:ss')}</td>
 
                             <td class="center">
                                 <div>
