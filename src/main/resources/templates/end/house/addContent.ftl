@@ -144,7 +144,55 @@
                     <small>其他便利设施</small>
                 </h3>
                 <div class="form-group">
-
+                    <div class="col-xs-2">
+                        <label>
+                            热水
+                            <input name="hotWater" class="ace ace-switch ace-switch-6" type="checkbox"/>
+                            <span class="lbl"></span>
+                        </label>
+                    </div>
+                    <div class="col-xs-2">
+                        <label>
+                            厨房
+                            <input name="kitchen" class="ace ace-switch ace-switch-6" type="checkbox"/>
+                            <span class="lbl"></span>
+                        </label>
+                    </div>
+                    <div class="col-xs-2">
+                        <label>
+                            电脑
+                            <input name="computer" class="ace ace-switch ace-switch-6" type="checkbox"/>
+                            <span class="lbl"></span>
+                        </label>
+                    </div>
+                    <div class="col-xs-2">
+                        <label>
+                            毛巾
+                            <input name="towel" class="ace ace-switch ace-switch-6" type="checkbox"/>
+                            <span class="lbl"></span>
+                        </label>
+                    </div>
+                    <div class="col-xs-2">
+                        <label>
+                            拖鞋
+                            <input name="slipper" class="ace ace-switch ace-switch-6" type="checkbox"/>
+                            <span class="lbl"></span>
+                        </label>
+                    </div>
+                    <div class="col-xs-2">
+                        <label>
+                            电热水壶
+                            <input name="kettle" class="ace ace-switch ace-switch-6" type="checkbox"/>
+                            <span class="lbl"></span>
+                        </label>
+                    </div>
+                    <div class="col-xs-2">
+                        <label>
+                            电梯
+                            <input name="elevator" class="ace ace-switch ace-switch-6" type="checkbox"/>
+                            <span class="lbl"></span>
+                        </label>
+                    </div>
                 </div>
                 <div class="clearfix form-actions">
                     <div class="col-md-offset-3 col-md-9">
