@@ -17,18 +17,18 @@ import java.util.List;
 @Repository("userDao")
 public interface UserDao extends BaseMapper<User> {
 
-    @Select("SELECT * FROM `cc_user`")
+    @Select("SELECT * FROM `user`")
     List<User> findAll();
 
-    @Select("SELECT * FROM `cc_user` where `login_name` = #{key}")
+    @Select("SELECT * FROM `user` where `tel` = #{key}")
     User findOneByKey(@Param("key") String key);
 
-    @Update("UPDATE `cc_user` SET `used` = 0 where `login_name` = #{key}")
+    @Update("UPDATE `user` SET `used` = 0 where `tel` = #{key}")
     void delUser(@Param("key") String key);
 
-    @Insert("INSERT `cc_user` " +
-            "(`name`,`login_name`, `password`, `duty`, `create_date`, `used`)" +
-            "    VALUES (#{name}, #{loginName}, #{password}, #{duty}, #{createDate}, #{used});")
+    @Insert("INSERT `user` " +
+            "(`name`, `password`, `duty`, `tel`, `sex`, `type`)" +
+            "    VALUES (#{name}, #{password}, #{duty}, #{tel}, #{sex}, #{type});")
     @SelectKey(statement = "SELECT LAST_INSERT_ID()"
             , keyProperty = "id"
             , before = false

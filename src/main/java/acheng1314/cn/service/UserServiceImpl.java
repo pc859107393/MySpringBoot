@@ -28,15 +28,11 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> {
 
     @Transactional
     public void addOneUser(User entity) throws Exception {
-        if (StringUtils.isEmpty(entity.getLoginName(), entity.getPassword()))
+        if (StringUtils.isEmpty(entity.getTel(), entity.getPassword()))
             throw new Exception("用户名或密码不能为空！");
-        //创建插入时间
-        Integer createTime = DateUtil.getIntTime();
-        entity.setCreateDate(createTime);
         //MD5密码加盐后再sha256加密
         entity.setPassword(EncryptUtils.encryptPassword(entity.getPassword().toLowerCase()
-                , createTime.toString()));
-        entity.setUsed(true);   //默认可用
+                , ""));
         baseMapper.addUser(entity);
     }
 
@@ -48,7 +44,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> {
         User result = null;
         result = findOneById(userLogin);
         if (null == result) throw new NotFoundException("用户未找到！");
-        if (!result.isUsed()) throw new EnterInfoErrorException("用户禁止登陆！");
+//        if (!result.isUsed()) throw new EnterInfoErrorException("用户禁止登陆！");
         try {
             userPass = userPass.toLowerCase();  //将大写md5转换为小写md5
             if (userPass.length() > 16 && userPass.length() == 32) {    //32位小写转换为16位小写
@@ -59,7 +55,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> {
             throw new EnterInfoErrorException("密码错误！");
         }
 
-        String encryptPassword = EncryptUtils.encryptPassword(userPass, result.getCreateDate().toString());
+        String encryptPassword = EncryptUtils.encryptPassword(userPass, "");
 
         if (!encryptPassword.equals(result.getPassword())) {
             throw new EnterInfoErrorException("用户名和密码不匹配！");
@@ -86,7 +82,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> {
 
     @Transactional
     public void updateUser(User user) throws Exception {
-        User tmpSwap = findOneByLoginName(user.getLoginName());
+        User tmpSwap = findOneByLoginName(user.getTel());
         int notDo = 0;
         //交换昵称
         if (!StringUtils.isEmpty(user.getName())
@@ -105,14 +101,9 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> {
                         .toLowerCase());
             }
             tmpSwap.setPassword(EncryptUtils.encryptPassword(user.getPassword().toLowerCase()
-                    , tmpSwap.getCreateDate().toString()));
+                    , ""));
         } else notDo++;
-        //交换可否使用
-        if (user.isUsed() == tmpSwap.isUsed()) notDo++;
-
         if (notDo == 4) throw new Exception("什么都没做！不需要更新哦！");
-
-        tmpSwap.setUsed(user.isUsed());
 
         baseMapper.updateById(tmpSwap);
     }

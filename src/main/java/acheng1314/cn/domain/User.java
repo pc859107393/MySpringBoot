@@ -9,51 +9,36 @@ import io.swagger.annotations.ApiParam;
 import java.io.Serializable;
 
 /**
- * Created by pc on 2017/8/11.
- *
- * @version v1 <br/>
- * 数据库表：cc_user
+ * create table user
+ * (
+ * id int auto_increment comment '人员的ID信息，自增主键'
+ * primary key,
+ * name text not null comment '用户姓名',
+ * tel text not null comment '手机号',
+ * sex tinyint not null comment '性别',
+ * duty text not null comment '职务，对应权限的ID列表',
+ * password text not null comment '用户密码',
+ * constraint user_id_uindex
+ * unique (id)
+ * )
+ * comment '人员信息表';
  */
-@TableName(value = "cc_user")
+@TableName(value = "user")
 public class User extends Model<User> {
     @ApiParam(required = false)
     private Long id;
-    @ApiParam(required = true)
     private String name;
-    //    @TableField(value = "login_name")
     @ApiParam(required = true)
-    private String loginName;
+    private String tel;
     @ApiParam(required = true)
     private String password;
     private String duty;
-    //    @TableField(value = "create_date")
-    private Integer createDate;
-    private Boolean used = false;
-
-    public User() {
-    }
+    private String sex;
+    private String type;
 
     @Override
     protected Serializable pkVal() {
         return this.id;
-    }
-
-    /**
-     * 创建用户对象
-     *
-     * @param name       昵称
-     * @param loginName  登录名字
-     * @param password   密码
-     * @param duty       职位
-     * @param createDate 创建时间（int）<br/>
-     *                   used  是否可用，默认=true=1
-     */
-    public User(String name, String loginName, String password, String duty, Integer createDate) {
-        this.name = name;
-        this.loginName = loginName;
-        this.password = password;
-        this.duty = duty;
-        this.createDate = createDate;
     }
 
     public Long getId() {
@@ -72,12 +57,12 @@ public class User extends Model<User> {
         this.name = name;
     }
 
-    public String getLoginName() {
-        return loginName;
+    public String getTel() {
+        return tel;
     }
 
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
+    public void setTel(String tel) {
+        this.tel = tel;
     }
 
     public String getPassword() {
@@ -96,32 +81,31 @@ public class User extends Model<User> {
         this.duty = duty;
     }
 
-    public Integer getCreateDate() {
-        return createDate;
+    public String getSex() {
+        return sex;
     }
 
-    public void setCreateDate(Integer createDate) {
-        this.createDate = createDate;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
-    public boolean isUsed() {
-        return used;
+    public String getType() {
+        return type;
     }
 
-    public void setUsed(boolean used) {
-        this.used = used;
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override
     public String toString() {
-        return "UserDao{" +
-                "id='" + id + '\'' +
+        return "User{" +
+                "id=" + id +
                 ", name='" + name + '\'' +
-                ", loginName='" + loginName + '\'' +
+                ", tel='" + tel + '\'' +
                 ", password='" + password + '\'' +
                 ", duty='" + duty + '\'' +
-                ", createDate=" + createDate +
-                ", used=" + used +
+                ", sex='" + sex + '\'' +
                 '}';
     }
 }
