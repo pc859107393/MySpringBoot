@@ -1,6 +1,5 @@
 <script src="../static/js/md5.js"></script>
 
-
 <script type="text/javascript">
     function show_box(id) {
         jQuery('.widget-box.visible').removeClass('visible');

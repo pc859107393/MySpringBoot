@@ -1,111 +1,256 @@
-<!DOCTYPE html>
-
+<#assign base=request.contextPath />
+<!doctype html>
 <html>
+
 <head>
-    <title>添加商品&更新库存</title>
-<#include "../../_inc/_header.ftl"/>
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>添加用户</title>
+    <meta name="description" content="添加用户">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="${base}/static/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="${base}/static/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="stylesheet" href="${base}/static/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="${base}/static/css/admin.css">
+    <link rel="stylesheet" href="${base}/static/css/app.css">
 </head>
-<body>
 
-<div class="page-content">
+<body data-type="generalComponents">
 
-    <div class="page-header">
-        <h1>
-            用户管理
-            <small>
-                <i class="icon-double-angle-right"></i>
-                添加用户
-            </small>
-        </h1>
+
+<header class="am-topbar am-topbar-inverse admin-header">
+    <div class="am-topbar-brand">
+        <a href="javascript:" class="tpl-logo">
+            <img src="${base}/static/img/logo.png" alt="">
+        </a>
     </div>
-    <!-- /.page-header -->
+    <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
 
-    <div class="row">
-        <div class="col-xs-12">
+    </div>
 
-            <form class="form-horizontal" role="form" action="${base}/endSys/addUser" method="post"
-                  onsubmit="return checkAddUserInfo()">
-            <#if msg?exists>
-                <div class="alert alert-block alert-success">
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
+            data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span
+            class="am-icon-bars"></span></button>
 
-                    <i class="icon-ok green"></i>
-                    <strong class="green">
-                    ${msg}
-                    </strong>
+    <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+        <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
+
+            <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
+                <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:">
+                    <span class="tpl-header-list-user-nick">${userInfo.name!}</span><span
+                        class="tpl-header-list-user-ico"> <img
+                        src="${base}/static/img/user01.png"></span>
+                </a>
+                <ul class="am-dropdown-content">
+                    <li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>
+                    <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
+                    <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+                </ul>
+            </li>
+            <li><a href="###" class="tpl-header-list-link"><span
+                    class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
+        </ul>
+    </div>
+</header>
+
+
+<div class="tpl-page-container tpl-page-header-fixed">
+    <div class="tpl-left-nav tpl-left-nav-hover">
+        <div class="tpl-left-nav-title">
+            Amaze UI 列表
+        </div>
+        <div class="tpl-left-nav-list">
+            <ul class="tpl-left-nav-menu">
+                <li class="tpl-left-nav-item">
+                    <a href="index.html" class="nav-link">
+                        <i class="am-icon-home"></i>
+                        <span>首页</span>
+                    </a>
+                </li>
+                <li class="tpl-left-nav-item">
+                    <a href="chart.html" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-bar-chart"></i>
+                        <span>数据表</span>
+                        <i class="tpl-left-nav-content tpl-badge-danger">
+                            12
+                        </i>
+                    </a>
+                </li>
+
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-table"></i>
+                        <span>表格</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu">
+                        <li>
+                            <a href="table-font-list.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>文字表格</span>
+                                <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                            </a>
+
+                            <a href="table-images-list.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>图片表格</span>
+                                <i class="tpl-left-nav-content tpl-badge-success">
+                                    18
+                                </i>
+
+                                <a href="form-news.html">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>消息列表</span>
+                                    <i class="tpl-left-nav-content tpl-badge-primary">
+                                        5
+                                    </i>
+
+
+                                    <a href="form-news-list.html">
+                                        <i class="am-icon-angle-right"></i>
+                                        <span>文字列表</span>
+
+                                    </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:" class="nav-link tpl-left-nav-link-list active">
+                        <i class="am-icon-user"></i>
+                        <span>用户管理</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu" style="display: block;">
+                        <li>
+                            <a href="../endSys/addUser" class="active">
+                                <i class="am-icon-angle-right"></i>
+                                <span>添加用户</span>
+                                <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                            </a>
+
+                            <a href="../endSys/userList">
+                                <i class="am-icon-angle-right"></i>
+                                <span>用户列表</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="tpl-left-nav-item">
+                    <a href="login.html" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-key"></i>
+                        <span>登录</span>
+
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="tpl-content-wrapper">
+        <div class="tpl-content-page-title">
+            设计师培训系统后台管理
+        </div>
+        <ol class="am-breadcrumb">
+            <li><a href="${base}" class="am-icon-home">首页</a></li>
+            <li><a href="#">用户管理</a></li>
+            <li class="am-active">添加用户</li>
+        </ol>
+        <div class="tpl-portlet-components">
+            <div class="portlet-title">
+                <div class="caption font-green bold">
+                    <span class="am-icon-user"></span> 添加用户
                 </div>
+            </div>
 
-            </#if>
+            <div class="tpl-block">
 
-                <input type="hidden" id="id" name="id" placeholder="id">
+                <div class="am-g">
+                    <div class="tpl-form-body tpl-form-line">
+                        <form class="am-form tpl-form-line-form" action="/endSys/addUser" method="post"
+                              onsubmit="return checkAddUserInfo()">
+                            <div class="am-form-group">
+                                <label for="user-name" class="am-u-sm-3 am-form-label">手机号 <span
+                                        class="tpl-form-line-small-title">Tel</span></label>
+                                <div class="am-u-sm-9">
+                                    <input type="text" class="tpl-form-input" name="tel" id="tel" placeholder="请输入手机号">
+                                    <small>手机号是唯一登录凭证，请认真填写！</small>
+                                </div>
+                            </div>
 
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="name"> 用户昵称 </label>
+                            <div class="am-form-group">
+                                <label for="user-email" class="am-u-sm-3 am-form-label">用户姓名 <span
+                                        class="tpl-form-line-small-title">Name</span></label>
+                                <div class="am-u-sm-9">
+                                    <input type="text" class="am-form-field tpl-form-no-bg" placeholder="姓名"
+                                           name="name"/>
+                                </div>
+                            </div>
 
-                    <div class="col-sm-9">
-                        <input type="text" id="name" name="name" placeholder="用户昵称" class="col-xs-10 col-sm-5"/>
+                            <div class="am-form-group">
+                                <label for="user-phone" class="am-u-sm-3 am-form-label">身份权限 <span
+                                        class="tpl-form-line-small-title">identity</span></label>
+                                <div class="am-u-sm-9">
+                                    <select data-am-selected="{searchBox: 1}" name="type">
+                                        <option value="admin">管理员</option>
+                                        <option value="designer">设计师</option>
+                                        <option value="student">学徒</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="am-form-group">
+                                <label for="user-phone" class="am-u-sm-3 am-form-label">性别 <span
+                                        class="tpl-form-line-small-title">Sex</span></label>
+                                <div class="am-u-sm-9">
+                                    <select data-am-selected="{searchBox: 1}" name="sex">
+                                        <option value="男">男</option>
+                                        <option value="女">女</option>
+                                        <option value="未知">未知</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-form-label">密码 <span
+                                        class="tpl-form-line-small-title">Password</span></label>
+                                <div class="am-u-sm-9">
+                                    <input type="password" placeholder="请输入密码" name="password">
+                                </div>
+                            </div>
+
+                            <div class="am-form-group">
+                                <div class="am-u-sm-3 am-u-sm-push-3">
+                                    <button type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交
+                                    </button>
+                                </div>
+                                <div class="am-u-sm-3">
+                                    <button type="reset" class="am-btn am-btn-primary tpl-btn-bg-color-success ">清除
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="loginName"> 登录账号 </label>
-
-                    <div class="col-sm-9">
-                        <input type="text" id="loginName" name="loginName" placeholder="登录账号"
-                               class="col-xs-10 col-sm-5"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="password"> 登录密码 </label>
-
-                    <div class="col-sm-9">
-                        <input type="password" id="password" name="password" placeholder="登录密码"
-                               class="col-xs-10 col-sm-5"/>
-                    </div>
-                </div>
-
-                <div class="clearfix form-actions">
-                    <div class="col-md-offset-3 col-md-9">
-                        <button class="btn btn-info" type="submit">
-                            <i class="icon-ok bigger-110"></i>
-                            提交
-                        </button>
-
-                        &nbsp; &nbsp; &nbsp;
-                        <button class="btn" type="reset">
-                            <i class="icon-undo bigger-110"></i>
-                            清除
-                        </button>
-                    </div>
-                </div>
-
-            </form>
-
-        <#if goods?exists>
-            <script type="application/javascript">
-                document.getElementById("id").value = '${goods.id!}';
-                document.getElementById("name").value = '${goods.name!}';
-                document.getElementById("code").value = '${goods.code!}';
-                document.getElementById("position").value = '${goods.position!}';
-                document.getElementById("cost").value = '${goods.cost!}';
-                document.getElementById("sum").value = '${goods.sum!}';
-                document.getElementById("type").value = '${goods.type!}';
-
-            </script>
-        </#if>
+            </div>
 
         </div>
-        <!-- /span -->
+
     </div>
-    <!-- /row -->
 
-</div><!-- /.page-content -->
+</div>
 
-</body>
 
-<#include "../../_inc/_footer.ftl"/>
+<script src="${base}/static/js/jquery.min.js"></script>
+<script src="${base}/static/js/amazeui.min.js"></script>
+<script src="${base}/static/js/app.js"></script>
 <#include "../../_inc/_addUser.ftl"/>
-
+</body>
 
 </html>

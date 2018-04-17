@@ -31,8 +31,9 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> {
         if (StringUtils.isEmpty(entity.getTel(), entity.getPassword()))
             throw new Exception("用户名或密码不能为空！");
         //MD5密码加盐后再sha256加密
-        entity.setPassword(EncryptUtils.encryptPassword(entity.getPassword().toLowerCase()
+        entity.setPassword(EncryptUtils.encryptPassword(CipherUtils.small16md5(entity.getPassword())
                 , ""));
+        entity.setDuty("1|2|3");
         baseMapper.addUser(entity);
     }
 

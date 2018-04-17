@@ -29,7 +29,7 @@ public class MainController {
     @GetMapping(value = "/")
     @ApiOperation(value = "主页")
     public String home() {
-        return apiDocs();
+        return login();
     }
 
     @GetMapping(value = "/apiDocs")
@@ -51,15 +51,15 @@ public class MainController {
     public String login(@ApiParam(hidden = true) ModelMap map,
                         @ApiParam(hidden = true) ShiroHttpServletRequest request,
                         @ApiParam(value = "用户名不能为空，否则不允许登录"
-                                , required = true) @RequestParam(value = "userLogin", required = false) String userLogin,
+                                , required = true) @RequestParam(value = "tel", required = false) String tel,
                         @ApiParam(value = "用户密码不能为空且必须为16位小写MD5，否则不允许登录"
-                                , required = true) @RequestParam(value = "userPass", required = false) String userPass) {
+                                , required = true) @RequestParam(value = "password", required = false) String password) {
         User result = null;
         try {
             //1.得到Subject
             Subject subject = SecurityUtils.getSubject();
             //2.调用登录方法
-            UsernamePasswordToken token = new UsernamePasswordToken(userLogin, userPass);
+            UsernamePasswordToken token = new UsernamePasswordToken(tel, password);
             subject.login(token);//当这一代码执行时，就会自动跳入到AuthRealm中认证方法
             result = (User) subject.getPrincipal();
             subject.getSession().setAttribute("userInfo", result);
