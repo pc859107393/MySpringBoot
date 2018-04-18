@@ -42,7 +42,8 @@
 
             <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                 <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:">
-                    <span class="tpl-header-list-user-nick">禁言小张</span><span class="tpl-header-list-user-ico"> <img
+                    <span class="tpl-header-list-user-nick">${userInfo.name!}</span><span
+                        class="tpl-header-list-user-ico"> <img
                         src="${base}/static/img/user01.png"></span>
                 </a>
                 <ul class="am-dropdown-content">
@@ -119,28 +120,30 @@
                         </li>
                     </ul>
                 </li>
+                <shiro:hasPermission name="用户管理">
+                    <li class="tpl-left-nav-item">
+                        <
+                        <a href="javascript:" class="nav-link tpl-left-nav-link-list active">
+                            <i class="am-icon-user"></i>
+                            <span>用户管理</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                        </a>
+                        <ul class="tpl-left-nav-sub-menu" style="display: block;">
+                            <li>
+                                <a href="../endSys/addUser">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>添加用户</span>
+                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                </a>
 
-                <li class="tpl-left-nav-item">
-                    <a href="javascript:" class="nav-link tpl-left-nav-link-list active">
-                        <i class="am-icon-user"></i>
-                        <span>用户管理</span>
-                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
-                    </a>
-                    <ul class="tpl-left-nav-sub-menu" style="display: block;">
-                        <li>
-                            <a href="../endSys/addUser">
-                                <i class="am-icon-angle-right"></i>
-                                <span>添加用户</span>
-                                <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                            </a>
-
-                            <a href="../endSys/userList" class="active">
-                                <i class="am-icon-angle-right"></i>
-                                <span>用户列表</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                                <a href="../endSys/userList" class="active">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>用户列表</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </shiro:hasPermission>
 
                 <li class="tpl-left-nav-item">
                     <a href="login.html" class="nav-link tpl-left-nav-link-list">
@@ -152,7 +155,6 @@
             </ul>
         </div>
     </div>
-
 
     <div class="tpl-content-wrapper">
         <div class="tpl-content-page-title">
@@ -212,17 +214,13 @@
 
                             <td>
                                 <div class="am-btn-toolbar">
-                                    <div class="am-btn-group am-btn-group-xs">
-                                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span
-                                                class="am-icon-pencil-square-o"></span> 编辑
-                                        </button>
-                                        <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span
-                                                class="am-icon-copy"></span> 复制
-                                        </button>
-                                        <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only">
-                                            <span class="am-icon-trash-o"></span> 删除
-                                        </button>
-                                    </div>
+                                    <a onclick=window.open("../endSys/editUser/${user.id}")>
+                                        <div class="am-btn-group am-btn-group-xs">
+                                            <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span
+                                                    class="am-icon-pencil-square-o"></span> 编辑
+                                            </button>
+                                        </div>
+                                    </a>
                                 </div>
                             </td>
                         </tr>
@@ -253,10 +251,7 @@
             </div>
             <div class="tpl-alert"></div>
         </div>
-
-
     </div>
-
 </div>
 
 

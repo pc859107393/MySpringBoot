@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Amaze UI Admin index Examples</title>
-    <meta name="description" content="登录界面¬">
+    <title>后台登录</title>
+    <meta name="description" content="登录界面">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
@@ -20,7 +20,6 @@
 </head>
 
 <body data-type="login">
-
 <div class="am-g myapp-login">
     <div class="myapp-login-logo-block  tpl-login-max">
         <div class="myapp-login-logo-text">
@@ -39,6 +38,14 @@
                     <div class="am-form-group">
                         <input type="password" class="" id="user-pwd" name="password" placeholder="请输入密码">
                     </div>
+
+                <#if msg?exists>
+                    <div class="am-form-group">
+                        <div class="am-alert am-alert-danger">
+                            ${msg}
+                        </div>
+                    </div>
+                </#if>
                     <div class="am-form-group am-hide">
                         <input type="password" class="" id="user-re-pwd" placeholder="请输入密码">
                     </div>

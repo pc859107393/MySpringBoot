@@ -64,6 +64,13 @@ public class SysUserController {
         return userList(map);
     }
 
+    @GetMapping(path = "/editUser/{id}", produces = MediaType.TEXT_HTML_VALUE)
+    public String editUser(ModelMap map, @PathVariable(name = "id") Integer Id) {
+        if (Id == null) return userList(map);
+        map.addAttribute("user", userService.selectById(Id));
+        return "end/user/editUser";
+    }
+
     @GetMapping(path = "/delUser/{loginName}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation(value = "删除用户", notes = "根据登录名禁用用户")
     @ResponseBody

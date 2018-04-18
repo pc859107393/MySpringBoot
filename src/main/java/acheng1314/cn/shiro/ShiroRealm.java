@@ -1,6 +1,8 @@
 package acheng1314.cn.shiro;
 
+import acheng1314.cn.domain.Duty;
 import acheng1314.cn.domain.User;
+import acheng1314.cn.service.DutyServiceImpl;
 import acheng1314.cn.service.UserServiceImpl;
 import acheng1314.cn.util.LogE;
 import org.apache.shiro.authc.*;
@@ -10,6 +12,9 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * created by 程 2016/11/25
@@ -18,6 +23,9 @@ public class ShiroRealm extends AuthorizingRealm {
 
     @Autowired
     private UserServiceImpl userService;
+
+    @Autowired
+    private DutyServiceImpl dutyService;
 
     /*
      * 登录信息和用户验证信息验证(non-Javadoc)
@@ -58,18 +66,12 @@ public class ShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection pc) {
-
-        User result4Find = (User) pc.asList().get(0);
+        List<Duty> duties = dutyService.selectAll();
+        ArrayList<String> dutyResult = new ArrayList<>();
+        duties.forEach(duty -> dutyResult.add(duty.getTitle()));
 
         SimpleAuthorizationInfo perList = new SimpleAuthorizationInfo();
-//        try {
-//            if (result4Find.getUserActivationKey().equals("admin"))
-//                perList.addStringPermissions(PermissionUtil.getAdminPer());
-//            else perList.addStringPermissions(PermissionUtil.getOtherPer());
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            perList.addStringPermissions(PermissionUtil.getOtherPer());
-//        }
+        perList.addStringPermissions(dutyResult);
         return perList;
     }
 
