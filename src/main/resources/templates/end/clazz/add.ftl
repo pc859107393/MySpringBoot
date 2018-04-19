@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>添加用户</title>
-    <meta name="description" content="添加用户">
+    <title>添加课程</title>
+    <meta name="description" content="添加课程">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="${base}/static/css/amazeui.min.css"/>
     <link rel="stylesheet" href="${base}/static/css/admin.css">
     <link rel="stylesheet" href="${base}/static/css/app.css">
+    <link rel="stylesheet" href="${base}/static/css/amazeui.datetimepicker.css"/>
 </head>
 
 <body data-type="generalComponents">
@@ -62,7 +63,7 @@
 <div class="tpl-page-container tpl-page-header-fixed">
     <div class="tpl-left-nav tpl-left-nav-hover">
         <div class="tpl-left-nav-title">
-            Amaze UI 列表
+            设计师培训后台管理系统
         </div>
         <div class="tpl-left-nav-list">
             <ul class="tpl-left-nav-menu">
@@ -83,16 +84,17 @@
                 </li>
 
                 <li class="tpl-left-nav-item">
-                    <a href="javascript:" class="nav-link tpl-left-nav-link-list">
+                    <a href="javascript:" class="nav-link tpl-left-nav-link-list active">
                         <i class="am-icon-cloud"></i>
                         <span>课程管理</span>
                         <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
                     </a>
-                    <ul class="tpl-left-nav-sub-menu">
+                    <ul class="tpl-left-nav-sub-menu" style="display: block;">
                         <li>
-                            <a href="../endSys/class/add">
-                                <i class="am-icon-angle-right active"></i>
+                            <a href="${base}/endSys/class/add" class="active">
+                                <i class="am-icon-angle-right"></i>
                                 <span>添加课程</span>
+                                <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                             </a>
 
                             <a href="table-images-list.html">
@@ -107,14 +109,14 @@
                 </li>
 
                 <li class="tpl-left-nav-item">
-                    <a href="javascript:" class="nav-link tpl-left-nav-link-list active">
+                    <a href="javascript:" class="nav-link tpl-left-nav-link-list">
                         <i class="am-icon-user"></i>
                         <span>用户管理</span>
                         <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
                     </a>
-                    <ul class="tpl-left-nav-sub-menu" style="display: block;">
+                    <ul class="tpl-left-nav-sub-menu" style="display: none;">
                         <li>
-                            <a href="../endSys/addUser" class="active">
+                            <a href="../endSys/addUser">
                                 <i class="am-icon-angle-right"></i>
                                 <span>添加用户</span>
                                 <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
@@ -159,55 +161,74 @@
 
                 <div class="am-g">
                     <div class="tpl-form-body tpl-form-line">
-                        <form class="am-form tpl-form-line-form" action="/endSys/addUser" method="post"
-                              onsubmit="return checkAddUserInfo()">
+                <#if msg?exists>
+                    <div class="am-form-group">
+                        <div class="am-alert am-alert-danger">
+                            ${msg}
+                        </div>
+                    </div>
+                </#if>
+                        <form class="am-form tpl-form-line-form" action="/endSys/class/add" method="post"
+                              onsubmit="return checkAddClassContent()">
                             <div class="am-form-group">
-                                <label for="user-name" class="am-u-sm-3 am-form-label">手机号 <span
-                                        class="tpl-form-line-small-title">Tel</span></label>
+                                <label for="user-name" class="am-u-sm-3 am-form-label">课程标题 <span
+                                        class="tpl-form-line-small-title">Class Title</span></label>
                                 <div class="am-u-sm-9">
-                                    <input type="text" class="tpl-form-input" name="tel" id="tel" placeholder="请输入手机号">
-                                    <small>手机号是唯一登录凭证，请认真填写！</small>
+                                    <input type="text" class="tpl-form-input" name="title" id="title"
+                                           placeholder="请输入课程标题">
+                                    <small>课程标题适当可以一目了然！</small>
                                 </div>
                             </div>
 
                             <div class="am-form-group">
-                                <label for="user-email" class="am-u-sm-3 am-form-label">用户姓名 <span
-                                        class="tpl-form-line-small-title">Name</span></label>
+                                <label for="user-email" class="am-u-sm-3 am-form-label">课程内容 <span
+                                        class="tpl-form-line-small-title">Class Content</span></label>
                                 <div class="am-u-sm-9">
-                                    <input type="text" class="am-form-field tpl-form-no-bg" placeholder="姓名"
-                                           name="name"/>
+                                    <div id="editor">
+                                        <p>请在此处 <b>编辑课程内容</b></p>
+                                    </div>
+                                    <input type="hidden" class="am-form-field tpl-form-no-bg" placeholder="课程内容"
+                                           id="content"
+                                           name="content"/>
                                 </div>
                             </div>
 
                             <div class="am-form-group">
-                                <label for="user-phone" class="am-u-sm-3 am-form-label">身份权限 <span
-                                        class="tpl-form-line-small-title">identity</span></label>
+                                <label for="user-phone" class="am-u-sm-3 am-form-label">开讲时间 <span
+                                        class="tpl-form-line-small-title">Date</span></label>
+                                <div class="am-u-sm-9">
+                                    <input type="text" class="am-form-field tpl-form-no-bg" placeholder="讲课时间"
+                                           name="date" id="datetimepicker"/>
+                                </div>
+                            </div>
+
+                            <div class="am-form-group">
+                                <label for="user-phone" class="am-u-sm-3 am-form-label">上课地点 <span
+                                        class="tpl-form-line-small-title">Location</span></label>
+                                <div class="am-u-sm-9">
+                                    <input type="text" class="am-form-field tpl-form-no-bg" placeholder="上课地点"
+                                           name="location"/>
+                                </div>
+                            </div>
+
+                            <div class="am-form-group">
+                                <label for="user-phone" class="am-u-sm-3 am-form-label">课程类别 <span
+                                        class="tpl-form-line-small-title">Class Type</span></label>
                                 <div class="am-u-sm-9">
                                     <select data-am-selected="{searchBox: 1}" name="type">
-                                        <option value="admin">管理员</option>
-                                        <option value="designer">设计师</option>
-                                        <option value="student">学徒</option>
+                                        <option value="基础">基础</option>
+                                        <option value="专业">专业</option>
+                                        <option value="大师">大师</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="am-form-group">
-                                <label for="user-phone" class="am-u-sm-3 am-form-label">性别 <span
-                                        class="tpl-form-line-small-title">Sex</span></label>
-                                <div class="am-u-sm-9">
-                                    <select data-am-selected="{searchBox: 1}" name="sex">
-                                        <option value="男">男</option>
-                                        <option value="女">女</option>
-                                        <option value="未知">未知</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="am-form-group">
-                                <label class="am-u-sm-3 am-form-label">密码 <span
-                                        class="tpl-form-line-small-title">Password</span></label>
+                                <label class="am-u-sm-3 am-form-label">访问密码 <span
+                                        class="tpl-form-line-small-title">Read Password</span></label>
                                 <div class="am-u-sm-9">
                                     <input type="password" placeholder="请输入密码" name="password">
+                                    <small>不设置访问密码所有人可以阅读，反之则需要密码访问！</small>
                                 </div>
                             </div>
 
@@ -236,7 +257,30 @@
 <script src="${base}/static/js/jquery.min.js"></script>
 <script src="${base}/static/js/amazeui.min.js"></script>
 <script src="${base}/static/js/app.js"></script>
-<#include "../../_inc/_addUser.ftl"/>
+<script src="../../../static/js/wangEditor.min.js"></script>
+<script src="../../../static/js/amazeui.datetimepicker.min.js"></script>
+<script type="text/javascript">
+    var E = window.wangEditor;
+    var editor = new E('#editor');
+    // 或者 var editor = new E( document.getElementById('editor') )
+    // 配置服务器端地址
+    editor.customConfig.uploadImgServer = '${base}/endSys/uploadFile';
+    // 限制一次最多上传 5 张图片
+    editor.customConfig.uploadImgMaxLength = 5;
+    editor.customConfig.uploadFileName = 'upfile';
+    editor.create();
+
+    $('#datetimepicker').datetimepicker({
+        format: 'yyyy-mm-dd hh:mm:ss'
+    });
+
+    function checkAddClassContent() {
+        document.getElementById("content").value = editor.txt.html();
+        return true;
+    }
+
+
+</script>
 </body>
 
 </html>

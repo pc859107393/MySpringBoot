@@ -11,7 +11,7 @@
  Target Server Version : 50718
  File Encoding         : utf-8
 
- Date: 04/17/2018 18:16:37 PM
+ Date: 04/19/2018 17:16:02 PM
 */
 
 SET NAMES utf8;
@@ -24,10 +24,12 @@ DROP TABLE IF EXISTS `class`;
 CREATE TABLE `class` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '课程ID\n',
   `title` text CHARACTER SET utf8 NOT NULL COMMENT '培训课程标题',
-  `date` datetime NOT NULL COMMENT '创建时间/修改时间',
+  `content` text COLLATE utf8_bin NOT NULL COMMENT '课程介绍',
   `user_id` varchar(60) CHARACTER SET utf8 NOT NULL COMMENT '教师ID，对应user表type类型为设计师',
   `password` text CHARACTER SET utf8 COMMENT '访问密码',
   `location` text CHARACTER SET utf8 NOT NULL COMMENT '地点',
+  `type` text COLLATE utf8_bin COMMENT '课程类别',
+  `date` datetime NOT NULL COMMENT '创建时间/修改时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `class_id_uindex` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='培训课程详情';
@@ -41,7 +43,14 @@ CREATE TABLE `duty` (
   `title` text CHARACTER SET utf8 NOT NULL COMMENT '权限描述文字',
   PRIMARY KEY (`id`),
   UNIQUE KEY `duty_id_uindex` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='职责';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='职责';
+
+-- ----------------------------
+--  Records of `duty`
+-- ----------------------------
+BEGIN;
+INSERT INTO `duty` VALUES ('1', '用户管理'), ('2', '添加用户'), ('3', '修改用户'), ('4', '用户列表');
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `resource`

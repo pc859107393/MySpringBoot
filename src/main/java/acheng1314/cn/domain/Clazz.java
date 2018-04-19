@@ -1,21 +1,41 @@
 package acheng1314.cn.domain;
 
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableName;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * 课程
  */
-public class Class extends Model<Class> {
+@TableName("class")
+public class Clazz extends Model<Clazz> {
     private Long id;
+    @NotEmpty(message = "课程标题不能为空")
     private String title;
+    @NotEmpty(message = "课程标题不能为空")
     private String content;
+    @NotNull(message = "上课时间不能为空")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date date;
     private Long userId;
     private String password;
+    @NotEmpty(message = "上课位置不能为空")
     private String location;
+    @NotEmpty(message = "课程类型不能为空")
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public Long getId() {
         return id;
@@ -75,7 +95,7 @@ public class Class extends Model<Class> {
 
     @Override
     public String toString() {
-        return "Class{" +
+        return "Clazz{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +

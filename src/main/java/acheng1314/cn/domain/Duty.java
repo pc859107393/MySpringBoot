@@ -1,12 +1,14 @@
 package acheng1314.cn.domain;
 
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableName;
 
 import java.io.Serializable;
 
 /**
  * 权限管理
  */
+@TableName("duty")
 public class Duty extends Model<Duty> {
     private Long id;
     private String title;
