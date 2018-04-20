@@ -94,15 +94,11 @@
                             <a href="${base}/endSys/class/add" class="active">
                                 <i class="am-icon-angle-right"></i>
                                 <span>添加课程</span>
-                                <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                             </a>
 
-                            <a href="table-images-list.html">
+                            <a href="${base}/endSys/class/all">
                                 <i class="am-icon-angle-right"></i>
                                 <span>所有课程</span>
-                                <i class="tpl-left-nav-content tpl-badge-success">
-                                    18
-                                </i>
                             </a>
                         </li>
                     </ul>
@@ -116,13 +112,13 @@
                     </a>
                     <ul class="tpl-left-nav-sub-menu" style="display: none;">
                         <li>
-                            <a href="../endSys/addUser">
+                            <a href="${base}/endSys/addUser">
                                 <i class="am-icon-angle-right"></i>
                                 <span>添加用户</span>
                                 <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                             </a>
 
-                            <a href="../endSys/userList">
+                            <a href="${base}/endSys/userList">
                                 <i class="am-icon-angle-right"></i>
                                 <span>用户列表</span>
                             </a>
