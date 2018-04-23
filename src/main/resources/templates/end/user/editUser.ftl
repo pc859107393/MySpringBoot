@@ -62,7 +62,7 @@
 <div class="tpl-page-container tpl-page-header-fixed">
     <div class="tpl-left-nav tpl-left-nav-hover">
         <div class="tpl-left-nav-title">
-            Amaze UI 列表
+            设计师培训后台管理系统
         </div>
         <div class="tpl-left-nav-list">
             <ul class="tpl-left-nav-menu">

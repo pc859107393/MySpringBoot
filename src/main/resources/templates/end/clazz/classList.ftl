@@ -91,12 +91,12 @@
                     </a>
                     <ul class="tpl-left-nav-sub-menu" style="display: block;">
                         <li>
-                            <a href="${base}/endSys/class/add" class="active">
+                            <a href="${base}/endSys/class/add">
                                 <i class="am-icon-angle-right"></i>
                                 <span>添加课程</span>
                             </a>
 
-                            <a href="${base}/endSys/class/all">
+                            <a href="${base}/endSys/class/all" class="active">
                                 <i class="am-icon-angle-right"></i>
                                 <span>所有课程</span>
                             </a>
@@ -106,13 +106,12 @@
 
                 <shiro:hasPermission name="用户管理">
                     <li class="tpl-left-nav-item">
-                        <
-                        <a href="javascript:" class="nav-link tpl-left-nav-link-list active">
+                        <a href="javascript:" class="nav-link tpl-left-nav-link-list">
                             <i class="am-icon-user"></i>
                             <span>用户管理</span>
                             <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
                         </a>
-                        <ul class="tpl-left-nav-sub-menu" style="display: block;">
+                        <ul class="tpl-left-nav-sub-menu">
                             <li>
                                 <a href="../endSys/addUser">
                                     <i class="am-icon-angle-right"></i>
@@ -120,7 +119,7 @@
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
 
-                                <a href="../endSys/userList" class="active">
+                                <a href="../endSys/userList">
                                     <i class="am-icon-angle-right"></i>
                                     <span>用户列表</span>
                                 </a>
@@ -162,9 +161,9 @@
                             <table class="am-table am-table-striped am-table-hover table-main">
                                 <thead>
                                 <tr>
-                                    <th class="table-id">课程名称</th>
-                                    <th class="table-title">上课时间</th>
-                                    <th class="table-type">上课地点</th>
+                                    <th class="table-title">课程名称</th>
+                                    <th class="table-date">上课时间</th>
+                                    <th class="table-main">上课地点</th>
                                 </tr>
                                 </thead>
 
@@ -173,11 +172,11 @@
                     <#if clazz?exists>
                         <#list clazz as class>
                         <tr>
-                            <a href="">
-                                <td class="center">${class.title!}</td>
-                                <td>${class.date!?string('yyyy-MM-dd hh:mm:ss')}</td>
-                                <td>${class.location!}</td>
-                            </a>
+
+                            <td><a href="${base}/endSys/class/${class.id!}">${class.title!}</a></td>
+                            <td>${class.date!?string('yyyy-MM-dd hh:mm:ss')}</td>
+                            <td>${class.location!}</td>
+
                         </tr>
                         </#list>
                     </#if>

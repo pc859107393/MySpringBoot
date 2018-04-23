@@ -3,19 +3,16 @@ package acheng1314.cn.controller.endWeb;
 import acheng1314.cn.domain.Clazz;
 import acheng1314.cn.domain.User;
 import acheng1314.cn.service.ClassServiceImpl;
+import acheng1314.cn.service.UserServiceImpl;
 import acheng1314.cn.validate.BeanValidator;
 import io.swagger.annotations.ApiParam;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/endSys/class")
 @Controller
@@ -24,13 +21,16 @@ public class SysClassController {
     @Autowired
     private ClassServiceImpl classService;
 
+    @Autowired
+    private UserServiceImpl userService;
+
     @GetMapping(path = "/add", produces = MediaType.TEXT_HTML_VALUE)
     public String addClass(ModelMap map) {
         return "end/clazz/add";
     }
 
     @PostMapping(path = "/add", produces = MediaType.TEXT_HTML_VALUE)
-    public String addClass(ModelMap map, Clazz clazz, HttpRequest request) {
+    public String addClass(ModelMap map, Clazz clazz) {
         try {
             BeanValidator.validate(clazz);
             //1.得到Subject
@@ -58,5 +58,17 @@ public class SysClassController {
         modelMap.addAttribute("pageNum", pageNum);
         modelMap.addAttribute("total", classService.getTotal());
         return "end/clazz/classList";
+    }
+
+    @GetMapping(path = "/{id}", produces = MediaType.TEXT_HTML_VALUE)
+    public String findOne(@PathVariable(name = "id") Integer id, ModelMap map) {
+        Clazz clazz = classService.selectById(id);
+        if (clazz == null) {
+            map.addAttribute("exception", "未找到相关课程!");
+            return "redirect:/404";
+        }
+        map.put("clazz", clazz);
+        map.put("teacher", userService.findOneByTel(clazz.getUserId().toString()));
+        return "end/clazz/one";
     }
 }

@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>设计师培训系统首页</title>
-    <meta name="description" content="后台首页">
+    <title>设计师培训系统首页-培训课程</title>
+    <meta name="description" content="后台管理">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
@@ -43,7 +43,8 @@
 
             <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                 <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:">
-                    <span class="tpl-header-list-user-nick">${user.name!}</span><span class="tpl-header-list-user-ico"> <img
+                    <span class="tpl-header-list-user-nick">${userInfo.name!}</span><span
+                        class="tpl-header-list-user-ico"> <img
                         src="${base}/static/img/user01.png"></span>
                 </a>
                 <ul class="am-dropdown-content">
@@ -148,16 +149,63 @@
             后台管理
         </div>
         <ol class="am-breadcrumb">
-            <li><a href="#" class="am-icon-home">后台管理</a></li>
-            <li><a href="#">分类</a></li>
-            <li class="am-active">首页</li>
+            <li><a href="#" class="am-icon-home">课程管理</a></li>
+            <li><a href="#">课程查看</a></li>
+            <li class="am-active">课程详情</li>
         </ol>
         <div class="tpl-content-scope">
-            <div class="note note-info">
-                <h3>设计师培训后台管理系统欢迎您的访问。
-                    <span class="close" data-close="note"></span>
-                </h3>
-            </div>
+                <#if clazz?exists>
+
+                    <div class="tpl-portlet-components">
+                        <div class="portlet-title">
+                            <div class="caption font-green bold">
+                                <span class="am-icon-code"></span> ${clazz.title!}
+                            </div>
+                        </div>
+
+                        <div class="tpl-block ">
+
+                            <div class="am-g tpl-amazeui-form">
+
+                                <div class="am-u-sm-12 am-u-md-9">
+                                    <div class="am-form-group">
+                                        <label for="user-name" class="am-u-sm-3 am-form-label">上课时间 / Date</label>
+                                        <div class="am-u-sm-9">
+                                            <input type="text" value="${clazz.date!?string('yyyy-MM-dd hh:mm:ss')}"
+                                                   readonly>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <#if teacher?exists>
+                                    <div class="am-form-group">
+                                        <label for="user-name" class="am-u-sm-3 am-form-label">执教设计师 / Designer</label>
+                                        <div class="am-u-sm-9">
+                                            <input type="text" value="${teacher.name!}（${teacher.sex!}）"
+                                                   readonly>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    </#if>
+                                    <div class="am-form-group">
+                                        <label for="user-name" class="am-u-sm-3 am-form-label">上课地点 / Location</label>
+                                        <div class="am-u-sm-9">
+                                            <input type="text" value="${clazz.location!}" readonly>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="am-form-group">
+                                        <label for="user-name" class="am-u-sm-3 am-form-label">课程内容 / Content</label>
+                                        <div class="am-u-sm-9">
+                                            ${clazz.content!}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </#if>
         </div>
 
     </div>

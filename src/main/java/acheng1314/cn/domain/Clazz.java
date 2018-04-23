@@ -17,7 +17,7 @@ public class Clazz extends Model<Clazz> {
     private Long id;
     @NotEmpty(message = "课程标题不能为空")
     private String title;
-    @NotEmpty(message = "课程标题不能为空")
+    @NotEmpty(message = "课程内容不能为空")
     private String content;
     @NotNull(message = "上课时间不能为空")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")

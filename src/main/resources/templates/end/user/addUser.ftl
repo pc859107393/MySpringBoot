@@ -141,7 +141,7 @@
 
     <div class="tpl-content-wrapper">
         <div class="tpl-content-page-title">
-            设计师培训系统后台管理
+            设计师培训后台管理系统
         </div>
         <ol class="am-breadcrumb">
             <li><a href="${base}" class="am-icon-home">首页</a></li>

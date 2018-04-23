@@ -139,17 +139,17 @@
 
     <div class="tpl-content-wrapper">
         <div class="tpl-content-page-title">
-            设计师培训系统后台管理
+            设计师培训后台管理系统
         </div>
         <ol class="am-breadcrumb">
             <li><a href="${base}" class="am-icon-home">首页</a></li>
-            <li><a href="#">用户管理</a></li>
-            <li class="am-active">添加用户</li>
+            <li><a href="#">课程管理</a></li>
+            <li class="am-active">添加课程</li>
         </ol>
         <div class="tpl-portlet-components">
             <div class="portlet-title">
                 <div class="caption font-green bold">
-                    <span class="am-icon-user"></span> 添加用户
+                    <span class="am-icon-user"></span> 添加课程
                 </div>
             </div>
 

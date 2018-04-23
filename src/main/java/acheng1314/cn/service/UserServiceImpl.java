@@ -5,13 +5,10 @@ import acheng1314.cn.domain.User;
 import acheng1314.cn.exception.EnterInfoErrorException;
 import acheng1314.cn.exception.NotFoundException;
 import acheng1314.cn.util.CipherUtils;
-import acheng1314.cn.util.DateUtil;
 import acheng1314.cn.util.EncryptUtils;
 import acheng1314.cn.util.StringUtils;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,7 +40,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> {
             throw new EnterInfoErrorException("用户名和密码不能为空！请检查！");
         }
         User result = null;
-        result = findOneById(userLogin);
+        result = findOneByTel(userLogin);
         if (null == result) throw new NotFoundException("用户未找到！");
 //        if (!result.isUsed()) throw new EnterInfoErrorException("用户禁止登陆！");
         try {
@@ -65,7 +62,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> {
     }
 
     @Transactional
-    public User findOneById(String userLogin) {
+    public User findOneByTel(String userLogin) {
         return baseMapper.findOneByKey(userLogin);
     }
 
