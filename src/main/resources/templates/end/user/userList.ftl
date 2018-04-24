@@ -107,6 +107,7 @@
                         </li>
                     </ul>
                 </li>
+
                 <shiro:hasPermission name="用户管理">
                     <li class="tpl-left-nav-item">
                         <a href="javascript:" class="nav-link tpl-left-nav-link-list active">
@@ -116,13 +117,13 @@
                         </a>
                         <ul class="tpl-left-nav-sub-menu" style="display: block;">
                             <li>
-                                <a href="../endSys/addUser">
+                                <a href="${base}/endSys/addUser">
                                     <i class="am-icon-angle-right"></i>
                                     <span>添加用户</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
 
-                                <a href="../endSys/userList" class="active">
+                                <a href="${base}/endSys/userList" class="active">
                                     <i class="am-icon-angle-right"></i>
                                     <span>用户列表</span>
                                 </a>
@@ -132,11 +133,24 @@
                 </shiro:hasPermission>
 
                 <li class="tpl-left-nav-item">
-                    <a href="login.html" class="nav-link tpl-left-nav-link-list">
-                        <i class="am-icon-key"></i>
-                        <span>登录</span>
-
+                    <a href="javascript:" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-file"></i>
+                        <span>资源管理</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
                     </a>
+                    <ul class="tpl-left-nav-sub-menu" style="display: none;">
+                        <li>
+                            <a href="${base}/endSys/Resource/add">
+                                <i class="am-icon-angle-right"></i>
+                                <span>添加资源</span>
+                            </a>
+
+                            <a href="${base}/endSys/Resource/all">
+                                <i class="am-icon-angle-right"></i>
+                                <span>资源列表</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -200,7 +214,7 @@
 
                             <td>
                                 <div class="am-btn-toolbar">
-                                    <a onclick=window.open("../endSys/editUser/${user.id}")>
+                                    <a onclick=window.open("${base}/endSys/editUser/${user.id}")>
                                         <div class="am-btn-group am-btn-group-xs">
                                             <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span
                                                     class="am-icon-pencil-square-o"></span> 编辑

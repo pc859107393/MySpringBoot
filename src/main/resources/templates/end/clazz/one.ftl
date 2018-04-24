@@ -75,15 +75,15 @@
                         <span>首页</span>
                     </a>
                 </li>
-                <li class="tpl-left-nav-item">
-                    <a href="chart.html" class="nav-link tpl-left-nav-link-list">
-                        <i class="am-icon-bar-chart"></i>
-                        <span>最新课程&最新学习资源</span>
-                    <#--<i class="tpl-left-nav-content tpl-badge-danger">-->
-                    <#--12-->
-                    <#--</i>-->
-                    </a>
-                </li>
+            <#--<li class="tpl-left-nav-item">-->
+            <#--<a href="chart.html" class="nav-link tpl-left-nav-link-list">-->
+            <#--<i class="am-icon-bar-chart"></i>-->
+            <#--<span>最新课程&最新学习资源</span>-->
+            <#--&lt;#&ndash;<i class="tpl-left-nav-content tpl-badge-danger">&ndash;&gt;-->
+            <#--&lt;#&ndash;12&ndash;&gt;-->
+            <#--&lt;#&ndash;</i>&ndash;&gt;-->
+            <#--</a>-->
+            <#--</li>-->
 
                 <li class="tpl-left-nav-item">
                     <a href="javascript:" class="nav-link tpl-left-nav-link-list">
@@ -118,13 +118,13 @@
                     </a>
                     <ul class="tpl-left-nav-sub-menu">
                         <li>
-                            <a href="../endSys/addUser">
+                            <a href="${base}/endSys/addUser">
                                 <i class="am-icon-angle-right"></i>
                                 <span>添加用户</span>
                                 <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                             </a>
 
-                            <a href="../endSys/userList">
+                            <a href="${base}/endSys/userList">
                                 <i class="am-icon-angle-right"></i>
                                 <span>用户列表</span>
                             </a>
@@ -133,11 +133,24 @@
                 </li>
 
                 <li class="tpl-left-nav-item">
-                    <a href="login.html" class="nav-link tpl-left-nav-link-list">
-                        <i class="am-icon-key"></i>
-                        <span>登录</span>
-
+                    <a href="javascript:" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-file"></i>
+                        <span>资源管理</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
                     </a>
+                    <ul class="tpl-left-nav-sub-menu" style="display: none;">
+                        <li>
+                            <a href="${base}/endSys/Resource/add">
+                                <i class="am-icon-angle-right"></i>
+                                <span>添加资源</span>
+                            </a>
+
+                            <a href="${base}/endSys/Resource/all">
+                                <i class="am-icon-angle-right"></i>
+                                <span>资源列表</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>

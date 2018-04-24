@@ -68,18 +68,9 @@
         <div class="tpl-left-nav-list">
             <ul class="tpl-left-nav-menu">
                 <li class="tpl-left-nav-item">
-                    <a href="index.html" class="nav-link">
+                    <a href="${base}" class="nav-link">
                         <i class="am-icon-home"></i>
                         <span>首页</span>
-                    </a>
-                </li>
-                <li class="tpl-left-nav-item">
-                    <a href="chart.html" class="nav-link tpl-left-nav-link-list">
-                        <i class="am-icon-bar-chart"></i>
-                        <span>数据表</span>
-                        <i class="tpl-left-nav-content tpl-badge-danger">
-                            12
-                        </i>
                     </a>
                 </li>
 
@@ -148,13 +139,6 @@
                     </ul>
                 </li>
 
-                <li class="tpl-left-nav-item">
-                    <a href="login.html" class="nav-link tpl-left-nav-link-list">
-                        <i class="am-icon-key"></i>
-                        <span>登录</span>
-
-                    </a>
-                </li>
             </ul>
         </div>
     </div>
