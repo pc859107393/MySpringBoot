@@ -3,15 +3,15 @@
 
  Source Server         : localhost
  Source Server Type    : MySQL
- Source Server Version : 50718
+ Source Server Version : 50717
  Source Host           : localhost
  Source Database       : ffdb
 
  Target Server Type    : MySQL
- Target Server Version : 50718
+ Target Server Version : 50717
  File Encoding         : utf-8
 
- Date: 04/19/2018 17:16:02 PM
+ Date: 04/24/2018 23:59:49 PM
 */
 
 SET NAMES utf8;
@@ -62,9 +62,17 @@ CREATE TABLE `resource` (
   `user_id` int(11) NOT NULL COMMENT '上传者ID',
   `date` datetime NOT NULL COMMENT '创建日期',
   `password` text CHARACTER SET utf8 COMMENT '访问密码',
+  `desc` text COLLATE utf8_bin COMMENT '描述',
   PRIMARY KEY (`id`),
   UNIQUE KEY `resource_id_uindex` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='上传资源记录表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='上传资源记录表';
+
+-- ----------------------------
+--  Records of `resource`
+-- ----------------------------
+BEGIN;
+INSERT INTO `resource` VALUES ('1', 'http://localhost:8181/ccSpringBoot/uploadFiles/20180424/642e0ac26cf24968bb371b16ec225a7f.dmg', '1', '2018-04-24 22:29:13', '', null);
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `user`
