@@ -92,6 +92,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> {
         else notDo++;
         //交换密码
         if (!StringUtils.isEmpty(user.getPassword())) {
+            user.setPassword(CipherUtils.small16md5(user.getPassword()));
             //32位小写转换为16位小写
             if (user.getPassword().length() > 16 && user.getPassword().length() == 32) {
                 user.setPassword(user.getPassword()
