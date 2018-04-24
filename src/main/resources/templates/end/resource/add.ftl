@@ -84,14 +84,14 @@
                 </li>
 
                 <li class="tpl-left-nav-item">
-                    <a href="javascript:" class="nav-link tpl-left-nav-link-list active">
+                    <a href="javascript:" class="nav-link tpl-left-nav-link-list">
                         <i class="am-icon-cloud"></i>
                         <span>课程管理</span>
                         <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
                     </a>
-                    <ul class="tpl-left-nav-sub-menu" style="display: block;">
+                    <ul class="tpl-left-nav-sub-menu">
                         <li>
-                            <a href="${base}/endSys/class/add" class="active">
+                            <a href="${base}/endSys/class/add">
                                 <i class="am-icon-angle-right"></i>
                                 <span>添加课程</span>
                             </a>
@@ -127,6 +127,28 @@
                 </li>
 
                 <li class="tpl-left-nav-item">
+                    <a href="javascript:" class="nav-link tpl-left-nav-link-list active">
+                        <i class="am-icon-file"></i>
+                        <span>资源管理</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu" style="display: block;">
+                        <li>
+                            <a href="${base}/endSys/Resource/add" class="active">
+                                <i class="am-icon-angle-right"></i>
+                                <span>添加资源</span>
+                                <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                            </a>
+
+                            <a href="${base}/endSys/Resource/all">
+                                <i class="am-icon-angle-right"></i>
+                                <span>资源列表</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="tpl-left-nav-item">
                     <a href="login.html" class="nav-link tpl-left-nav-link-list">
                         <i class="am-icon-key"></i>
                         <span>登录</span>
@@ -143,13 +165,13 @@
         </div>
         <ol class="am-breadcrumb">
             <li><a href="${base}" class="am-icon-home">首页</a></li>
-            <li><a href="#">课程管理</a></li>
-            <li class="am-active">添加课程</li>
+            <li><a href="#">资源管理</a></li>
+            <li class="am-active">添加资源</li>
         </ol>
         <div class="tpl-portlet-components">
             <div class="portlet-title">
                 <div class="caption font-green bold">
-                    <span class="am-icon-user"></span> 添加课程
+                    <span class="am-icon-user"></span> 添加资源
                 </div>
             </div>
 
@@ -164,58 +186,31 @@
                         </div>
                     </div>
                 </#if>
-                        <form class="am-form tpl-form-line-form" action="/endSys/class/add" method="post"
-                              onsubmit="return checkAddClassContent()">
+                        <form class="am-form tpl-form-line-form" action="${base}/endSys/Resource/add" method="post"
+                              enctype="multipart/form-data">
                             <div class="am-form-group">
-                                <label for="user-name" class="am-u-sm-3 am-form-label">课程标题 <span
-                                        class="tpl-form-line-small-title">Class Title</span></label>
+                                <label for="user-name" class="am-u-sm-3 am-form-label">资源标题 <span
+                                        class="tpl-form-line-small-title">Resource Title</span></label>
                                 <div class="am-u-sm-9">
-                                    <input type="text" class="tpl-form-input" name="title" id="title"
+                                    <input type="text" class="tpl-form-input" name="desc" id="title"
                                            placeholder="请输入课程标题">
-                                    <small>课程标题适当可以一目了然！</small>
+                                    <small>资源标题适当可以一目了然！</small>
                                 </div>
                             </div>
 
                             <div class="am-form-group">
-                                <label for="user-email" class="am-u-sm-3 am-form-label">课程内容 <span
-                                        class="tpl-form-line-small-title">Class Content</span></label>
+                                <label for="user-phone" class="am-u-sm-3 am-form-label">资源选择 <span
+                                        class="tpl-form-line-small-title">Choose</span></label>
                                 <div class="am-u-sm-9">
-                                    <div id="editor">
-                                        <p>请在此处 <b>编辑课程内容</b></p>
+                                    <div class="am-form-group am-form-file">
+                                        <button type="button" class="am-btn am-btn-danger am-btn-sm">
+                                            <i class="am-icon-cloud-upload"></i> 添加封面图片
+                                        </button>
+                                        <input id="doc-form-file" type="file" name="upfile" multiple>
+                                        <br>
+                                    <#--<input readonly value="">-->
                                     </div>
-                                    <input type="hidden" class="am-form-field tpl-form-no-bg" placeholder="课程内容"
-                                           id="content"
-                                           name="content"/>
-                                </div>
-                            </div>
 
-                            <div class="am-form-group">
-                                <label for="user-phone" class="am-u-sm-3 am-form-label">开讲时间 <span
-                                        class="tpl-form-line-small-title">Date</span></label>
-                                <div class="am-u-sm-9">
-                                    <input type="text" class="am-form-field tpl-form-no-bg" placeholder="讲课时间"
-                                           name="date" id="datetimepicker"/>
-                                </div>
-                            </div>
-
-                            <div class="am-form-group">
-                                <label for="user-phone" class="am-u-sm-3 am-form-label">上课地点 <span
-                                        class="tpl-form-line-small-title">Location</span></label>
-                                <div class="am-u-sm-9">
-                                    <input type="text" class="am-form-field tpl-form-no-bg" placeholder="上课地点"
-                                           name="location"/>
-                                </div>
-                            </div>
-
-                            <div class="am-form-group">
-                                <label for="user-phone" class="am-u-sm-3 am-form-label">课程类别 <span
-                                        class="tpl-form-line-small-title">Class Type</span></label>
-                                <div class="am-u-sm-9">
-                                    <select data-am-selected="{searchBox: 1}" name="type">
-                                        <option value="基础">基础</option>
-                                        <option value="专业">专业</option>
-                                        <option value="大师">大师</option>
-                                    </select>
                                 </div>
                             </div>
 

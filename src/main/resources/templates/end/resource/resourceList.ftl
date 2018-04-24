@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>设计师培训系统首页</title>
-    <meta name="description" content="后台首页">
+    <title>用户列表</title>
+    <meta name="description" content="这是一个 index 页面">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
@@ -17,10 +17,9 @@
     <link rel="stylesheet" href="${base}/static/css/amazeui.min.css"/>
     <link rel="stylesheet" href="${base}/static/css/admin.css">
     <link rel="stylesheet" href="${base}/static/css/app.css">
-    <script src="${base}/static/js/echarts.min.js"></script>
 </head>
 
-<body data-type="index">
+<body data-type="generalComponents">
 
 
 <header class="am-topbar am-topbar-inverse admin-header">
@@ -43,7 +42,8 @@
 
             <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                 <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:">
-                    <span class="tpl-header-list-user-nick">${user.name!}</span><span class="tpl-header-list-user-ico"> <img
+                    <span class="tpl-header-list-user-nick">${userInfo.name!}</span><span
+                        class="tpl-header-list-user-ico"> <img
                         src="${base}/static/img/user01.png"></span>
                 </a>
                 <ul class="am-dropdown-content">
@@ -61,7 +61,6 @@
 
 <div class="tpl-page-container tpl-page-header-fixed">
 
-
     <div class="tpl-left-nav tpl-left-nav-hover">
         <div class="tpl-left-nav-title">
             设计师培训后台管理系统
@@ -72,15 +71,6 @@
                     <a href="${base}" class="nav-link">
                         <i class="am-icon-home"></i>
                         <span>首页</span>
-                    </a>
-                </li>
-                <li class="tpl-left-nav-item">
-                    <a href="chart.html" class="nav-link tpl-left-nav-link-list">
-                        <i class="am-icon-bar-chart"></i>
-                        <span>最新课程&最新学习资源</span>
-                    <#--<i class="tpl-left-nav-content tpl-badge-danger">-->
-                    <#--12-->
-                    <#--</i>-->
                     </a>
                 </li>
 
@@ -95,56 +85,54 @@
                             <a href="${base}/endSys/class/add">
                                 <i class="am-icon-angle-right"></i>
                                 <span>添加课程</span>
-                            <#--<i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>-->
                             </a>
 
                             <a href="${base}/endSys/class/all">
                                 <i class="am-icon-angle-right"></i>
                                 <span>所有课程</span>
-                            <#--<i class="tpl-left-nav-content tpl-badge-success">-->
-                            <#--18-->
-                            <#--</i>-->
                             </a>
                         </li>
                     </ul>
                 </li>
 
-                <li class="tpl-left-nav-item">
-                    <a href="javascript:" class="nav-link tpl-left-nav-link-list">
-                        <i class="am-icon-user"></i>
-                        <span>用户管理</span>
-                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
-                    </a>
-                    <ul class="tpl-left-nav-sub-menu">
-                        <li>
-                            <a href="../endSys/addUser">
-                                <i class="am-icon-angle-right"></i>
-                                <span>添加用户</span>
-                                <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                            </a>
+                <shiro:hasPermission name="用户管理">
+                    <li class="tpl-left-nav-item">
+                        <a href="javascript:" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-user"></i>
+                            <span>用户管理</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                        </a>
+                        <ul class="tpl-left-nav-sub-menu">
+                            <li>
+                                <a href="${base}/endSys/addUser">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>添加用户</span>
+                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                </a>
 
-                            <a href="../endSys/userList">
-                                <i class="am-icon-angle-right"></i>
-                                <span>用户列表</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                                <a href="${base}/endSys/userList">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>用户列表</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </shiro:hasPermission>
 
                 <li class="tpl-left-nav-item">
-                    <a href="javascript:" class="nav-link tpl-left-nav-link-list">
+                    <a href="javascript:" class="nav-link tpl-left-nav-link-list active">
                         <i class="am-icon-file"></i>
                         <span>资源管理</span>
                         <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
                     </a>
-                    <ul class="tpl-left-nav-sub-menu" style="display: none;">
+                    <ul class="tpl-left-nav-sub-menu" style="display: block;">
                         <li>
                             <a href="${base}/endSys/Resource/add">
                                 <i class="am-icon-angle-right"></i>
                                 <span>添加资源</span>
                             </a>
 
-                            <a href="${base}/endSys/Resource/all">
+                            <a href="${base}/endSys/Resource/all" class="active">
                                 <i class="am-icon-angle-right"></i>
                                 <span>资源列表</span>
                             </a>
@@ -152,43 +140,89 @@
                     </ul>
                 </li>
 
-                <li class="tpl-left-nav-item">
-                    <a href="login.html" class="nav-link tpl-left-nav-link-list">
-                        <i class="am-icon-key"></i>
-                        <span>登录</span>
-
-                    </a>
-                </li>
             </ul>
         </div>
     </div>
 
-
     <div class="tpl-content-wrapper">
         <div class="tpl-content-page-title">
-            后台管理
+            设计师培训后台管理系统
         </div>
         <ol class="am-breadcrumb">
             <li><a href="#" class="am-icon-home">后台管理</a></li>
-            <li><a href="#">分类</a></li>
-            <li class="am-active">首页</li>
+            <li><a href="#">资源管理</a></li>
+            <li class="am-active">资源列表</li>
         </ol>
-        <div class="tpl-content-scope">
-            <div class="note note-info">
-                <h3>设计师培训后台管理系统欢迎您的访问。
-                    <span class="close" data-close="note"></span>
-                </h3>
+
+        <div class="tpl-portlet-components">
+            <div class="portlet-title">
+                <div class="caption font-green bold">
+                    <span class="am-icon-code"></span> 资源列表
+                </div>
+
             </div>
+            <div class="tpl-block">
+                <div class="am-g">
+                    <div class="tpl-table-images">
+                        <#if resources?exists>
+                            <#list resources as bean>
+                        <div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
+                            <div class="tpl-table-images-content">
+                                <div class="tpl-table-images-content-i-time">
+                                    发布时间：${bean.date!?string('yyyy-MM-dd hh:mm:ss')}</div>
+                                <div class="tpl-i-title">
+                                    ${bean.desc!}
+                                </div>
+                                <a href="javascript:" class="tpl-table-images-content-i">
+                                    <div class="tpl-table-images-content-i-info">
+                                            <span class="ico">
+                                    <!--<img src="assets/img/user02.png" alt="">追逐-->
+                                 </span>
+
+                                    </div>
+                                    <span class="tpl-table-images-content-i-shadow"></span>
+                                    <img src="${bean.name!}" alt="">
+                                </a>
+                                <div class="tpl-table-images-content-block">
+                                    <div class="am-btn-toolbar">
+                                        <button type="button" class="am-btn am-btn-default am-btn-success"><span
+                                                class="am-icon-download"></span> 下载
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            </#list>
+                        </#if>
+                        <div class="am-u-lg-12">
+                            <div class="am-cf">
+
+                                <div class="am-fr">
+                                    <ul class="am-pagination tpl-pagination">
+                                        <li class="am-disabled"><a href="#">«</a></li>
+                                        <li class="am-active"><a href="#">1</a></li>
+                                        <li><a href="#">»</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="tpl-alert"></div>
         </div>
 
-    </div>
 
+    </div>
 </div>
 
 
 <script src="${base}/static/js/jquery.min.js"></script>
 <script src="${base}/static/js/amazeui.min.js"></script>
-<script src="${base}/static/js/iscroll.js"></script>
 <script src="${base}/static/js/app.js"></script>
 </body>
 
