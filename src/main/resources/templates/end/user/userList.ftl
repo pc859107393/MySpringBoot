@@ -42,7 +42,8 @@
 
             <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                 <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:">
-                    <span class="tpl-header-list-user-nick">${user.name!}</span><span class="tpl-header-list-user-ico"> <img
+                    <span class="tpl-header-list-user-nick">${userInfo.name!}</span><span
+                        class="tpl-header-list-user-ico"> <img
                         src="${base}/static/img/user01.png"></span>
                 </a>
             <#--<ul class="am-dropdown-content">-->
@@ -160,14 +161,14 @@
             设计师培训后台管理系统
         </div>
         <ol class="am-breadcrumb">
-            <li><a href="#" class="am-icon-home">首页</a></li>
-            <li><a href="#">Amaze UI CSS</a></li>
-            <li class="am-active">文字列表</li>
+            <li><a href="#" class="am-icon-home">后台管理</a></li>
+            <li><a href="#">用户管理</a></li>
+            <li class="am-active">所有用户</li>
         </ol>
         <div class="tpl-portlet-components">
             <div class="portlet-title">
                 <div class="caption font-green bold">
-                    <span class="am-icon-users"></span>用户列表
+                    <span class="am-icon-users"></span>所有用户
                 </div>
             </div>
             <div class="tpl-block">

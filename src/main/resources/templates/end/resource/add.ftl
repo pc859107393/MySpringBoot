@@ -43,7 +43,7 @@
 
             <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                 <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:">
-                    <span class="tpl-header-list-user-nick">${user.name!}</span><span class="tpl-header-list-user-ico"> <img
+                    <span class="tpl-header-list-user-nick">${userInfo.name!}</span><span class="tpl-header-list-user-ico"> <img
                         src="${base}/static/img/user01.png"></span>
                 </a>
             <#--<ul class="am-dropdown-content">-->
@@ -147,7 +147,7 @@
             设计师培训后台管理系统
         </div>
         <ol class="am-breadcrumb">
-            <li><a href="${base}" class="am-icon-home">首页</a></li>
+            <li><a href="${base}" class="am-icon-home">后台管理</a></li>
             <li><a href="#">资源管理</a></li>
             <li class="am-active">添加资源</li>
         </ol>
