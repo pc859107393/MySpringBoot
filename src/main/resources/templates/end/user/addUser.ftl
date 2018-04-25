@@ -42,17 +42,16 @@
 
             <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                 <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:">
-                    <span class="tpl-header-list-user-nick">${userInfo.name!}</span><span
-                        class="tpl-header-list-user-ico"> <img
+                    <span class="tpl-header-list-user-nick">${user.name!}</span><span class="tpl-header-list-user-ico"> <img
                         src="${base}/static/img/user01.png"></span>
                 </a>
-                <ul class="am-dropdown-content">
-                    <li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>
-                    <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
-                    <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
-                </ul>
+            <#--<ul class="am-dropdown-content">-->
+            <#--<li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>-->
+            <#--<li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>-->
+            <#--<li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>-->
+            <#--</ul>-->
             </li>
-            <li><a href="###" class="tpl-header-list-link"><span
+            <li><a href="${base}/logOut" class="tpl-header-list-link"><span
                     class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
         </ul>
     </div>
