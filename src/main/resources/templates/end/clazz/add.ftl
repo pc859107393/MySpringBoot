@@ -106,7 +106,6 @@
                             <a href="${base}/endSys/addUser">
                                 <i class="am-icon-angle-right"></i>
                                 <span>添加用户</span>
-                                <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                             </a>
 
                             <a href="${base}/endSys/userList">

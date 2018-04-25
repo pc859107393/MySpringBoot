@@ -104,13 +104,12 @@
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="../endSys/addUser">
+                                <a href="${base}/endSys/addUser">
                                     <i class="am-icon-angle-right"></i>
                                     <span>添加用户</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
 
-                                <a href="../endSys/userList">
+                                <a href="${base}/endSys/userList">
                                     <i class="am-icon-angle-right"></i>
                                     <span>用户列表</span>
                                 </a>
