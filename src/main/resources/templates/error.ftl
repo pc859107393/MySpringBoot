@@ -5,7 +5,6 @@
 <head>
     <meta charset="utf-8"/>
     <title>可能发生了错误</title>
-<#include "_inc/_header.ftl"/>
 </head>
 <body>
 <div class="row">
@@ -37,14 +36,14 @@
                         <li>
                             <i class="ace-icon fa fa-hand-o-right blue"></i>
                         <#if url?exists>
-                        ${url}
+                            ${url}
                         </#if>
                         </li>
 
                         <li>
                             <i class="ace-icon fa fa-hand-o-right blue"></i>
                         <#if exception?exists>
-                        ${exception}
+                            ${exception}
                         </#if>
                         </li>
                     </ul>
@@ -71,5 +70,4 @@
     </div><!-- /.col -->
 </div>
 </body>
-<#include "_inc/_footer.ftl"/>
 </html>

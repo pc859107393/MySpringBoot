@@ -12,66 +12,90 @@ import java.io.Serializable;
 public class OkHttpUtils {
 
     public static void loge(String msg) {
+        System.out.println("|============= start===============|");
         System.out.println(msg);
-        System.out.println("|=============over===============|");
+        System.out.println("|============= over ===============|");
     }
 
     public final static void main(String[] args) {
         try {
-            Response response = get("http://acheng1314.cn/api/v1/findPostsByKey/java")
-                    .params("pageNum", 1)
-                    .params("pageSize", "3")
+            Response response = get("https://api.douban.com/v2/movie/in_theaters")
+                    .params("city", "三亚")
                     .execute();
             loge(response.body().string());
 
-            response = get("http://acheng1314.cn/api/v1/findPostsByKey/java?pageNum=5")
-                    .params("pageSize", "3")
+            response = get("https://api.douban.com/v2/movie/coming_soon")
                     .execute();
             loge(response.body().string());
 
-            get("http://acheng1314.cn/api/v1/findPostsByKey/java")
-                    .params("pageNum", 500)
-                    .params("pageSize", "3")
-                    .enqueue(new Callback() {
-                        @Override
-                        public void onFailure(Call call, IOException e) {
+            response = get("https://api.douban.com/v2/movie/top250")
+                    .execute();
+            loge(response.body().string());
 
-                        }
+            response = get("https://api.douban.com//v2/movie/search?q=张艺谋")
+                    .execute();
+            loge(response.body().string());
 
-                        @Override
-                        public void onResponse(Call call, Response response) throws IOException {
-                            loge(response.body().string());
-                        }
-                    });
+            response = get("https://api.douban.com/v2/movie/search?tag=喜剧")
+                    .execute();
+            loge(response.body().string());
+
+            response = get("https://api.douban.com/v2/movie/subject/影视ID")
+                    .execute();
+            loge(response.body().string());
+
+            response = get("https://api.douban.com/v2/movie/celebrity/演员ID")
+                    .execute();
+            loge(response.body().string());
+//
+//            response = get("http://acheng1314.cn/api/v1/findPostsByKey/java?pageNum=5")
+//                    .params("pageSize", "3")
+//                    .execute();
+//            loge(response.body().string());
+//
+//            get("http://acheng1314.cn/api/v1/findPostsByKey/java")
+//                    .params("pageNum", 500)
+//                    .params("pageSize", "3")
+//                    .enqueue(new Callback() {
+//                        @Override
+//                        public void onFailure(Call call, IOException e) {
+//
+//                        }
+//
+//                        @Override
+//                        public void onResponse(Call call, Response response) throws IOException {
+//                            loge(response.body().string());
+//                        }
+//                    });
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try {
-            Response response = post("http://acheng1314.cn/api/v1/findPostsByKey/java")
-                    .params("pageNum", 1)
-                    .params("pageSize", "3")
-                    .execute();
-            loge(response.body().string());
-
-            post("http://acheng1314.cn/manage/uploadFile")
-                    .params("file", new File("/Users/pc/Desktop/idea.vmoptions"))
-                    .header("Cookie", "JSESSIONID=A0A7BFEEB710E52D1853A89C4BB35F02")
-                    .enqueue(new Callback() {
-                        @Override
-                        public void onFailure(Call call, IOException e) {
-                            loge(e.getMessage());
-                        }
-
-                        @Override
-                        public void onResponse(Call call, Response response) throws IOException {
-                            loge(response.body().string());
-                        }
-                    });
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Response response = post("http://acheng1314.cn/api/v1/findPostsByKey/java")
+//                    .params("pageNum", 1)
+//                    .params("pageSize", "3")
+//                    .execute();
+//            loge(response.body().string());
+//
+//            post("http://acheng1314.cn/manage/uploadFile")
+//                    .params("file", new File("/Users/pc/Desktop/idea.vmoptions"))
+//                    .header("Cookie", "JSESSIONID=A0A7BFEEB710E52D1853A89C4BB35F02")
+//                    .enqueue(new Callback() {
+//                        @Override
+//                        public void onFailure(Call call, IOException e) {
+//                            loge(e.getMessage());
+//                        }
+//
+//                        @Override
+//                        public void onResponse(Call call, Response response) throws IOException {
+//                            loge(response.body().string());
+//                        }
+//                    });
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
     }
 

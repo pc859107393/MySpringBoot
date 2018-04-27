@@ -1,10 +1,8 @@
 package acheng1314.cn.shiro;
 
-import acheng1314.cn.service.UserServiceImpl;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.credential.SimpleCredentialsMatcher;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by cheng on 17/5/16.

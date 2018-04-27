@@ -1,7 +1,5 @@
 package acheng1314.cn.util;
 
-import acheng1314.cn.domain.ResponseCode;
-import acheng1314.cn.domain.ResponseObj;
 import com.google.gson.*;
 import com.google.gson.internal.ConstructorConstructor;
 import com.google.gson.internal.bind.CollectionTypeAdapterFactory;
@@ -10,7 +8,6 @@ import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.Reader;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
@@ -87,7 +84,7 @@ public class GsonUtils {
         gsonBulder.setDateFormat("yyyy-MM-dd HH:mm:ss");
         //通过反射获取instanceCreators属性
         try {
-            Class builder = (Class) gsonBulder.getClass();
+            Class builder = gsonBulder.getClass();
             Field f = builder.getDeclaredField("instanceCreators");
             f.setAccessible(true);
             //注册数组的处理器
@@ -166,21 +163,4 @@ public class GsonUtils {
     }
 
 
-    /**
-     * 封装的转换json，外部一条语句调用
-     *
-     * @param object 需要写出的内容，code不成功则一致扔null
-     * @param code   数据状态高级枚举
-     * @param msg    不成功状态的提示信息
-     * @return
-     */
-    public static String toJsonObjStr(Object object, ResponseCode code, String msg) {
-        ResponseObj result = new ResponseObj();
-        result.setCode(code.getCode());
-        result.setMsg(StringUtils.isEmpty(msg) ? code.getMsg() : msg);
-        if (code.getCode() == ResponseCode.OK.getCode()) {  //数据获取成功
-            result.setData(object);
-        }
-        return toJson(result);
-    }
 }

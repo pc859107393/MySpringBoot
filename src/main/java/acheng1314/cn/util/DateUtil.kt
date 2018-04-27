@@ -205,11 +205,10 @@ object DateUtil {
      *
      * @return
      */
-    fun getDate(): Date {
+    fun getDateDay(): String {
         val date = Date()
-        val fmt = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-        fmt.format(date)
-        return date
+        val fmt = SimpleDateFormat("yyyy-MM-dd")
+        return fmt.format(date)
     }
 
     /**
