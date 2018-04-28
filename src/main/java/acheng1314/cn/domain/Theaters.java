@@ -11,6 +11,15 @@ public class Theaters extends Model<Theaters> {
     private String data;
     private String date;
     private String city;
+    private Integer start;
+
+    public Integer getStart() {
+        return start;
+    }
+
+    public void setStart(Integer start) {
+        this.start = start;
+    }
 
     @Override
     public String toString() {

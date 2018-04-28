@@ -24,10 +24,12 @@ public class MainController {
 
     @GetMapping(value = "/in_theaters", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Object getTheaters(@RequestParam(value = "city", required = false) String city
-            , @RequestParam(value = "count", required = false) Integer count) {
+            , @RequestParam(value = "count", required = false) Integer count
+            , @RequestParam(value = "start", required = false) Integer start) {
         if (city == null) return Const.theartersData;
+        if (start == null) start = 1;
         try {
-            Theaters theaters = theatersService.selectByCity(city);
+            Theaters theaters = theatersService.selectByCity(city, start);
             if (null == theaters) return Const.theartersData;
             return theaters.getData();
         } catch (Exception e) {
@@ -37,9 +39,10 @@ public class MainController {
     }
 
     @GetMapping(value = "/coming_soon", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Object getComingSoon() {
+    public Object getComingSoon(@RequestParam(value = "start", required = false) Integer start) {
+        if (start == null) start = 1;
         try {
-            return comingService.selectByDate().getData();
+            return comingService.selectByDate(start).getData();
         } catch (Exception e) {
             e.printStackTrace();
             return Const.comingSoonData;

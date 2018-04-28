@@ -12,14 +12,15 @@ import org.springframework.stereotype.Service;
 @Service("comingService")
 public class ComingServiceImpl extends ServiceImpl<ComingDao, ComeSoon> {
 
-    public ComeSoon selectByDate() throws Exception {
+    public ComeSoon selectByDate(Integer start) throws Exception {
         //寻找今日的记录 存在则不刷新  否则刷新
-        ComeSoon data = baseMapper.findLast(DateUtil.INSTANCE.getDateDay());
+        ComeSoon data = baseMapper.findLast(DateUtil.INSTANCE.getDateDay(),start);
         if (data == null) {
             Response response = OkHttpUtils.get("https://api.douban.com/v2/movie/coming_soon")
                     .execute();
             data = new ComeSoon();
             data.setData(response.body().string());
+            data.setStart(start);
             data.setDate(DateUtil.INSTANCE.getDateDay());
             baseMapper.insert(data);
             return data;

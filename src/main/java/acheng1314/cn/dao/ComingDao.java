@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository("comingDao")
 public interface ComingDao extends BaseMapper<ComeSoon> {
 
-    @Select("select * from `come_soon` where `date` like #{date} group by `id` desc limit 1;")
-    ComeSoon findLast(@Param("date") String date);
+    @Select("select * from `come_soon` where `date` like #{date} and `start` like #{start} group by `id` desc limit 1;")
+    ComeSoon findLast(@Param("date") String date, @Param(value = "start") Integer start);
 }
