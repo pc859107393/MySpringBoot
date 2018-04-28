@@ -1,17 +1,13 @@
 package acheng1314.cn.controller;
 
 import acheng1314.cn.domain.Theaters;
-import acheng1314.cn.service.ComingServiceImpl;
-import acheng1314.cn.service.SearchServiceImpl;
-import acheng1314.cn.service.TheatersServiceImpl;
-import acheng1314.cn.service.TopServiceImpl;
+import acheng1314.cn.service.*;
 import acheng1314.cn.util.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.Serializable;
 
 @RestController
 @RequestMapping("/v2/movie")
@@ -69,6 +65,34 @@ public class MainController {
         } catch (Exception e) {
             e.printStackTrace();
             return Const.searchData;
+        }
+    }
+
+    @Autowired
+    private SubjectServiceImpl subjectService;
+
+    @GetMapping(value = "/subject/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Object getSubject(@PathVariable(value = "id", required = false) Long id) {
+        try {
+            if (id == null) return Const.subjectData;
+            return subjectService.findById(id).getData();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Const.subjectData;
+        }
+    }
+
+    @Autowired
+    private CelebrityServiceImpl celebrityService;
+
+    @GetMapping(value = "/celebrity/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Object getCelebrity(@PathVariable(value = "id", required = false) Long id) {
+        try {
+            if (id == null) return Const.celebrityData;
+            return celebrityService.findById(id).getData();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Const.celebrityData;
         }
     }
 
