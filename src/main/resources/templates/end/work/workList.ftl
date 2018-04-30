@@ -75,19 +75,19 @@
                 </li>
 
                 <li class="tpl-left-nav-item">
-                    <a href="javascript:" class="nav-link tpl-left-nav-link-list">
+                    <a href="javascript:" class="nav-link tpl-left-nav-link-list active">
                         <i class="am-icon-cloud"></i>
                         <span>课程管理</span>
                         <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
                     </a>
-                    <ul class="tpl-left-nav-sub-menu">
+                    <ul class="tpl-left-nav-sub-menu" style="display: block;">
                         <li>
                             <a href="${base}/endSys/class/add">
                                 <i class="am-icon-angle-right"></i>
                                 <span>添加课程</span>
                             </a>
 
-                            <a href="${base}/endSys/class/all">
+                            <a href="${base}/endSys/class/all" class="active">
                                 <i class="am-icon-angle-right"></i>
                                 <span>所有课程</span>
                             </a>
@@ -104,13 +104,13 @@
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="${base}/endSys/addUser">
+                                <a href="../endSys/addUser">
                                     <i class="am-icon-angle-right"></i>
                                     <span>添加用户</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
 
-                                <a href="${base}/endSys/userList">
+                                <a href="../endSys/userList">
                                     <i class="am-icon-angle-right"></i>
                                     <span>用户列表</span>
                                 </a>
@@ -120,26 +120,25 @@
                 </shiro:hasPermission>
 
                 <li class="tpl-left-nav-item">
-                    <a href="javascript:" class="nav-link tpl-left-nav-link-list active">
+                    <a href="javascript:" class="nav-link tpl-left-nav-link-list">
                         <i class="am-icon-file"></i>
                         <span>资源管理</span>
                         <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
                     </a>
-                    <ul class="tpl-left-nav-sub-menu" style="display: block;">
+                    <ul class="tpl-left-nav-sub-menu" style="display: none;">
                         <li>
                             <a href="${base}/endSys/Resource/add">
                                 <i class="am-icon-angle-right"></i>
                                 <span>添加资源</span>
                             </a>
 
-                            <a href="${base}/endSys/Resource/all" class="active">
+                            <a href="${base}/endSys/Resource/all">
                                 <i class="am-icon-angle-right"></i>
                                 <span>资源列表</span>
                             </a>
                         </li>
                     </ul>
                 </li>
-
             </ul>
         </div>
     </div>
@@ -149,76 +148,64 @@
             设计师培训后台管理系统
         </div>
         <ol class="am-breadcrumb">
-            <li><a href="#" class="am-icon-home">后台管理</a></li>
-            <li><a href="#">资源管理</a></li>
-            <li class="am-active">资源列表</li>
+            <li><a href="#" class="am-icon-home">首页</a></li>
+            <li><a href="#">Amaze UI CSS</a></li>
+            <li class="am-active">文字列表</li>
         </ol>
-
         <div class="tpl-portlet-components">
             <div class="portlet-title">
                 <div class="caption font-green bold">
-                    <span class="am-icon-code"></span> 资源列表
+                    <span class="am-icon-users"></span>用户列表
                 </div>
-
             </div>
             <div class="tpl-block">
                 <div class="am-g">
-                    <div class="tpl-table-images">
-                        <#if resources?exists>
-                            <#list resources as bean>
-                        <div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
-                            <div class="tpl-table-images-content">
-                                <div class="tpl-table-images-content-i-time">
-                                    发布时间：${bean.date!?string('yyyy-MM-dd hh:mm:ss')}</div>
-                                <div class="tpl-i-title">
-                                    ${bean.desc!}
-                                </div>
-                                <a href="javascript:" class="tpl-table-images-content-i">
-                                    <div class="tpl-table-images-content-i-info">
-                                            <span class="ico">
-                                    <!--<img src="assets/img/user02.png" alt="">追逐-->
-                                 </span>
+                    <div class="am-u-sm-12">
+                        <form class="am-form">
+                            <table class="am-table am-table-striped am-table-hover table-main">
+                                <thead>
+                                <tr>
+                                    <th class="table-title">作品名称</th>
+                                    <th class="table-date">提交时间</th>
+                                    <th class="table-main">作品作者</th>
+                                </tr>
+                                </thead>
 
-                                    </div>
-                                    <span class="tpl-table-images-content-i-shadow"></span>
-                                    <img src="${bean.name!}" alt="">
-                                </a>
-                                <div class="tpl-table-images-content-block">
-                                    <div class="am-btn-toolbar">
-                                        <a href="${bean.name!}">
-                                            <button type="button" class="am-btn am-btn-default am-btn-success"><span
-                                                    class="am-icon-download"></span> 下载
-                                            </button>
-                                        </a>
+                                <tbody>
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                            </#list>
-                        </#if>
-                        <div class="am-u-lg-12">
+                    <#if all?exists>
+                        <#list all as work>
+                        <tr>
+
+                            <td><a href="${base}/endSys/work/${work.id!}">${work.name!}</a></td>
+                            <td>${work.date!?string('yyyy-MM-dd hh:mm:ss')}</td>
+                            <td>${work.userId!}</td>
+
+                        </tr>
+                        </#list>
+                    </#if>
+
+                            </table>
                             <div class="am-cf">
 
                                 <div class="am-fr">
                                     <ul class="am-pagination tpl-pagination">
-                                        <li class="am-disabled"><a href="#">«</a></li>
-                                        <li class="am-active"><a href="#">1</a></li>
-                                        <li><a href="#">»</a></li>
+                                        <li class="am-disabled">上一页</li>
+                                        <li class="am-active">${pageNum}</li>
+                                        <li <#if (pageNum>=total)> class="am-disabled" </#if>>下一页</li>
                                     </ul>
+                                    <small>当前总计${total}页，每页${pageSize}个课程！</small>
                                 </div>
                             </div>
                             <hr>
-                        </div>
 
+                        </form>
                     </div>
 
                 </div>
             </div>
             <div class="tpl-alert"></div>
         </div>
-
-
     </div>
 </div>
 
