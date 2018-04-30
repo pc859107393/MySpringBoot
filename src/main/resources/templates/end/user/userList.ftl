@@ -46,13 +46,13 @@
                         class="tpl-header-list-user-ico"> <img
                         src="${base}/static/img/user01.png"></span>
                 </a>
-                <ul class="am-dropdown-content">
-                    <li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>
-                    <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
-                    <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
-                </ul>
+            <#--<ul class="am-dropdown-content">-->
+            <#--<li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>-->
+            <#--<li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>-->
+            <#--<li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>-->
+            <#--</ul>-->
             </li>
-            <li><a href="###" class="tpl-header-list-link"><span
+            <li><a href="${base}/logOut" class="tpl-header-list-link"><span
                     class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
         </ul>
     </div>
@@ -161,14 +161,14 @@
             设计师培训后台管理系统
         </div>
         <ol class="am-breadcrumb">
-            <li><a href="#" class="am-icon-home">首页</a></li>
-            <li><a href="#">Amaze UI CSS</a></li>
-            <li class="am-active">文字列表</li>
+            <li><a href="#" class="am-icon-home">后台管理</a></li>
+            <li><a href="#">用户管理</a></li>
+            <li class="am-active">所有用户</li>
         </ol>
         <div class="tpl-portlet-components">
             <div class="portlet-title">
                 <div class="caption font-green bold">
-                    <span class="am-icon-users"></span>用户列表
+                    <span class="am-icon-users"></span>所有用户
                 </div>
             </div>
             <div class="tpl-block">

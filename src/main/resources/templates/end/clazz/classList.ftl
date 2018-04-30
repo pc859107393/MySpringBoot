@@ -42,17 +42,16 @@
 
             <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                 <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:">
-                    <span class="tpl-header-list-user-nick">${userInfo.name!}</span><span
-                        class="tpl-header-list-user-ico"> <img
+                    <span class="tpl-header-list-user-nick">${userInfo.name!}</span><span class="tpl-header-list-user-ico"> <img
                         src="${base}/static/img/user01.png"></span>
                 </a>
-                <ul class="am-dropdown-content">
-                    <li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>
-                    <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
-                    <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
-                </ul>
+            <#--<ul class="am-dropdown-content">-->
+            <#--<li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>-->
+            <#--<li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>-->
+            <#--<li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>-->
+            <#--</ul>-->
             </li>
-            <li><a href="###" class="tpl-header-list-link"><span
+            <li><a href="${base}/logOut" class="tpl-header-list-link"><span
                     class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
         </ul>
     </div>
@@ -104,13 +103,12 @@
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="../endSys/addUser">
+                                <a href="${base}/endSys/addUser">
                                     <i class="am-icon-angle-right"></i>
                                     <span>添加用户</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
 
-                                <a href="../endSys/userList">
+                                <a href="${base}/endSys/userList">
                                     <i class="am-icon-angle-right"></i>
                                     <span>用户列表</span>
                                 </a>
@@ -148,14 +146,14 @@
             设计师培训后台管理系统
         </div>
         <ol class="am-breadcrumb">
-            <li><a href="#" class="am-icon-home">首页</a></li>
-            <li><a href="#">Amaze UI CSS</a></li>
-            <li class="am-active">文字列表</li>
+            <li><a href="#" class="am-icon-home">后台管理</a></li>
+            <li><a href="#">课程管理</a></li>
+            <li class="am-active">所有课程</li>
         </ol>
         <div class="tpl-portlet-components">
             <div class="portlet-title">
                 <div class="caption font-green bold">
-                    <span class="am-icon-users"></span>用户列表
+                    <span class="am-icon-users"></span>所有课程
                 </div>
             </div>
             <div class="tpl-block">
