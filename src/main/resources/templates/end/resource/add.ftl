@@ -43,7 +43,8 @@
 
             <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                 <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:">
-                    <span class="tpl-header-list-user-nick">${userInfo.name!}</span><span class="tpl-header-list-user-ico"> <img
+                    <span class="tpl-header-list-user-nick">${userInfo.name!}</span><span
+                        class="tpl-header-list-user-ico"> <img
                         src="${base}/static/img/user01.png"></span>
                 </a>
             <#--<ul class="am-dropdown-content">-->
@@ -187,7 +188,7 @@
                                 <div class="am-u-sm-9">
                                     <div class="am-form-group am-form-file">
                                         <button type="button" class="am-btn am-btn-danger am-btn-sm">
-                                            <i class="am-icon-cloud-upload"></i> 添加封面图片
+                                            <i class="am-icon-cloud-upload"></i> 选择资源
                                         </button>
                                         <input id="doc-form-file" type="file" name="upfile" multiple>
                                         <br>

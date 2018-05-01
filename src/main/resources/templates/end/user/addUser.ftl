@@ -42,7 +42,8 @@
 
             <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                 <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:">
-                    <span class="tpl-header-list-user-nick">${userInfo.name!}</span><span class="tpl-header-list-user-ico"> <img
+                    <span class="tpl-header-list-user-nick">${userInfo.name!}</span><span
+                        class="tpl-header-list-user-ico"> <img
                         src="${base}/static/img/user01.png"></span>
                 </a>
             <#--<ul class="am-dropdown-content">-->
@@ -156,6 +157,13 @@
             </div>
 
             <div class="tpl-block">
+                <#if msg?exists>
+                    <div class="am-form-group">
+                        <div class="am-alert am-alert-danger">
+                            ${msg}
+                        </div>
+                    </div>
+                </#if>
 
                 <div class="am-g">
                     <div class="tpl-form-body tpl-form-line">

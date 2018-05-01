@@ -11,7 +11,7 @@
  Target Server Version : 50717
  File Encoding         : utf-8
 
- Date: 04/24/2018 23:59:49 PM
+ Date: 05/01/2018 10:19:51 AM
 */
 
 SET NAMES utf8;
@@ -43,13 +43,13 @@ CREATE TABLE `duty` (
   `title` text CHARACTER SET utf8 NOT NULL COMMENT '权限描述文字',
   PRIMARY KEY (`id`),
   UNIQUE KEY `duty_id_uindex` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='职责';
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='职责';
 
 -- ----------------------------
 --  Records of `duty`
 -- ----------------------------
 BEGIN;
-INSERT INTO `duty` VALUES ('1', '用户管理'), ('2', '添加用户'), ('3', '修改用户'), ('4', '用户列表');
+INSERT INTO `duty` VALUES ('1', '用户管理'), ('2', '添加用户'), ('3', '修改用户'), ('4', '用户列表'), ('5', '课程管理'), ('6', '添加课程'), ('7', '所有课程'), ('8', '资源管理'), ('9', '添加资源'), ('10', '资源列表'), ('11', '作品管理'), ('12', '添加作品'), ('13', '作品列表'), ('14', '审阅作品'), ('15', '未审阅'), ('16', '已审阅');
 COMMIT;
 
 -- ----------------------------
@@ -81,20 +81,21 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '人员的ID信息，自增主键',
   `name` text CHARACTER SET utf8 NOT NULL COMMENT '用户姓名',
-  `tel` text CHARACTER SET utf8 NOT NULL COMMENT '手机号',
+  `tel` varchar(15) COLLATE utf8_bin NOT NULL COMMENT '手机号',
   `sex` text CHARACTER SET utf8 NOT NULL COMMENT '性别',
   `duty` text CHARACTER SET utf8 NOT NULL COMMENT '职务，对应权限的ID列表',
   `password` text CHARACTER SET utf8 NOT NULL COMMENT '用户密码',
   `type` text CHARACTER SET utf8 NOT NULL COMMENT '设计师、学徒、管理员',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `user_id_uindex` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='人员信息表';
+  UNIQUE KEY `user_id_uindex` (`id`),
+  UNIQUE KEY `user_tel_uindex` (`tel`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='人员信息表';
 
 -- ----------------------------
 --  Records of `user`
 -- ----------------------------
 BEGIN;
-INSERT INTO `user` VALUES ('1', '系统管理员', '18889408337', '男', '1|2|3', '1d67b5efe38554a461196532afb745f55b3f368702c8c5e630d4172e5e454e54', 'admin');
+INSERT INTO `user` VALUES ('3', '系统管理员', '18889408337', '女', '用户管理|添加用户|修改用户|用户列表|课程管理|添加课程|所有课程|资源管理|添加资源|资源列表|作品管理|添加作品|作品列表|审阅作品|未审阅|已审阅|', '1d67b5efe38554a461196532afb745f55b3f368702c8c5e630d4172e5e454e54', 'admin');
 COMMIT;
 
 -- ----------------------------
@@ -107,7 +108,9 @@ CREATE TABLE `works` (
   `date` datetime NOT NULL COMMENT '上传时间',
   `name` text CHARACTER SET utf8 NOT NULL COMMENT '名称',
   `comment` text CHARACTER SET utf8 COMMENT '评语',
-  `score` int(11) NOT NULL COMMENT '设计师评分',
+  `score` int(11) DEFAULT NULL COMMENT '设计师评分',
+  `content` longtext COLLATE utf8_bin NOT NULL COMMENT '内容描述',
+  `url` longtext COLLATE utf8_bin NOT NULL COMMENT '作品地址',
   PRIMARY KEY (`id`),
   UNIQUE KEY `works_id_uindex` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='作品';

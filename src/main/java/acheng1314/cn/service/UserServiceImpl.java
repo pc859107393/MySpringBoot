@@ -1,6 +1,7 @@
 package acheng1314.cn.service;
 
 import acheng1314.cn.dao.UserDao;
+import acheng1314.cn.domain.Duty;
 import acheng1314.cn.domain.User;
 import acheng1314.cn.exception.EnterInfoErrorException;
 import acheng1314.cn.exception.NotFoundException;
@@ -9,9 +10,11 @@ import acheng1314.cn.util.EncryptUtils;
 import acheng1314.cn.util.StringUtils;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -23,6 +26,9 @@ import java.util.List;
 //@Pointcut()
 public class UserServiceImpl extends ServiceImpl<UserDao, User> {
 
+    @Autowired
+    private DutyServiceImpl dutyService;
+
     @Transactional
     public void addOneUser(User entity) throws Exception {
         if (StringUtils.isEmpty(entity.getTel(), entity.getPassword()))
@@ -30,7 +36,38 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> {
         //MD5密码加盐后再sha256加密
         entity.setPassword(EncryptUtils.encryptPassword(CipherUtils.small16md5(entity.getPassword())
                 , ""));
-        entity.setDuty("1|2|3");
+        ArrayList<Duty> duties = dutyService.selectAll();
+        StringBuilder userDuty = new StringBuilder();
+        if (entity.getType().equals("admin")) {
+            for (Duty d : duties) {
+                userDuty.append(d.getTitle()).append("|");
+            }
+        } else if (entity.getType().equals("designer")) {
+            for (Duty d : duties) {
+                if (d.getId().intValue() == 1
+                        || d.getId().intValue() == 4
+                        || d.getId().intValue() == 5
+                        || d.getId().intValue() == 8
+                        || d.getId().intValue() == 9
+                        || d.getId().intValue() == 10
+                        || d.getId().intValue() == 14
+                        || d.getId().intValue() == 15
+                        || d.getId().intValue() == 16
+                        || d.getId().intValue() == 7)
+                    userDuty.append(d.getTitle()).append("|");
+            }
+        } else {
+            for (Duty d : duties) {
+                if (d.getId().intValue() == 5
+                        || d.getId().intValue() == 8
+                        || d.getId().intValue() == 10
+                        || d.getId().intValue() == 11
+                        || d.getId().intValue() == 12
+                        || d.getId().intValue() == 13)
+                    userDuty.append(d.getTitle()).append("|");
+            }
+        }
+        entity.setDuty(userDuty.toString());
         baseMapper.addUser(entity);
     }
 

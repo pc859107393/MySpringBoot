@@ -43,14 +43,15 @@
 
             <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                 <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:">
-                    <span class="tpl-header-list-user-nick">${userInfo.name!}</span><span class="tpl-header-list-user-ico"> <img
+                    <span class="tpl-header-list-user-nick">${userInfo.name!}</span><span
+                        class="tpl-header-list-user-ico"> <img
                         src="${base}/static/img/user01.png"></span>
                 </a>
-                <#--<ul class="am-dropdown-content">-->
-                    <#--<li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>-->
-                    <#--<li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>-->
-                    <#--<li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>-->
-                <#--</ul>-->
+            <#--<ul class="am-dropdown-content">-->
+            <#--<li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>-->
+            <#--<li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>-->
+            <#--<li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>-->
+            <#--</ul>-->
             </li>
             <li><a href="${base}/logOut" class="tpl-header-list-link"><span
                     class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
@@ -74,41 +75,49 @@
                         <span>首页</span>
                     </a>
                 </li>
-                <li class="tpl-left-nav-item">
-                    <a href="chart.html" class="nav-link tpl-left-nav-link-list">
-                        <i class="am-icon-bar-chart"></i>
-                        <span>最新课程&最新学习资源</span>
-                    <#--<i class="tpl-left-nav-content tpl-badge-danger">-->
-                    <#--12-->
-                    <#--</i>-->
-                    </a>
-                </li>
-
-                <li class="tpl-left-nav-item">
-                    <a href="javascript:" class="nav-link tpl-left-nav-link-list">
-                        <i class="am-icon-cloud"></i>
-                        <span>课程管理</span>
-                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
-                    </a>
-                    <ul class="tpl-left-nav-sub-menu">
-                        <li>
-                            <a href="${base}/endSys/class/add">
-                                <i class="am-icon-angle-right"></i>
-                                <span>添加课程</span>
-                            <#--<i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>-->
+            <#--<li class="tpl-left-nav-item">-->
+            <#--<a href="chart.html" class="nav-link tpl-left-nav-link-list">-->
+            <#--<i class="am-icon-bar-chart"></i>-->
+            <#--<span>最新课程&最新学习资源</span>-->
+            <#--&lt;#&ndash;<i class="tpl-left-nav-content tpl-badge-danger">&ndash;&gt;-->
+            <#--&lt;#&ndash;12&ndash;&gt;-->
+            <#--&lt;#&ndash;</i>&ndash;&gt;-->
+            <#--</a>-->
+            <#--</li>-->
+                <#if userInfo.duty?exists>
+                    <#if userInfo.duty?contains("课程管理")>
+                        <li class="tpl-left-nav-item">
+                            <a href="javascript:" class="nav-link tpl-left-nav-link-list">
+                                <i class="am-icon-cloud"></i>
+                                <span>课程管理</span>
+                                <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
                             </a>
+                            <ul class="tpl-left-nav-sub-menu">
+                                <li>
+                        <#if userInfo.duty?contains("添加课程")>
+                                    <a href="${base}/endSys/class/add">
+                                        <i class="am-icon-angle-right"></i>
+                                        <span>添加课程</span>
+                                    <#--<i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>-->
+                                    </a>
+                        </#if>
 
-                            <a href="${base}/endSys/class/all">
-                                <i class="am-icon-angle-right"></i>
-                                <span>所有课程</span>
-                            <#--<i class="tpl-left-nav-content tpl-badge-success">-->
-                            <#--18-->
-                            <#--</i>-->
-                            </a>
+                        <#if userInfo.duty?contains("所有课程")>
+                                    <a href="${base}/endSys/class/all">
+                                        <i class="am-icon-angle-right"></i>
+                                        <span>所有课程</span>
+                                    <#--<i class="tpl-left-nav-content tpl-badge-success">-->
+                                    <#--18-->
+                                    <#--</i>-->
+                                    </a>
+                        </#if>
+                                </li>
+                            </ul>
                         </li>
-                    </ul>
-                </li>
+                    </#if>
 
+
+                    <#if userInfo.duty?contains("用户管理")>
                 <li class="tpl-left-nav-item">
                     <a href="javascript:" class="nav-link tpl-left-nav-link-list">
                         <i class="am-icon-user"></i>
@@ -117,20 +126,27 @@
                     </a>
                     <ul class="tpl-left-nav-sub-menu">
                         <li>
+                        <#if userInfo.duty?contains("添加用户")>
                             <a href="${base}/endSys/addUser">
                                 <i class="am-icon-angle-right"></i>
                                 <span>添加用户</span>
                                 <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                             </a>
+                        </#if>
 
+                        <#if userInfo.duty?contains("用户列表")>
                             <a href="${base}/endSys/userList">
                                 <i class="am-icon-angle-right"></i>
                                 <span>用户列表</span>
                             </a>
+                        </#if>
                         </li>
                     </ul>
                 </li>
+                    </#if>
 
+
+                    <#if userInfo.duty?contains("资源管理")>
                 <li class="tpl-left-nav-item">
                     <a href="javascript:" class="nav-link tpl-left-nav-link-list">
                         <i class="am-icon-file"></i>
@@ -139,18 +155,79 @@
                     </a>
                     <ul class="tpl-left-nav-sub-menu" style="display: none;">
                         <li>
+                        <#if userInfo.duty?contains("添加资源")>
                             <a href="${base}/endSys/Resource/add">
                                 <i class="am-icon-angle-right"></i>
                                 <span>添加资源</span>
                             </a>
+                        </#if>
 
+                        <#if userInfo.duty?contains("资源列表")>
                             <a href="${base}/endSys/Resource/all">
                                 <i class="am-icon-angle-right"></i>
                                 <span>资源列表</span>
                             </a>
+                        </#if>
+                        </li>
+                    </ul>
+                </li></#if>
+
+                    <#if userInfo.duty?contains("作品管理")>
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-file"></i>
+                        <span>作品管理</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu" style="display: none;">
+                        <li>
+                        <#if userInfo.duty?contains("添加作品")>
+                            <a href="${base}/endSys/work/add">
+                                <i class="am-icon-angle-right"></i>
+                                <span>添加作品</span>
+                            </a>
+                        </#if>
+
+                        <#if userInfo.duty?contains("作品列表")>
+                            <a href="${base}/endSys/work/all">
+                                <i class="am-icon-angle-right"></i>
+                                <span>作品列表</span>
+                            </a>
+                        </#if>
                         </li>
                     </ul>
                 </li>
+                    </#if>
+
+                    <#if userInfo.duty?contains("作品管理")>
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-file"></i>
+                        <span>作品管理</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu" style="display: none;">
+                        <li>
+                        <#if userInfo.duty?contains("添加作品")>
+                            <a href="${base}/endSys/work/add">
+                                <i class="am-icon-angle-right"></i>
+                                <span>添加作品</span>
+                            </a>
+                        </#if>
+
+                        <#if userInfo.duty?contains("作品列表")>
+                            <a href="${base}/endSys/work/all">
+                                <i class="am-icon-angle-right"></i>
+                                <span>作品列表</span>
+                            </a>
+                        </#if>
+                        </li>
+                    </ul>
+                </li>
+                    </#if>
+
+                </#if>
+
 
             </ul>
         </div>
