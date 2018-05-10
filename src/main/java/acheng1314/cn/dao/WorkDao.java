@@ -18,10 +18,10 @@ public interface WorkDao extends BaseMapper<Works> {
     @Select("SELECT * FROM `works` where `user_id`=#{userId} ORDER BY `id` DESC")
     ArrayList<Works> findAllByPage(Pagination pagination, @Param("userId") Long userId);
 
-    @Select("SELECT * FROM `works` where `comment` is null ORDER BY `id` DESC")
+    @Select("SELECT * FROM `works` where `score` is null ORDER BY `id` DESC")
     ArrayList<Works> findNotRead();
 
 
-    @Select("SELECT * FROM `works` where `comment` is not null ORDER BY `id` DESC")
+    @Select("SELECT * FROM `works` where `score` is not null ORDER BY `id` DESC")
     ArrayList<Works> findRead();
 }
