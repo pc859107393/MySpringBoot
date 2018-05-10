@@ -199,7 +199,7 @@
                 </li>
                     </#if>
 
-                    <#if userInfo.duty?contains("作品管理")>
+                    <#if userInfo.duty?contains("审阅作品")>
                 <li class="tpl-left-nav-item">
                     <a href="javascript:" class="nav-link tpl-left-nav-link-list">
                         <i class="am-icon-file"></i>
@@ -208,14 +208,14 @@
                     </a>
                     <ul class="tpl-left-nav-sub-menu" style="display: none;">
                         <li>
-                        <#if userInfo.duty?contains("添加作品")>
+                        <#if userInfo.duty?contains("未审阅")>
                             <a href="${base}/endSys/work/add">
                                 <i class="am-icon-angle-right"></i>
                                 <span>添加作品</span>
                             </a>
                         </#if>
 
-                        <#if userInfo.duty?contains("作品列表")>
+                        <#if userInfo.duty?contains("已审阅")>
                             <a href="${base}/endSys/work/all">
                                 <i class="am-icon-angle-right"></i>
                                 <span>作品列表</span>

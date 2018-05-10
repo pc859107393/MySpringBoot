@@ -177,7 +177,7 @@
                                         class="tpl-form-line-small-title">Resource Title</span></label>
                                 <div class="am-u-sm-9">
                                     <input type="text" class="tpl-form-input" name="desc" id="title"
-                                           placeholder="请输入课程标题">
+                                           placeholder="请输入资源标题">
                                     <small>资源标题适当可以一目了然！</small>
                                 </div>
                             </div>
