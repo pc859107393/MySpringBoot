@@ -43,7 +43,8 @@
 
             <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                 <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:">
-                    <span class="tpl-header-list-user-nick">${userInfo.name!}</span><span class="tpl-header-list-user-ico"> <img
+                    <span class="tpl-header-list-user-nick">${userInfo.name!}</span><span
+                        class="tpl-header-list-user-ico"> <img
                         src="${base}/static/img/user01.png"></span>
                 </a>
             <#--<ul class="am-dropdown-content">-->
@@ -167,6 +168,7 @@
                     </div>
                 </#if>
                         <form class="am-form tpl-form-line-form" action="/endSys/class/add" method="post"
+                              enctype="multipart/form-data"
                               onsubmit="return checkAddClassContent()">
                             <div class="am-form-group">
                                 <label for="user-name" class="am-u-sm-3 am-form-label">课程标题 <span
@@ -191,23 +193,6 @@
                                 </div>
                             </div>
 
-                            <div class="am-form-group">
-                                <label for="user-phone" class="am-u-sm-3 am-form-label">开讲时间 <span
-                                        class="tpl-form-line-small-title">Date</span></label>
-                                <div class="am-u-sm-9">
-                                    <input type="text" class="am-form-field tpl-form-no-bg" placeholder="讲课时间"
-                                           name="date" id="datetimepicker"/>
-                                </div>
-                            </div>
-
-                            <div class="am-form-group">
-                                <label for="user-phone" class="am-u-sm-3 am-form-label">上课地点 <span
-                                        class="tpl-form-line-small-title">Location</span></label>
-                                <div class="am-u-sm-9">
-                                    <input type="text" class="am-form-field tpl-form-no-bg" placeholder="上课地点"
-                                           name="location"/>
-                                </div>
-                            </div>
 
                             <div class="am-form-group">
                                 <label for="user-phone" class="am-u-sm-3 am-form-label">课程类别 <span
@@ -220,6 +205,24 @@
                                     </select>
                                 </div>
                             </div>
+
+
+                            <div class="am-form-group">
+                                <label for="user-phone" class="am-u-sm-3 am-form-label">视频选择 <span
+                                        class="tpl-form-line-small-title">Choose</span></label>
+                                <div class="am-u-sm-9">
+                                    <div class="am-form-group am-form-file">
+                                        <button type="button" class="am-btn am-btn-danger am-btn-sm">
+                                            <i class="am-icon-cloud-upload"></i> 请选择视频资源
+                                        </button>
+                                        <input id="doc-form-file" type="file" name="upfile" multiple>
+                                        <br>
+                                    <#--<input readonly value="">-->
+                                    </div>
+
+                                </div>
+                            </div>
+
 
                             <div class="am-form-group am-hide">
                                 <label class="am-u-sm-3 am-form-label">访问密码 <span

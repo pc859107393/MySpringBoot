@@ -174,6 +174,34 @@
                     </ul>
                 </li>
 
+
+                    <#if userInfo.duty?contains("审阅作品")>
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-file"></i>
+                        <span>审阅作品</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu" style="display: none;">
+                        <li>
+                        <#if userInfo.duty?contains("未审阅")>
+                            <a href="${base}/endSys/work/notRead">
+                                <i class="am-icon-angle-right"></i>
+                                <span>未审阅</span>
+                            </a>
+                        </#if>
+
+                        <#if userInfo.duty?contains("已审阅")>
+                            <a href="${base}/endSys/work/ReadOk">
+                                <i class="am-icon-angle-right"></i>
+                                <span>已审阅</span>
+                            </a>
+                        </#if>
+                        </li>
+                    </ul>
+                </li>
+                    </#if>
+
             </ul>
         </div>
     </div>
@@ -203,8 +231,20 @@
                             <div class="am-g tpl-amazeui-form">
 
                                 <div class="am-u-sm-12 am-u-md-9">
+
                                     <div class="am-form-group">
-                                        <label for="user-name" class="am-u-sm-3 am-form-label">提交名称 / Date</label>
+                                        <label for="user-name" class="am-u-sm-3 am-form-label">下载作品 / Download</label>
+                                        <div class="am-u-sm-9">
+                                            <a href="${bean.url!}">
+                                                <button type="button" class="am-btn am-btn-default am-btn-success"><span
+                                                        class="am-icon-download"></span> 下载
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="am-form-group">
+                                        <label for="user-name" class="am-u-sm-3 am-form-label">提交时间 / Date</label>
                                         <div class="am-u-sm-9">
                                             <input type="text" value="${bean.date!?string('yyyy-MM-dd hh:mm:ss')}"
                                                    readonly>
@@ -223,27 +263,54 @@
                                     </#if>
                                     <div class="am-form-group">
                                         <label for="user-name" class="am-u-sm-3 am-form-label">作品介绍 / Content</label>
-                                        <div class="am-u-sm-9">
-                                            <input type="text" value="${bean.content!}" readonly>
+                                        <div class="am-u-sm-9">${bean.content!}
                                         </div>
                                     </div>
                                     <br>
-                                    <div class="am-form-group">
-                                        <label for="user-name" class="am-u-sm-3 am-form-label">下载作品 / Download</label>
-                                        <div class="am-u-sm-9">
-                                            <a href="${bean.url!}">
-                                                <button type="button" class="am-btn am-btn-default am-btn-success"><span
-                                                        class="am-icon-download"></span> 下载
-                                                </button>
-                                            </a>
-                                        </div>
-                                    </div>
 
                                 </div>
                             </div>
                         </div>
 
                     </div>
+
+                    <#if bean.score?exists>
+                    <div class="tpl-portlet-components">
+                        <div class="portlet-title">
+                            <div class="caption font-green bold">
+                                <span class="am-icon-code"></span> 老师评分
+                            </div>
+                        </div>
+
+                        <div class="tpl-block ">
+
+                            <div class="am-g tpl-amazeui-form">
+
+                                <div class="am-u-sm-12 am-u-md-9">
+                                    <div class="am-form-group">
+                                        <label for="user-name" class="am-u-sm-3 am-form-label">分数 / Score</label>
+                                        <div class="am-u-sm-9">
+                                            <input type="number" name="score" value="${bean.score}" placeholder="输入分数"
+                                                   readonly>
+                                        </div>
+                                    </div>
+
+                                    <#if bean.comment?exists>
+                                    <div class="am-form-group">
+                                        <label for="user-email" class="am-u-sm-3 am-form-label">详细评论 <span
+                                                class="tpl-form-line-small-title">Comment</span></label>
+                                        <div class="am-u-sm-9">
+                                            ${bean.comment}
+                                        </div>
+                                    </div>
+                                    </#if>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    </#if>
                 </#if>
         </div>
 

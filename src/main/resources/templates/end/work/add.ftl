@@ -159,9 +159,9 @@
                         <span>作品管理</span>
                         <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
                     </a>
-                    <ul class="tpl-left-nav-sub-menu" style="display: none;">
+                    <ul class="tpl-left-nav-sub-menu" style="display: block;">
                         <li>
-                            <a href="${base}/endSys/work/add">
+                            <a href="${base}/endSys/work/add" class="active">
                                 <i class="am-icon-angle-right"></i>
                                 <span>添加作品</span>
                             </a>
@@ -173,6 +173,33 @@
                         </li>
                     </ul>
                 </li>
+
+                    <#if userInfo.duty?contains("审阅作品")>
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-file"></i>
+                        <span>审阅作品</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu" style="display: none;">
+                        <li>
+                        <#if userInfo.duty?contains("未审阅")>
+                            <a href="${base}/endSys/work/notRead">
+                                <i class="am-icon-angle-right"></i>
+                                <span>未审阅</span>
+                            </a>
+                        </#if>
+
+                        <#if userInfo.duty?contains("已审阅")>
+                            <a href="${base}/endSys/work/ReadOk">
+                                <i class="am-icon-angle-right"></i>
+                                <span>已审阅</span>
+                            </a>
+                        </#if>
+                        </li>
+                    </ul>
+                </li>
+                    </#if>
 
 
             </ul>

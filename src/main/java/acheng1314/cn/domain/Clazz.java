@@ -19,15 +19,23 @@ public class Clazz extends Model<Clazz> {
     private String title;
     @NotEmpty(message = "课程内容不能为空")
     private String content;
-    @NotNull(message = "上课时间不能为空")
+    @NotNull(message = "时间不能为空")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date date;
     private Long userId;
     private String password;
-    @NotEmpty(message = "上课位置不能为空")
-    private String location;
     @NotEmpty(message = "课程类型不能为空")
     private String type;
+
+    private String video;
+
+    public String getVideo() {
+        return video;
+    }
+
+    public void setVideo(String video) {
+        this.video = video;
+    }
 
     public String getType() {
         return type;
@@ -85,14 +93,6 @@ public class Clazz extends Model<Clazz> {
         this.password = password;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
     @Override
     public String toString() {
         return "Clazz{" +
@@ -102,7 +102,8 @@ public class Clazz extends Model<Clazz> {
                 ", date=" + date +
                 ", userId=" + userId +
                 ", password='" + password + '\'' +
-                ", location='" + location + '\'' +
+                ", type='" + type + '\'' +
+                ", video='" + video + '\'' +
                 '}';
     }
 

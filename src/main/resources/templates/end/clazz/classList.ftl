@@ -42,7 +42,8 @@
 
             <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                 <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:">
-                    <span class="tpl-header-list-user-nick">${userInfo.name!}</span><span class="tpl-header-list-user-ico"> <img
+                    <span class="tpl-header-list-user-nick">${userInfo.name!}</span><span
+                        class="tpl-header-list-user-ico"> <img
                         src="${base}/static/img/user01.png"></span>
                 </a>
             <#--<ul class="am-dropdown-content">-->
@@ -165,7 +166,7 @@
                                 <tr>
                                     <th class="table-title">课程名称</th>
                                     <th class="table-date">上课时间</th>
-                                    <th class="table-main">上课地点</th>
+                                    <th class="table-main">资源预览</th>
                                 </tr>
                                 </thead>
 
@@ -177,7 +178,7 @@
 
                             <td><a href="${base}/endSys/class/${class.id!}">${class.title!}</a></td>
                             <td>${class.date!?string('yyyy-MM-dd hh:mm:ss')}</td>
-                            <td>${class.location!}</td>
+                            <td>${class.video!}</td>
 
                         </tr>
                         </#list>

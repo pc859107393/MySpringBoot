@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>设计师培训系统首页-培训课程</title>
+    <title>设计师培训系统首页-未审阅</title>
     <meta name="description" content="后台管理">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,13 +47,13 @@
                         class="tpl-header-list-user-ico"> <img
                         src="${base}/static/img/user01.png"></span>
                 </a>
-            <#--<ul class="am-dropdown-content">-->
-            <#--<li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>-->
-            <#--<li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>-->
-            <#--<li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>-->
-            <#--</ul>-->
+                <ul class="am-dropdown-content">
+                    <li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>
+                    <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
+                    <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+                </ul>
             </li>
-            <li><a href="${base}/logOut" class="tpl-header-list-link"><span
+            <li><a href="###" class="tpl-header-list-link"><span
                     class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
         </ul>
     </div>
@@ -152,6 +152,56 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-file"></i>
+                        <span>作品管理</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu" style="display: none;">
+                        <li>
+                            <a href="${base}/endSys/work/add">
+                                <i class="am-icon-angle-right"></i>
+                                <span>添加作品</span>
+                            </a>
+
+                            <a href="${base}/endSys/work/all">
+                                <i class="am-icon-angle-right"></i>
+                                <span>作品列表</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                    <#if userInfo.duty?contains("审阅作品")>
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-file"></i>
+                        <span>审阅作品</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu" style="display: none;">
+                        <li>
+                        <#if userInfo.duty?contains("未审阅")>
+                            <a href="${base}/endSys/work/notRead">
+                                <i class="am-icon-angle-right"></i>
+                                <span>未审阅</span>
+                            </a>
+                        </#if>
+
+                        <#if userInfo.duty?contains("已审阅")>
+                            <a href="${base}/endSys/work/ReadOk">
+                                <i class="am-icon-angle-right"></i>
+                                <span>已审阅</span>
+                            </a>
+                        </#if>
+                        </li>
+                    </ul>
+                </li>
+                    </#if>
+
             </ul>
         </div>
     </div>
@@ -162,17 +212,26 @@
             后台管理
         </div>
         <ol class="am-breadcrumb">
-            <li><a href="#" class="am-icon-home">课程管理</a></li>
-            <li><a href="#">课程查看</a></li>
-            <li class="am-active">课程详情</li>
+            <li><a href="#" class="am-icon-home">作品管理</a></li>
+            <li><a href="#">作品查看</a></li>
+            <li class="am-active">作品详情</li>
         </ol>
         <div class="tpl-content-scope">
-                <#if clazz?exists>
+
+                <#if msg?exists>
+                    <div class="am-form-group">
+                        <div class="am-alert am-alert-danger">
+                            ${msg}
+                        </div>
+                    </div>
+                </#if>
+
+                <#if bean?exists>
 
                     <div class="tpl-portlet-components">
                         <div class="portlet-title">
                             <div class="caption font-green bold">
-                                <span class="am-icon-code"></span> ${clazz.title!}
+                                <span class="am-icon-code"></span> ${bean.name!}
                             </div>
                         </div>
 
@@ -182,9 +241,9 @@
 
                                 <div class="am-u-sm-12 am-u-md-9">
                                     <div class="am-form-group">
-                                        <label for="user-name" class="am-u-sm-3 am-form-label">发表时间 / Date</label>
+                                        <label for="user-name" class="am-u-sm-3 am-form-label">提交名称 / Date</label>
                                         <div class="am-u-sm-9">
-                                            <input type="text" value="${clazz.date!?string('yyyy-MM-dd hh:mm:ss')}"
+                                            <input type="text" value="${bean.date!?string('yyyy-MM-dd hh:mm:ss')}"
                                                    readonly>
                                         </div>
                                     </div>
@@ -200,26 +259,89 @@
                                     <br>
                                     </#if>
                                     <div class="am-form-group">
-                                        <label for="user-name" class="am-u-sm-3 am-form-label">课程内容 / Content</label>
-                                        <div class="am-u-sm-9">
-                                            ${clazz.content!}
+                                        <label for="user-name" class="am-u-sm-3 am-form-label">作品介绍 / Content</label>
+                                        <div class="am-u-sm-9">${bean.content!}
                                         </div>
                                     </div>
                                     <br>
-                                    <#if clazz.video?exists>
                                     <div class="am-form-group">
-                                        <label for="user-name" class="am-u-sm-3 am-form-label">课程视频 / Location</label>
-                                        <video src="${clazz.video!}" height="800" width="480" controls
-                                               autoplay></video>
+                                        <label for="user-name" class="am-u-sm-3 am-form-label">下载作品 / Download</label>
+                                        <div class="am-u-sm-9">
+                                            <a href="${bean.url!}">
+                                                <button type="button" class="am-btn am-btn-default am-btn-success"><span
+                                                        class="am-icon-download"></span> 下载
+                                                </button>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <br>
-                                    </#if >
 
                                 </div>
                             </div>
                         </div>
 
                     </div>
+
+
+                    <div class="tpl-portlet-components">
+                        <div class="portlet-title">
+                            <div class="caption font-green bold">
+                                <span class="am-icon-code"></span> 选择打分
+                            </div>
+                        </div>
+
+                        <div class="tpl-block ">
+
+                            <form class="am-form tpl-form-line-form" action="/endSys/work/addSocre" method="post"
+                                  onsubmit="return checkAddScoreContent()">
+                                <div class="am-g tpl-amazeui-form">
+
+                                    <div class="am-u-sm-12 am-u-md-9">
+                                        <input type="hidden" class="am-form-field tpl-form-no-bg"
+                                               id="id"
+                                               value="${bean.id}"
+                                               name="id"/>
+
+                                        <div class="am-form-group">
+                                            <label for="user-name" class="am-u-sm-3 am-form-label">分数 / Score</label>
+                                            <div class="am-u-sm-9">
+                                                <input type="number" name="score" placeholder="输入分数">
+                                            </div>
+                                        </div>
+                                        <br>
+
+                                        <div class="am-form-group">
+                                            <label for="user-email" class="am-u-sm-3 am-form-label">详细评论 <span
+                                                    class="tpl-form-line-small-title">Comment</span></label>
+                                            <div class="am-u-sm-9">
+                                                <div id="editor">
+                                                    <p>请在此处 <b>编辑评论</b></p>
+                                                </div>
+                                                <input type="hidden" class="am-form-field tpl-form-no-bg"
+                                                       placeholder="作品评论"
+                                                       id="comment"
+                                                       name="comment"/>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-3 am-u-sm-push-3">
+                                        <button type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交
+                                        </button>
+                                    </div>
+                                    <div class="am-u-sm-3">
+                                        <button type="reset" class="am-btn am-btn-primary tpl-btn-bg-color-success ">清除
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+
+
                 </#if>
         </div>
 
@@ -232,6 +354,29 @@
 <script src="${base}/static/js/amazeui.min.js"></script>
 <script src="${base}/static/js/iscroll.js"></script>
 <script src="${base}/static/js/app.js"></script>
+<script src="../../../static/js/wangEditor.min.js"></script>
+<script type="text/javascript">
+    var E = window.wangEditor;
+    var editor = new E('#editor');
+    // 或者 var editor = new E( document.getElementById('editor') )
+    // 配置服务器端地址
+    editor.customConfig.uploadImgServer = '${base}/endSys/uploadFile';
+    // 限制一次最多上传 5 张图片
+    editor.customConfig.uploadImgMaxLength = 5;
+    editor.customConfig.uploadFileName = 'upfile';
+    editor.create();
+
+    $('#datetimepicker').datetimepicker({
+        format: 'yyyy-mm-dd hh:mm:ss'
+    });
+
+    function checkAddScoreContent() {
+        document.getElementById("comment").value = editor.txt.html();
+        return true;
+    }
+
+
+</script>
 </body>
 
 </html>

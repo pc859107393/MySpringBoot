@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>用户列表</title>
+    <title>作品列表</title>
     <meta name="description" content="这是一个 index 页面">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,19 +75,19 @@
                 </li>
 
                 <li class="tpl-left-nav-item">
-                    <a href="javascript:" class="nav-link tpl-left-nav-link-list active">
+                    <a href="javascript:" class="nav-link tpl-left-nav-link-list">
                         <i class="am-icon-cloud"></i>
                         <span>课程管理</span>
                         <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
                     </a>
-                    <ul class="tpl-left-nav-sub-menu" style="display: block;">
+                    <ul class="tpl-left-nav-sub-menu">
                         <li>
                             <a href="${base}/endSys/class/add">
                                 <i class="am-icon-angle-right"></i>
                                 <span>添加课程</span>
                             </a>
 
-                            <a href="${base}/endSys/class/all" class="active">
+                            <a href="${base}/endSys/class/all">
                                 <i class="am-icon-angle-right"></i>
                                 <span>所有课程</span>
                             </a>
@@ -139,6 +139,62 @@
                         </li>
                     </ul>
                 </li>
+
+
+
+                    <#if userInfo.duty?contains("作品管理")>
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:" class="nav-link tpl-left-nav-link-list active">
+                        <i class="am-icon-file"></i>
+                        <span>作品管理</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu" style="display: block;">
+                        <li>
+                        <#if userInfo.duty?contains("添加作品")>
+                            <a href="${base}/endSys/work/add">
+                                <i class="am-icon-angle-right"></i>
+                                <span>添加作品</span>
+                            </a>
+                        </#if>
+
+                        <#if userInfo.duty?contains("作品列表")>
+                            <a href="${base}/endSys/work/all" class="active">
+                                <i class="am-icon-angle-right"></i>
+                                <span>作品列表</span>
+                            </a>
+                        </#if>
+                        </li>
+                    </ul>
+                </li>
+                    </#if>
+
+                    <#if userInfo.duty?contains("审阅作品")>
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-file"></i>
+                        <span>审阅作品</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu" style="display: none;">
+                        <li>
+                        <#if userInfo.duty?contains("未审阅")>
+                            <a href="${base}/endSys/work/notRead">
+                                <i class="am-icon-angle-right"></i>
+                                <span>未审阅</span>
+                            </a>
+                        </#if>
+
+                        <#if userInfo.duty?contains("已审阅")>
+                            <a href="${base}/endSys/work/ReadOk">
+                                <i class="am-icon-angle-right"></i>
+                                <span>已审阅</span>
+                            </a>
+                        </#if>
+                        </li>
+                    </ul>
+                </li>
+                    </#if>
             </ul>
         </div>
     </div>
@@ -148,14 +204,14 @@
             设计师培训后台管理系统
         </div>
         <ol class="am-breadcrumb">
-            <li><a href="#" class="am-icon-home">首页</a></li>
-            <li><a href="#">Amaze UI CSS</a></li>
-            <li class="am-active">文字列表</li>
+            <li><a href="#" class="am-icon-home">后台管理</a></li>
+            <li><a href="#">作品管理</a></li>
+            <li class="am-active">作品列表</li>
         </ol>
         <div class="tpl-portlet-components">
             <div class="portlet-title">
                 <div class="caption font-green bold">
-                    <span class="am-icon-users"></span>用户列表
+                    <span class="am-icon-users"></span>作品
                 </div>
             </div>
             <div class="tpl-block">
@@ -167,7 +223,7 @@
                                 <tr>
                                     <th class="table-title">作品名称</th>
                                     <th class="table-date">提交时间</th>
-                                    <th class="table-main">作品作者</th>
+                                    <th class="table-main">是否审阅</th>
                                 </tr>
                                 </thead>
 
@@ -179,7 +235,7 @@
 
                             <td><a href="${base}/endSys/work/${work.id!}">${work.name!}</a></td>
                             <td>${work.date!?string('yyyy-MM-dd hh:mm:ss')}</td>
-                            <td>${work.userId!}</td>
+                            <td><#if work.score?exists>已经审阅<#else > 暂未审阅</#if></td>
 
                         </tr>
                         </#list>
