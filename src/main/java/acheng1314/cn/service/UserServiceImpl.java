@@ -59,6 +59,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> {
         } else {
             for (Duty d : duties) {
                 if (d.getId().intValue() == 5
+                        || d.getId().intValue() == 7
                         || d.getId().intValue() == 8
                         || d.getId().intValue() == 10
                         || d.getId().intValue() == 11
