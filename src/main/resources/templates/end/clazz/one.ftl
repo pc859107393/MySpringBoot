@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="${base}/static/css/admin.css">
     <link rel="stylesheet" href="${base}/static/css/app.css">
     <script src="${base}/static/js/echarts.min.js"></script>
+    <link href="${base}/static/css/video-js.min.css" rel="stylesheet">
 </head>
 
 <body data-type="index">
@@ -276,8 +277,18 @@
                                     <#if clazz.video?exists>
                                     <div class="am-form-group">
                                         <label for="user-name" class="am-u-sm-3 am-form-label">课程视频 / Location</label>
-                                        <video src="${clazz.video!}" height="800" width="480" controls
-                                               autoplay></video>
+                                    <#--<video src="${clazz.video!}" height="800" width="480" controls-->
+                                    <#--autoplay></video>-->
+                                        <video id="my-video" class="video-js" controls preload="auto" width="740"
+                                               height="400" data-setup="{}">
+                                            <source src="${clazz.video!}" type="video/mp4">
+                                            <!--<p class="vjs-no-js">
+                                            To view this video please enable JavaScript, and consider upgrading to a web browser that
+                                            <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                                            </p>-->
+                                        </video>
+
+
                                     </div>
                                     <br>
                                     </#if >
@@ -299,6 +310,14 @@
 <script src="${base}/static/js/amazeui.min.js"></script>
 <script src="${base}/static/js/iscroll.js"></script>
 <script src="${base}/static/js/app.js"></script>
+<script src="${base}/static/js/video.min.js"></script>
+<script type="text/javascript">
+    var myPlayer = videojs('my-video');
+    videojs("my-video").ready(function () {
+        var myPlayer = this;
+        myPlayer.play();
+    });
+</script>
 </body>
 
 </html>
