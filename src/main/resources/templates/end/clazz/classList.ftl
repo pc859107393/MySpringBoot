@@ -246,6 +246,7 @@
                                     <th class="table-title">课程名称</th>
                                     <th class="table-date">上课时间</th>
                                     <th class="table-main">资源预览</th>
+                                    <th class="table-main">操 作</th>
                                 </tr>
                                 </thead>
 
@@ -258,7 +259,10 @@
                             <td><a href="${base}/endSys/class/${class.id!}">${class.title!}</a></td>
                             <td>${class.date!?string('yyyy-MM-dd hh:mm:ss')}</td>
                             <td>${class.video!}</td>
-
+                            <td>
+                                <div class="clearfix tb-btn tb-btn-basket theme-login"><a
+                                        href="${base}/endSys/class/del/${class.id!}">删除</a></div>
+                            </td>
                         </tr>
                         </#list>
                     </#if>

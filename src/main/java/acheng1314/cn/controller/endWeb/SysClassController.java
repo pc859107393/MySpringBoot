@@ -84,4 +84,14 @@ public class SysClassController {
         map.put("teacher", userService.findOneByTel(clazz.getUserId().toString()));
         return "end/clazz/one";
     }
+
+    @GetMapping(path = "/del/{id}", produces = MediaType.TEXT_HTML_VALUE)
+    public String delOne(@PathVariable(name = "id") Long id, ModelMap map) {
+        boolean result = classService.deleteById(id);
+        if (!result) {
+            map.addAttribute("msg", "删除失败!");
+            return "redirect:/404";
+        }
+        return "redirect:/endSys/class/all";
+    }
 }
