@@ -244,7 +244,7 @@
                                 <thead>
                                 <tr>
                                     <th class="table-title">课程名称</th>
-                                    <th class="table-date">上课时间</th>
+                                    <th class="table-date">上传时间</th>
                                     <th class="table-main">资源预览</th>
                                     <th class="table-main">操 作</th>
                                 </tr>
